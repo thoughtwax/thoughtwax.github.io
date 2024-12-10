@@ -1,0 +1,26 @@
+---
+author: None
+comments: true
+date: 2004-11-23 00:00:00
+layout: post
+slug: None
+title: 23/11/2004
+wordpress_id: 115
+---
+
+DRM and Digital Media copyright lectures online:
+
+
+
+
+
+
+  * [Rip, Mix, Burn, Sue](http://www.cs.princeton.edu/~felten/rip/) - Edward Felton
+
+
+  * [Free Culture](http://randomfoo.net/oscon/2002/lessig/) - Lawrence Lessig
+
+
+  * [Microsoft Research DRM](http://craphound.com/msftdrm.txt) - Cory Doctorow
+
+

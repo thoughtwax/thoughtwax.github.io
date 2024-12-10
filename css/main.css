@@ -1,0 +1,57 @@
+body { font: 14px/20px 'Inconsolata', 'Courier New', monospace; margin: 0; }
+
+.container {margin: 8em auto 2em;}
+.intro { opacity: 0.6; }
+.intro a { font-weight: normal; }
+
+#header { margin-bottom: 6em; padding-top: 0.5em; }
+/*
+#header { position: fixed; }
+@media only screen and (max-device-width: 480px) {
+  #header {
+    position: static !important;
+  }
+}
+*/
+
+h1 { font: 14px/20px 'Inconsolata', 'Courier New', monospace; margin: 0; letter-spacing: 0.2em; text-transform: uppercase; }
+h2 { font: italic bold 40px 'Playfair Display', serif; color: #575757; letter-spacing: 0.01em; margin: 0 0 1em 0; line-height: 1.25em; }
+h2 a, h2 a { color: #333; text-decoration: none; border-bottom: 0;}
+
+p { font: 14px/20px 'Inconsolata', 'Courier New', monospace; color: #575757; }
+a { font-weight: bold; color: #575757; text-decoration: none; border-bottom: 1px solid #ccc; }
+a:hover { color: #0FA0CE; border-color: #0FA0CE; }
+
+p.meta { margin-bottom: 8em; }
+
+p.subhead {text-align: center; margin-bottom: 50px; opacity: 0.6; }
+p.metadata { font-style: italic; opacity: 0.6; }
+p.metadata a { font-weight: normal; }
+
+img, iframe { max-width: 100%; }
+
+.blog {text-align: center;}
+.blog p { margin-bottom: 0.2em;}
+.blog p.metadata { margin-bottom: 2.0em;}
+p.meta, .footer p { opacity: 0.6; }
+
+.footer { text-align: left; color: #ccc; border-top: 1px solid #ddd; margin: 7em 0 0 0; padding: 7em 0 4em 0; overflow: hidden; }
+.footer a { font-weight: normal; }
+.footer strong a { font-weight: bold; }
+
+ul.posts { list-style-type: none; margin-bottom: 2em; }
+ul.posts span { color: #aaa; }
+ul.posts li.archive span { padding-right: 20px; }
+
+table.books { width: 100%; }
+table.books td,
+table.books th,
+table.books th:first-child,
+table.books td:first-child,
+table.books th:last-child,
+table.books td:last-child {vertical-align: top; padding: 8px 15px;}
+table.books td.year { padding: 4px 15px; background-color: #eee; font-weight: bold; }
+table.books td.title { font-style: italic; }
+table.books td.author { color: #575757; }
+table.books td.stars { font-size: 20px; }
+table.books td.currently { color: #575757; }

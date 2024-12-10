@@ -1,0 +1,15 @@
+---
+layout: post
+title: Stories and storytelling
+author: emmetc
+---
+
+In my post last week [about Google Duplex]({{ site.url }}/2018/05/google-duplex/), I mentioned Tristan Harris' 2013 internal presentation at Google about the ethics of attention.
+
+I looked for a public copy of it, which didn't exist last week, but does now: [it was just leaked/released](https://www.theverge.com/2018/5/10/17333574/google-android-p-update-tristan-harris-design-ethics). It's an interesting read in itself. But I still often think about this actual presentation -- the slide deck itself -- as an example of GREAT storytelling. The whole thing is designed to be viewed, not presented. Each slide is a single thought; just an image and a few words. There are no speaker notes. It's an essay designed to be viewed rather than read. I remember it spreading like wildfire through Google at the time and immediately sparking conversation. It’s a object lesson in the power of presenting your ideas or work narratively.
+
+Another post last week was [about the Dissect podcast]({{ site.url }}/2018/05/dissect/) and how new types of media lead to new forms of content.
+
+Tristan's slides feel like a desktop predecessor of the most obvious new mobile-first content type: the Story. Invented by Snapchat and mainstreamed by Instagram, Stories are the [_ne plus ultra_](https://www.theatlantic.com/technology/archive/2018/05/smartphone-stories-snapchat-instagram-facebook/559517/) of smartphone patterns: atomic units of vertical rectangle content navigated via the simplest possible interaction. Tap, tap, tap, one pellet of info at a time. But done well it can add up to a fully realised narrative told across a single day.
+
+There's a lineage here. Robin Sloan's 2012 ["Fish" tap essay](https://www.robinsloan.com/fish/) feels like a more literary precursor to Stories. Both Fish and Tristan's deck are writing, but the delivery is edited into discreet cue cards to create rhythm and emphasis. Twitter threads are part of this scene too, being a series of atomic thoughts strung together into an argument. Bad threads are bad because they are nothing more than longer essays arbitrarily chopped into 240-character chunks; get a blog, dude. But [a well-written thread](https://twitter.com/gawanmac/status/984865835566141440) can use the limitations of the medium to create pacing and tell a story, one thought at a time, and work better than it ever would as prose.

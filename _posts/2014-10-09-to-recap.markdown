@@ -1,0 +1,73 @@
+---
+layout: post
+title: To Recap
+author: emmetc
+---
+
+We launched Android Wear. I'm leaving Google and moving from San Francisco to Dublin where I'll be joining [Intercom](https://www.intercom.io/) as Director of Design.
+
+---
+
+*We launched Android Wear.*
+
+There's an immediacy, a sense of here-and-nowness, to being a technology designer that excites me. We get to sit at the edge of what's about to come, trying to will the near future into being, to prod and push at the adjacent possible until something new pops out. Maybe the result wasn't quite what you were expecting at first, but another few prods and it turns into something new and amazing. Technology is the greatest multiplier of culture that's ever existed, and even if you just do something small, well, that's still pretty decent when refracted through a massive magnifying lens. Connectedness continues to seep into the lives of regular people at an unbelievable rate, in what must be one of the most signification cultural shifts of our times.
+
+When I remember to look up, I notice that these changes are happening incredibly fast. If you've been using computers for even a few years you've probably experienced technological whiplash a couple of times. Maybe a friend shows you a simple new thing they got, like a USB thumb drive or something, and you marvel at how capacious and cheap it has suddenly become. Maybe you bought one yourself just last year, but it was half the size and twice the price. How can that even be? It's like compound interest, multiplying annually, snowballing. You needed a forklift to move [5MB drive in 1956](http://imgur.com/uqKOX), now [ten thousand times more storage](http://www.theverge.com/2014/9/12/6139057/sandisks-512gb-sd-card-is-the-biggest-in-the-world) could easily fit into... well, into a watch.
+
+Thus has it always been. This trend turns out to have been so consistently reliable that it's basically been a codified law of the computing world for several decades. ([How long it's likely to continue, who knows.](http://kk.org/thetechnium/2009/07/was-moores-law/)) But the nice thing about this trend is that it allows you to fairly accurately look into the future: computers will get smaller and cheaper at a fairly decent and steady clip. Just extrapolate the slanted line of Moore's Law and you get a decent prediction of the future, no charge. Then, you just imagine what that future might be like.
+
+So, while working for Google in Zurich in 2011 along with a couple of friends -- the inimitable Morten Just and the irrepressible JP Gil -- I started a 20% project to design a computer watch. It seemed an improbable idea just four years ago, but that slanted line don't lie: before long someone was going to shrink an Android-capable device down to the size of a matchbook, and then keep on going.
+
+It began as a fun design fiction topic to debate over beers: what would the UI for such a tiny computer look like? How would you interact with it? What would it be good at?
+
+Well, for a start you probably wouldn't want all of the bother of installing and launching apps. (Who wants an app grid? Yeuck.) You probably wouldn't even need apps at all, at least the way we typically think of them. You'd might just want a display that you could glance at quickly, and it would somehow magically show you only the most pertinent information for you at just that moment. Of course, the design challenge is to take all the knotty complexity involved in actually making it work, and just make it feel simple.
+
+Fast forward to this summer, and [Android Wear launched at Google I/O](https://www.youtube.com/watch?v=bI8m_RcBrIg). I talked about [some ideas behind the design](https://www.youtube.com/watch?v=ea_KCJ2qy6s) as part of the launch.
+
+A lot happened during that fast forward: a lot of collaboration, merging, splitting, canceling, rebooting, and sprinting. And also some guessing, despairing, disagreeing, and failing. We collaborated with countless Google colleagues, many of whom donated their own 20% time. We worked with hardware and software engineers in Motorola, and worked inside Google[x] for a while. I moved to the US, and we teamed up with a group inside Android who were thinking along the same lines.
+
+Apple, of course, have since provided a preview of their take. I look forward to playing with one. Here's what I'll say: it was immensely interesting to get a look at how some of the best designers in the world approached many of the design problems that I wrestled with over the last couple of years. I mean really, how often do you get an opportunity like that? I feel like I watched their announcement with eyes already attuned to the hazards of the environment: oh, look how they tackled the list selection problem; the finger occlusion problem; the spatial model.
+
+If the ebb and flow of competing software platforms for the last 30 years has taught us anything, it's that these different approaches will probably lap against each other's shores, gradually commingling and mixing to form something standard and canonical -- and ultimately better -- while each still retaining their own individual flavour. I'm glad to have had the chance to add some ingredients into the early mix.
+
+---
+
+*I'm leaving Google*
+
+Eight years! I can only say that Google was a big part of my life, and an experience for which I'm very grateful. Over the course of those years (and living in three countries) I met some of the nicest, sharpest, most interesting people I ever have. There are a couple of projects that I fully expect to have the same level of global impact as Web Search and Android have already had (autonomous vehicles is one of them). It's insane that all of that can come from one company. Google's ambition and audacity continues to astound.
+
+Still, the world is disappointingly real. There's a lot of sound and fury around Google Inc., mosto fo which is nonsense, but I do believe it's true that corporate entities can develop their own autonomous momentum. A lot of people are fairly skeptical of the machinations of ultra-mega-globo-corps, but I also believe that Google is a grand experiment in building something different, better, and more intentional. I hope that it can continue to hold onto it's original character for a long time to come.
+
+---
+
+*and moving from San Francisco*
+
+People ask me if I like living here, and I usually prevaricate and say that I do and I don't.
+
+I love the light here: I'll probably miss that the most. And the  wide open sky. The unfettered positivity. The countryside just across the bridge. The food. The local history. The niche events. The sense of living in a beta version of the future.
+
+But. Suffice to say that I agree with most of the points in [Alex Payne's break up letter](https://al3x.net/2009/10/04/so-youre-moving-to-san-francisco.html) with the city. The inequality is devastating to witness and hard to countenance. In an odd way, I found San Francisco to be strangely conservative: almost hostile in it's devotion to preserving a precious sense of itself, strangely resistant to the very change that seems to be it's primary character trait, determined to doggedly play out a role that it has defined for itself. I know these seem like contradictions; so yes, this city is large, it contains multitudes. Honestly, I think a lot of people come here and feel alienated by the overt SF-ness of SF. That popular person you know who is actually riddled with self-doubt? That's San Francisco. Trying really hard to pull off that effortless look? That's San Francisco. Thirty-eight going on eighteen? San Francisco. A really nice city that's understandably having a bit of a midlife crisis.
+
+---
+
+*to Dublin*
+
+"To be Irish is to think about leaving," someone said. To leave, I would add, is to think about going back.
+
+Dublin, though. You wouldn't want to be casting too many stones, like. Fair enough.
+
+But. There's an elemental attraction to go back that I never really shook off. It was always in the back of my mind. Certainly my Irishness is intrinsically connected to that feeling. But having traipsed around a few places, I do know that people spend a lot of time searching for what you get in Ireland for free.
+
+Recaps are supposed to be short, so I won't even start on about the most significant thing that's happened to me of late. But it'll be nice to bring him home too.
+
+---
+
+*where I'll be joining Intercom as Director of Design.*
+
+When the chance to join Intercom came up, I almost had no choice. I'd crossed paths with Eoghan, Des, Paul, and some other folks at various stages in the past, and was curious why so many really good people all seemed to be gathering in one place. Very suspicious indeed. When I figured out that they happen to be building what I think might become an important piece of infrastructure for the future of the internet, I was pretty much sold.
+
+As the dust kicked up but the introduction of mobile computing is settles, we can survey the landscape and the vast changes wrought. First, the world is pouring online at a scale that PCs could never have facilitated, and commerce is following. Next, the fundamental ways we interact with computers and each other has changed, and new patterns and standards have emerged. [Messaging is mobile's killer app](http://stratechery.com/2014/messaging-mobiles-killer-app/) and may be the most natural unit of interaction on mobile (the card and the chronological stream of posts might also be contenders).
+
+Yet almost anyone who has tried to actually communicate with a business online at even a basic level knows the pain involved. Kafka would weep. There's no doubt that this is fertile ground for improvement. It's almost as if the problem and solution are just lying there, waiting for someone to figure out how to fit them togther just right. And Intercom has some great ideas for how to do it.
+
+It's actually a knotty design problem that can only be solved by making things much simpler for everyone involved. I like problems like that. Plus ça change!

@@ -1,0 +1,27 @@
+---
+author: emmetc
+comments: true
+date: 2008-02-17 16:24:52
+layout: post
+slug: 1b7731
+title: 1B7731
+wordpress_id: 345
+categories:
+- film
+---
+
+![1B7731]({{ site.url }}/uploads/2008/02/1b7731.jpg)
+
+The longest shot in the trailer for the new Indiana Jones film shows an army jeep with the code **1B7731** printed on the side. That's pretty close to 1B1337 (or I Be l337, geekspeak for ["I am elite"](http://en.wikipedia.org/wiki/Leet)), but not quite enough to constitute a hidden reference. Perhaps more surprisingly it's also not a match with _THX-1138_, that being the name of George Lucas' first film and a motif that appears hidden throughout many other Lucas-related films (including _Raiders of the Lost Ark_, as the code that's printed on the side of the sea plane in the opening scene).
+
+A quick Google reveals that [7731 is in fact the Tokyo Stock Exchange trading number of the Nikon camera company](http://finance.google.com/finance?q=7731).
+
+So was this fairly obscure reference inserted deliberately? Maybe. In _The Lost World_, also directed by Spielberg, a Nikon camera is [used as a plot device](http://www.agonybooth.com/recaps/The_Lost_World__Jurassic_Park_1997.aspx?Page=2), but it doesn't seem likely that this in itself is a cool enough connection to warrant a special shout-out. A more likely candidate is _Indiana Jones and the Temple of Doom_, where the Industrial Light and Magic effects team had to construct [a tiny custom Nikon camera](http://www.theraider.net/films/todoom/making_5_postproduction.php) to film the miniature models used in the mineshaft scene.
+
+![Nikon camera used for Temple of Doom]({{ site.url }}/uploads/2008/02/nikon.jpg)
+
+The custom-rigged Nikon camera used for Temple of Doom \[[img src](http://www.theraider.net/showimage.php?ImageUrl=http://www.theraider.net/films/todoom/gallery/makingof/mo_93.jpg)\]
+
+That's where the trail goes cold, though; nothing online to suggest any other major connection between Spielberg/Lucas and Nikon. Still, they could just be huge Nikon fanboys. I'm calling this one plausible.
+
+[There's a list of 1138 references in previous films at Wikipedia, of course.](http://en.wikipedia.org/wiki/1138_%28number%29)

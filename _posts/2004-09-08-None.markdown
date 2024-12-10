@@ -1,0 +1,11 @@
+---
+author: None
+comments: true
+date: 2004-09-08 00:00:00
+layout: post
+slug: None
+title: 08/09/2004
+wordpress_id: 86
+---
+
+[Kopenhagen.dk Generative Art Special](http://www.kopenhagen.dk/netkunst/articles/generativespecial.htm) an overview of archived articles

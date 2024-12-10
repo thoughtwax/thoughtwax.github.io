@@ -1,0 +1,11 @@
+---
+author: None
+comments: true
+date: 2004-08-10 00:00:00
+layout: post
+slug: None
+title: 10/08/2004
+wordpress_id: 63
+---
+
+[Sprawl: a typographic map of Belgium](http://users.pandora.be/brakkepie/brecht/font.htm)

@@ -1,0 +1,21 @@
+---
+author: emmetc
+comments: true
+date: 2005-10-31 21:04:35
+layout: post
+slug: wabi-sabi
+title: Wabi-Sabi
+wordpress_id: 167
+---
+
+Dom came over for the weekend, and brought me a present - a [lovely book](http://flickr.com/photos/thoughtwax/58156226/) called _Wabi-Sabi for Artists, Designers, Poets & Philosophers_. From the back cover:
+
+
+
+> Wabi-sabi is _the_ quintessentail Japanese aesthetic. It is a beauty of things imperfect, impermanent and incomplete. It is a beauty of things modest and humble. It is a beauty of things unconventional...
+
+
+
+Interestingly, I first came across the term in the source code of [some wiki software](http://phpwiki.sourceforge.net/phpwiki/WabiSabi) (explaining that wikis are very wabi-sabi), and it is by no means a stretch of the imagination to apply the ideas to software, agile development and adaptive design.
+
+I've been getting into the ideas behind Japanese architecture a bit recently too, so it should be a treat - looking forward to the read ahead. Thanks Dom!

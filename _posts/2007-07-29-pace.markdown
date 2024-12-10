@@ -1,0 +1,24 @@
+---
+author: emmetc
+comments: true
+date: 2007-07-29 21:05:51
+layout: post
+slug: pace
+title: Pace
+wordpress_id: 318
+categories:
+- videogames
+- web
+---
+
+And now another one about Twitter, sort of. As with the cycling post, I'm not positively nuts about Twitter (and God knows there's already enough aggrandising analysis about it out there already), but it's undeniably magnetic. On a completely different track, I was looking for a reference in [a post I wrote almost exactly a year ago](http://blog.thoughtwax.com/2006/07/what-next-for-online-gaming) about what I thought a multiplayer videogame might be like in the future, and came across this passage:
+
+
+
+> There will certainly be more cross-pollination between the game and the web, and between your activities in-game and your activities on the web. Just like your real life bleeds into your online life via your blog and your Flickr account, that reflected online persona will in turn become drawn into your gaming persona. Gaming will probably become a pretty poor label for what eventually emerges (as it becomes less about play and more about interaction and creation), but the name will stick, just like â€œtalkiesâ€ never really caught on over â€œmoviesâ€ in the cinema. Virtual space will feel more like an actual space (it might even be actual space), more like something you inhabit than somewhere you pass through. Youâ€™ll leave traces of where youâ€™ve been behind you, and youâ€™ll return after a break to see the traces of others that were there in the interim, and this sense of effect and permanence will infuse the entire game and encourage continued interaction, just as the gradual accumulation of an archive of blog posts rewards the ongoing effort of writing.
+
+
+
+It doesn't quite have the property of capturing passive activities or play that I was pushing for, but it's not a stretch to read that and draw some parallels with the model of interaction that makes Twitter attractive. I wrote that a just year ago, last July, and already the fact that Flickr was the only service that was available to reference seems slightly clunky and antiquated.
+
+[This post](http://www.antipope.org/charlie/blog-static/2007/07/unpacking_the_zeitgeist.html) tries to figure out how you could explain a news item about World of Warcraft being spammed to someone from thirty years ago, and the scale of the backstory necessary is just fantastically funny. I had a conversation the other day about long term predictions. I argued that a certain science fiction-style technological breakthrough wouldn't happen in my lifetime, but now I'm not quite so sure. Not because of something as trivial as Twitter, of course, but just because even though I thought I knew something a few months ago, you just don't see this stuff coming.

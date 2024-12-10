@@ -1,0 +1,21 @@
+---
+author: emmetc
+comments: true
+date: 2006-01-18 01:25:56
+layout: post
+slug: a-new
+title: A new
+wordpress_id: 172
+---
+
+Since we're already done with one of only 26-odd fortnights in the year, it's time I put an end to the extended radio silence. Rest assured I've not been slacking off, but rather engaging in the act of toil, [the fruits](http://theirwork.org/) of which will be online at the start of February.
+
+Being a time of fresh beginnings, I took a couple of hours out to do some blog housekeeping. I enjoyed having all of the links/photos/music feeds in the 'small pieces, loosely joined' sidebar for a while, but have decided in the end that it didn't really add much to the site apart from clutter[1](http://blog.thoughtwax.com/wp-admin/post.php#on-clutter). I'd like to concentrate a bit on writing actual content this year (please, this intention is not to be misinterpreted as a "resolution"), so I've swept all of that out, and created an [about page](http://blog.thoughtwax.com/?page_id=173) instead.
+
+I've also set up the ability to post brief remarks/links that don't constitute full posts inline with the main blog, so short items of note will continue to appear. It's published in a [seperate RSS feed](http://blog.thoughtwax.com/wp-recent-links-rss2.php), to avoid the main feed being polluted with the inevitable nonsense digressions.
+
+I moved servers and upgraded Wordpress too, so if funky things are happening, let me know.
+
+Happy new year!
+
+**\[1\]** As an aside, I think my tendency with this site has increasingly been to create something less and less (aesthetically) designed, maybe as a counterbalance or reaction to my day job as a designer. Were I a technical writer by trade, I imagine you would, at this very moment, be listening to an embedded midi file.

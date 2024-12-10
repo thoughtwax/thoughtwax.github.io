@@ -1,0 +1,16 @@
+---
+author: None
+comments: true
+date: 2004-05-17 00:00:00
+layout: post
+slug: None
+title: 17/05/2004
+wordpress_id: 39
+---
+
+This is great:
+
+
+
+
+> [Winnoise](http://mirrored.flabber.nl/winnoise/) is a composition illustrated in real time which masterfully exploits the standard resources to compose a pretty decent piece, with crude but nice elaborations. Both the sounds and the software used, SNDREC32.EXE, are present by default on every machine with Windows 95/98

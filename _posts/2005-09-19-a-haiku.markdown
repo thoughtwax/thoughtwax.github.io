@@ -1,0 +1,13 @@
+---
+author: emmetc
+comments: true
+date: 2005-09-19 14:06:59
+layout: post
+slug: a-haiku
+title: A haiku
+wordpress_id: 159
+---
+
+Toasted cheese sandwich
+for lunch; a sign of the times.
+Winter has arrived.

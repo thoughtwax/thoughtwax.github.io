@@ -1,0 +1,41 @@
+---
+author: emmetc
+comments: true
+date: 2008-04-13 23:03:34
+layout: post
+slug: 1000-bookmarks
+title: 1000 bookmarks
+wordpress_id: 353
+categories:
+- self-indulgent nerdism
+- web
+---
+
+This week I dinged [a thousand bookmarks on del.icio.us](http://del.icio.us/thoughtwax) and thought it might be interesting to examine how I've used the service over the last couple of years. Firstly, some raw data:
+
+
+
+  * I've posted 1000 bookmarks since 25th March 2004. That's 1480 days ago, so I posted an average of 4.73 bookmarks a week.
+
+
+  * Amazingly, I used 999 distinct tags, so obviously I'm introducing an average of one new tag for every bookmark. 568 tags are used only once. The most-used tag is [design](http://del.icio.us/thoughtwax/design), appearing on 104 bookmarks.
+
+
+  * The number of tags on individual bookmarks ranges from 1 (on 11 bookmarks) to 15 (on 1). There are 4702 tags in all (including duplication across different bookmarks), and so each bookmark has an average of 4.7 tags.
+
+
+I guess the most noteworthy thing out of all of that is the coincidental near-exact matching of the number of bookmarks with distinct tags (1000/999), and the average bookmarks per week with average tags per bookmark (4.73/4.70). I have no idea if this really is just a coincidence or an effect of some unconscious underlying usage pattern.
+
+Here's the frequency of my posting those thousand links:
+
+![Graph of number of bookmarks over time](http://chart.apis.google.com/chart?cht=lc&chs=635x300&chds=0,80&chd=t:3,0,0,0,0,0,0,4,1,0,1,0,62,59,27,25,54,56,67,52,41,21,30,37,47,27,24,19,14,30,17,6,24,17,19,34,8,24,22,15,17,8,21,12,11,7,15,12,10,4&chxt=x,y&chxl=0:|Mar+2004|||||||||Jan+2005||||||||||||Jan+2006||||||||||||Jan+2007||||||||||||Jan+2008|||Apr|1:||40+posts|80+posts)
+
+Here are my top 10 tags of all time:
+
+![Bar chart of top 10 tags](http://chart.apis.google.com/chart?cht=bhs&chds=0,110&chs=635x240&chbh=16,5&chco=4d89f9&chd=t:62,67,69,73,74,80,81,81,87,104&chxt=x,y&chxl=%200:|0|10|20|30|40|50|60|70|80|90|100|110|1:|design|programming|urban|art|mapping|webdev|photography|linklog|opensource|psychogeography)
+
+But really, the commonly used tags are only a small part of the data compared to the long tail of little-used tags. The same top ten tags are to the left of the vertical blue line on this chart showing the number of times each tag was used:
+
+![Distribution of tags](http://chart.apis.google.com/chart?cht=lc&chs=635x200&chds=0,110&chco=2CBD33&chd=t:104,81,81,73,67,58,54,51,50,49,47,40,35,33,31,28,26,26,25,24,24,23,23,22,21,21,20,20,19,17,17,17,17,16,16,15,15,14,14,13,13,13,12,12,12,12,11,11,11,11,10,10,10,9,9,9,9,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&chxt=x,y&chxl=0:||1:||||||50+posts||||||110+posts&chm=v,4d89f9,0,5.0,1.0)
+
+There's lots more that could be read from a dataset this size; it would be nice if del.icio.us actually did some of these calculations for you. I made these charts with the [del.icio.us API](http://del.icio.us/help/api/), [Google Charts API](http://code.google.com/apis/chart/), and the handy [Python Google Chart wrapper](http://pygooglechart.slowchop.com/). Congratulations to [Mr. Chuck Klosterman of Esquire Magazine](http://del.icio.us/thoughtwax/chuckklosterman) (whose book I'm also reading right now) on being my 1000th customer.

@@ -1,0 +1,21 @@
+---
+author: emmetc
+comments: true
+date: 2005-11-21 10:11:52
+layout: post
+slug: web-20-ireland
+title: Web 2.0 Ireland
+wordpress_id: 170
+---
+
+I'm now also blogging on [Web2.0ireland.com](http://web2.0ireland.com/), along with [James](http://eirepreneur.blogs.com/). We're going to be covering all issues around the Web 2.0 scene in Ireland, with a focus on new startups and projects in Ireland, the growth of the industry here, and how international developments are affecting us at home.
+
+
+
+> Web2.0ireland exists to record and encourage the develoment of the latest and most exciting happenings and products in the Irish Web 2.0 scene.
+
+
+
+James has started things off with a post on [Nooked](http://web2.0ireland.com/2005/11/20/nooked-feedwizard/).
+
+We're not entirely sure what we're going to achieve with this (if anything), but it looks like there are enough people here doing interesting things with technology to start a discussion.

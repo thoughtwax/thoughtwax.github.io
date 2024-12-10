@@ -1,0 +1,29 @@
+---
+layout: post
+title: Inward and Outward
+author: emmetc
+---
+
+There's a micro-genre of parody tweet that takes the form of vacuous tech blog headlines: "BREAKING: The Novelty Of Touchscreen Telephones Is Wearing Off," [for example](https://twitter.com/NextTechBlog/status/334105454349262848). They're pretty funny, I suppose, but if you read enough tech blogs to actually understand why then the joke's probably on you.
+
+Silicon Valley is notoriously inward-looking, and that might be necessary: perhaps you need to lock yourself in a room and not come out for a while if you really want to get busy making something. But having ditched manufacturing and now largely betting on the "creative economy", the US beyond the Bay Area is understandably curious about what's going on out there. While the tech blogs keep the citizens of the peninsula entertained, the rest of the world has begun looking in. Interesting opportunity for some outside perspective, no?
+
+It's soap opera stuff. You start with the drama and intrigue of the VC scene, the [industry equivalent of American Idol](http://www.nytimes.com/2013/05/05/magazine/y-combinator-silicon-valleys-start-up-machine.html?pagewanted=all "Silicon Valley’s Start-Up Machine - NY Times"), complete with unsuspecting young innocents hoping to be thrust from obscurity into fame and fortune by a panel of judges. Move on through the [rags to riches](http://www.vanityfair.com/business/2013/06/kara-swisher-instagram "The Money Shot - Vanity Fair") (riches to riches?) tales of those few who actually make it into the power set. At this point a society that prides itself on being squeaky liberal takes an [alarming right turn into individualist techno-libertarianism](http://www.newyorker.com/reporting/2011/11/28/111128fa_fact_packer?currentPage=all "No Death, No Taxes: The libertarian futurism of a Silicon Valley billionaire - The New Yorker"), tidily keeping their world shaping unfettered and their IPO windfalls unmolested. Set this against the backdrop of the [an increasingly-marginalized middle class](http://www.lrb.co.uk/v35/n03/rebecca-solnit/diary "Rebecca Solnit on the Google Bus - LRB") and some [nascent political maneuverings](http://www.newyorker.com/reporting/2013/05/27/130527fa_fact_packer "Change the World - The New Yorker") among the technorati and you've already got the makings of a pretty good American novel.
+
+That last link is to George Packer's sadly paywalled New Yorker article ([zero comments on Hacker News](https://news.ycombinator.com/item?id=5741116)) that includes this conversation with a twenty-two year old startup founder about his peers:
+
+> They’re ignorant, because many of them don’t feel the need to educate themselves outside their little world, and they’re not rewarded for doing so. If you’re an engineer in Silicon Valley, you have no incentive to read _The Economist_. It’s not brought up at parties, your friends aren't going to talk about it, your employers don’t care...
+
+> People with whom I used to talk about politics or policy or the arts, they’re just not as into it anymore. They don’t read the _Wall Street Journal_ or the _New York Times_. They read _TechCrunch_ and _VentureBeat_, and maybe they happen to see something from the _Times_ on somebody's Facebook news feed. The divide among people in my generation is not as much between traditional liberals and libertarians. It’s a divide between people who are inward-facing and outward-facing.
+
+I should mention that I say this as an unrepentant, wide-eyed technological optimist. I came here at least in part to dive right in. The work of one person can potentially reach millions, and that's amazing. But what direction do you face once you're here?
+
+The obvious answer is forward. There's a natural tendency for product designers to fetishize the future. Some might even wish for the magic ability to leap forward in time, if only for a few minutes, and have a poke around, see how it all plays out. It would be fun, right? They could then take that knowledge back home with them like Biff's _Sports Almanac_, secret clues from the future to be used to get to the finish line ahead of the competition.
+
+This short-term competitiveness is the root, I believe, of the Next Big Thing-ism that dominates much of the insular conversation here. I wish there was more of a tendency to think of design as an opportunity to gently steer a future that's still unwritten, to have some small influence over the direction of technology or even kick some stones in it's path. There's no inevitable endpoint, no predefined linear story of what must come next. There's only your own idea of what could come next. This is the main difference between the frothy, business-obsessed Silly Valley stuff and the heroic world-shaping that created it. All these products, they're just ideas, not predictors.
+
+Eno ([of course](http://entertainment.time.com/2013/05/09/brian-eno-on-art-music-and-inspiration/#ixzz2SupCXutE "Brian Eno On Art, Music And Inspiration - Time")):
+
+> I am not sure about the word vision, actually. The idea of the word vision suggests that you are designing a future in a way, but what I think I want to do is make pieces of work that belong to the future I would like to live in. I would love to live in a future where that room was something that was commonplace in cities. You would walk in to places like that – and they would be made by all different artists, they wouldn’t look like that, that’s my version of it – but that kind of space. I would love it if they existed. They don’t really exist.
+
+The point of living here, packed into nerd buses or SOMA lofts, may be to get an early glimpse of the future. But which direction to look? Inward, there are business opportunities, outward perhaps an enlarged future for all.

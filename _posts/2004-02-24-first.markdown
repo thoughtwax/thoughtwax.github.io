@@ -1,0 +1,23 @@
+---
+author: emmetc
+comments: true
+date: 2004-02-24 00:00:00
+layout: post
+slug: first
+title: 24/02/2004
+wordpress_id: 1
+---
+
+Blog.Thoughtwax is has been put together for a number of reasons.
+
+
+
+
+
+Primarily, it's an area to post general thoughts and links to items of interest. Secondly, it's going to serve as an overflow area where I can present small items that don't merit being put on the [main site](http://www.thoughtwax.com/), and also present works in progress. Also, I've got a defective memory, so here's where I can record a coherent line of thought. Mostly it's to try to encourage myself to get more done.
+
+
+
+
+
+If you find any browser bugs or have any feedback, [let me know](mailto:emmet.connolly@gmail.com). I'm hoping to add a comments system in the near future.

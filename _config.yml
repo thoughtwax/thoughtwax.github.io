@@ -1,0 +1,5 @@
+name: thoughtwax
+highlighter: pygments
+description: A weblog by Emmet Connolly.
+url: http://thoughtwax.com
+permalink: /:year/:month/:title/

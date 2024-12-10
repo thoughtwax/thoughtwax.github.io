@@ -1,0 +1,33 @@
+---
+layout: default
+title: thoughtwax
+---
+
+
+<div id="post">
+
+  {% for post in site.posts offset: 0 limit: 6 %}
+    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+
+    {% if post.content contains "<!-- more -->" %}
+      {{ post.content | split:"<!-- more -->" | first % }}
+      <p><a href="{{ post.url }}">Continue reading...</a></p>
+    {% else %}
+      {{ post.content }}
+    {% endif %}
+
+   <p class="meta">— {{ post.date | date_to_string }}</p>
+  {% endfor %}
+</div>
+
+<br />
+<p><strong><a href="/archive/">More posts in the archive &rarr;</a></strong></p>
+
+
+<!--
+<div id="footer-links">
+  <p><strong>Some interesting links:</strong></p>
+  <script language="javascript" src="http://pinboard.in//widgets/v1/linkroll/?user=thoughtwax&count=12"></script>
+  <p class="meta"><a href="https://pinboard.in/u:thoughtwax">More links on Pinboard &rarr;</a></p>
+</div>
+-->

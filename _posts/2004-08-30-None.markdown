@@ -1,0 +1,11 @@
+---
+author: None
+comments: true
+date: 2004-08-30 00:00:00
+layout: post
+slug: None
+title: 30/08/2004
+wordpress_id: 74
+---
+
+[Locative](http://locative.x-i.net/) - GPS mapping

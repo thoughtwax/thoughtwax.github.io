@@ -1,0 +1,20 @@
+---
+author: emmetc
+comments: true
+date: 2007-01-09 23:10:54
+layout: post
+slug: me-too
+title: Me too!
+wordpress_id: 257
+categories:
+- design
+- interaction design
+---
+
+
+
+I have nothing important to add, but it would be remiss of me not to point out that [I too am totally excited by it all](http://www.apple.com/iphone/). They really seem to have done a wonderful job and produced a marvelously designed object. Bravo. Plus, we had lots of fun following the whole thing unfolding on IRC and websites.
+
+Just one question though: will anyone be able to develop apps for this thing? It seems like it could be a catalyst for finally launching location-aware software into the mainstream, but it wasn't really mentioned. I imagine it would require a whole new development platform though, right? Or maybe just an API for Cocoa? Would Cingular try to prevent a VOIP app (they evidently weren't pleased enough to allow one to be bundled)? Is it UNIX based?
+
+Ok, that was more than one question. No doubt more to come.

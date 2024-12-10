@@ -1,0 +1,29 @@
+---
+layout: post
+title: Peak Flat
+author: emmetc
+---
+
+![Has Visual Design Fallen Flat?]({{ site.url }}/uploads/2015/peak-flat.png)
+
+I've got a new post up on the Intercom blog, asking whether the aesthetics of software has stagnated and what styles might come next:
+
+> The status quo of visual design in software is pleasantly inoffensive, but also somewhat uninspiring. It is of course natural for styles to settle into a comfortable conclusion for a time. These things come in cycles and mobile UI design is clearly providing a lot of cues here. Who knows, we may even be nearing the crest of the trend: Peak Flat, if you will.
+
+> If current styles were precipitated by the introduction of touchscreen devices, it may be the case that newer technologies will trigger a whole new wave of visual styles.
+
+[Read it here.](http://blog.intercom.io/has-visual-design-fallen-flat/)
+
+Seeing as the entire piece basically amounts to poking them with a big pointy stick, the feedback I've received from designers so far has been heartening (some interesting reactions [here](https://news.layervault.com/stories/42294-has-visual-design-fallen-flat)). Of course, posing the question of what might come next is the easy part of this conversation. But it's an opener.
+
+Another question. What are the great works of graphic design?
+
+Off the top of my head, I can suggest the usual suspects: Milton Glaser's I &hearts; NY or his Dylan poster, Shepherd Fairey's HOPE poster (sorry, yes), the Massimo Vignelli's NY Subway signage system (and the NYC Transit Authority Graphics Standards Manual), Harry Beck's London underground map, Paul Rand's logos, Josef Müller-Brockmann's Zurich Town Hall posters, Penguin book covers, Saul Bass' film titles, David Carson's Ray Gun Magazine, Peter Saville's Unknown Pleasures cover... there's a fairly well-worn list that springs easily to mind.
+
+Now, what are the great works of software visual design?
+
+You might start with either Xerox Star of the original Macintosh (depending on which side of history you're on) just for establishing the medium. The original releases of OS X and iOS certainly belongs there. I'd include Material Design, but time will tell. Joshua Davis' Praystation, if you're old enough. The NY Times Snow Fall article?
+
+After that I'd have to start thinking hard. [Send me your suggestions.](https://twitter.com/thoughtwax) There are probably a few fair reasons for this: we're drawing on almost 100 years of history for graphic design, and only about 30 years for software design. The ephemerality of software design plays a part: there are not many websites frozen in time on the walls of museums, reminding us of how great they were.
+
+Or, they haven't been made yet.

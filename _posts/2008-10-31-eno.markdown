@@ -1,0 +1,147 @@
+---
+author: emmetc
+comments: true
+date: 2008-10-31 00:47:03
+layout: post
+slug: eno
+title: A Year With Swollen Appendices by Brian Eno
+wordpress_id: 361
+categories:
+- books
+---
+
+Although [borrowed](http://mike.teczno.com/notes/books/), the format of this post is accurate: I do dog-ear my books. The part of me that's sympathetic to the tics of an OCD-suffering perfectionist can appreciate how each dog-ear could be considered a tiny folded travesty, but still I've come to embrace the practice. Beyond the obvious benefit of marking pages of interest, there's something nice about a book bearing the physical mark of having fulfilled its purpose of _being read_; the stamp of an individual reader's unique interpretation of what parts of a book were important or interesting. It's always a small wonder to discover bookmarks or margin notes in a second-hand book. I also love finding handwritten messages on paper money. Anyway, no shop-fresh crackless spine or uncreased pages for me.
+
+My usual technique is to fold down the top corner to mark the page I last finished reading, and fold up the bottom corner to mark a page that has a passage of interest. If there's something good on both sides of a single sheet it gets folded twice, once on the first side, and then doubling up from the already folded corner overleaf. It's simple but it does the job. A few pages into [A Year With Swollen Appendices: The Diary of Brian Eno](http://www.amazon.com/Year-Swollen-Appendices-Diary-Brian/dp/0571179959), though, I grabbed a B pencil which stayed lodged in place as a bookmark for the rest of the book. This meant that by the time I was done reading it the book was even more battered and misshapen than usual, but I suppose that's neither here nor there.
+
+![A Year With Swollen Appendices]({{ site.url }}/uploads/2008/10/eno.jpg)
+
+It actually took me quite a while to finish the book, not least because it's well over an inch thick. I suppose a diary doesn't necessarily conform to the control over pacing that other forms of writing adhere to (or at least should adhere to, if the writing is half decent), and so there's often a huge amount of ideas and experiences condensed into just a few pages. After a couple of weeks of Eno-time I was usually full, so it took quite a few sittings to get through the entire year. Actually the appendices of the title, a bunch of more lengthy essays and letters that make up the second part of the book, were much easier to tear through than the daily diary. That's not to say that the diaries weren't enjoyable, they were just whiskey to the appendices stout.
+
+Eno is indeed funny and clever, and leads a pretty interesting life (if somewhat unbelievably charmed and immodest). He's honest though, and the truth about what a famous person actually does on a daily basis is intriguing (e.g. chatting on the phone with Bono and Bowie, enlarging bottoms in Photoshop). Although I suspect that as famous people go, Eno keeps himself unusually busy. Over the course of the year he produces four albums, travels a lot, gives lectures and tutors art students, exhibits his own art, does family stuff, helps to manage a charity, corresponds with Stewart Brand, and generally lives the life of the mind doing whatever else he pleases. The diaries cover all of this activity, interspersed with his ideas about music, art, cooking, computers, women and men. Sometimes the bits that stood out for me were the throwaway single-line thoughts that followed his dinner recipes.
+
+Finally, the potential reader should be aware that this is a book written by a cranky man with little patience, and one who won't suffer fools (i.e. almost everyone else) gladly. I'm not sure how _entertaining_ popular entertainment would be if Eno had his way, and he's at least sometimes wrong and quite often disagreeable. Which is to say, I don't necessarily think that all these quotes are correct or wise, just that they're interesting.
+
+
+22 February (p58), on Hollywood:
+
+
+
+> How determined people seem to be to aim for exactly the same target again and again. A charitable interpretation: by doing so they evolve better tools for everyone else, creating vocabulary out of metaphor. Like those pathetic computer artists who are so thrilled when they've finally produced a picture of a daffodil with a drop of dew upon it -- indistinguishable from a real photo. To me this would represent total failure, but in fact it's probably those people who propel the evolution of tools.
+
+
+
+28 February (p67), on an approach to photography:
+
+
+
+> Don't be predatory. Sit in one place and pay attention or surrender. What looks bad is constant tramping about, a greed for undigested experience. The photograph is digestion deferred: 'So that's where I was'.
+
+
+
+7 May (p109), on writing music with computers:
+
+
+
+> New piece of music this morning -- lyrical, heterophonic, with rare chord changes. How difficult or discouraged are changes when working with sequencers! The effect of computer sequencing is to split music into vertical blocks with sheer edges. The whole feeling of the dynamic between 'locked' and 'unlocked' -- so important in played music -- is thus sacrificed in favour of 'always locked'. The result is literary linearity rather than musical all-at-onceness.
+
+
+
+11 June (p132):
+
+
+
+> Cooking is a way of listening to the radio.
+
+
+
+From a 30 June letter to Stewart Brand (p144), on software design:
+
+
+
+> I myself crash repeatedly into the brick walls of computer culture, and realize more and more that the hype is somewhat premature. As long as the software is nerdified, and major conceptual limitations are built right into the systems at that level, then it cannot get far. This is a philosophical question: when people program -- i.e. decide on which set of possible options they should make available -- they express a philosophy about what operations are important in the world. If the philosophy they express is on anything like the level of breathtaking stupidity that the games they play and the internet conversations they have are, then we are completely sunk. We are victims of their limitations. It's as though we're using a language that has lots of words like 'cool' and 'surf' but not one for 'organism' or 'evolve' or 'synergy'.
+
+_\[BTW, if you want to see what type of software Eno is making more than a decade after writing that, check out his [music and imagery generating iPhone app](http://blog.wired.com/music/2008/10/review-brian-en.html).\]_
+
+
+
+From a 2 July letter to Brand, on tools:
+
+
+
+> You see, I've become more and more convinced that the actual physical activity of using equipment has to be commensurate with other physical activities in the same realm. Musical composers that require you to constantly use a typewriter to put your whole mind into a different mode -- one which doesn't necessarily preclude the making of music, but does strongly bias towards a particular type of music. Just as your handling those stones in Avignon, feeling their weight and shape and solidity, would lead you to make a different kind of building with them than if you were dealing with virtual stonelike lumps in your computer, however wonderfully 3D they were... But I think computer users should really start showing their support for things that work with them, and strenuously rejecting things that don't.
+
+
+
+16 August (p178):
+
+
+
+> Culture is everything we don't have to do.
+
+
+
+27 August (p186):
+
+
+
+> 'Ah, sweet mystery of life. What a gift -- huh? Ain't you lucky you got in?' Rubin Levine, violinist in _Conversations in Taxis_. I love that 'you got in' -- as though it were a crowded theatre, a hot show that everyone wanted to see.
+
+
+
+From a 31 August letter to Stewart Brand (p144), on generative systems:
+
+
+
+> I've noticed that all these complex systems generators (such as 'Life' and 'Boids' (the flocking one) and 'The Great Learning') have something in common -- just three rules each. And these three rules seem to share a certain similarity of relationship: one rule generates, another reduces, another maintains. I suppose it's obvious, really, but perhaps it's not trivial to wonder if those three conditions are all that you need to specify in order to create a complex system generator (and then to wonder how those are actually being expressed in complex systems we see around us).
+
+
+
+16 October (p221):
+
+
+
+> I also asked Anthea to guess how many mature oaks she thought it would have taken to build a top-of-the-line ship in Nelson's day. She guessed ten. The astonishing answer (from _Brewer's_) is about 3,500 -- 900 acres of forest oak. She said, 'I wonder what we're doing now that's as wasteful as that.' I said it's still called Defence.
+
+
+
+16 November (p250), on generative music:
+
+
+
+> I gave a talk about self-generating systems and the end of the era of reproduction -- imagining a time in the future when kids say to their grandparents, 'So you mean you actually listened to exactly the same thing over and over again?' Interesting loop: from unique live performances (30,000BC to 1898) to repeatable recordings (1898-- ) and then back to -- what? Living media? Live media? Live systems?
+
+
+
+From a letter to Tom Sutcliffe (p357):
+
+
+
+> One suggestion is that the whole basis of human specialness is our ability to cooperate -- and to cooperate you have to be able to imagine what it would be like to hold another picture of the world. You're unable to cooperate unless you can be mentally in at least two worlds at once -- your own and that of the person with whom you're working. The failure to grasp other pictures of the world is what we call autism, and in its extreme from is something we regard as a sever dysfunction. Well, all animals are by our standards relatively autistic -- unable to see into each other's minds, lacking empathy.
+
+So how do we develop this ability to experience and speculate about other ways of thinking and feeling about the world? I think we do it by continually immersing ourselves in cultural experiences that rehearse us. This is obvious in films and novels -- where we quite explicitly enter an imagined world and then watch imaginary quandaries. In doing so we develop a lot of surrogate experience about what it is like to be someone else, somewhere else, with different assumptions.
+
+
+
+From the essay 'Miraculous cures and the canonization of Basquait' (p368):
+
+
+
+> Stop thinking about art works as objects, and start thinking about them as triggers for experiences (Roy Ascott's phrase).
+
+
+
+From the essay 'Unfinished' (p402):
+
+
+
+> People are starting to make things that implicitly invite 'mixing and matching' instead of presenting us with neatly finished pieces. You can see this breakdown of the singularity of the art-object most spectacularly in the remix movement in popular music... and of course it can't be very long before we are routinely faced with the awesomely tedious prospect of having to mix everything ourselves at home, the artists just selling a CD-Rom 'kit of parts' which you then assemble...
+
+Once we get used to the idea that we are no longer consumers of 'finished' works, but that we are people who engage in conversations and interactions with things, we find ourselves leaving a world of 'know you own station' passivity and we start to develop a taste for active engagement. We stop regarding things as fixed and unchangeable, as preordained, and we increasingly find ourselves practicing the idea that we have some control.
+
+
+
+There were other things that aren't exactly quotable, but that were good nonetheless. I liked the accounts of trips to Dublin to work with U2 and what he thought of the place. It's always fun to spot things you recognise from your own life in books and movies. I also really liked all of the stories from the recording studio. It's clear that Eno takes a reasoned, calculating but very involved approach to his role as record producer; judging value, curating ideas and managing the whole process. A good producer is partly a lot like a critic, but in a much more interesting and challenging way, because they not only have to diagnose deficiencies with the music being made, but also come up with creative solutions. Nice work if you can get it.
+
+Of course, the diary reads a lot like a blog, and a fairly fine one at that. Since it was written in 1995, we'll forgive the lack of comments and permalinks. It would be great to [republish](http://blog.thoughtwax.com/2007/06/recycled-feeds) each entry as a daily blog for a year though.
+

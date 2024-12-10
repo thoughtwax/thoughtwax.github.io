@@ -1,0 +1,17 @@
+---
+layout: post
+title: Lens of the Future
+author: emmetc
+---
+
+From [Physics of the Future](http://www.amazon.com/Physics-Future-Science-Shape-Destiny/dp/0307473333) by Michio Kaku, published in March 2011:
+
+![Physics of the Future]({{ site.url }}/uploads/2014/lens.png)
+
+From the [Google Blog](http://googleblog.blogspot.com/2014/01/introducing-our-smart-contact-lens.html), posted January 2014 by one Babak Parviz:
+
+> We’re now testing a smart contact lens that’s built to measure glucose levels in tears using a tiny wireless chip and miniaturized glucose sensor that are embedded between two layers of soft contact lens material. We’re testing prototypes that can generate a reading once per second. We’re also investigating the potential for this to serve as an early warning for the wearer, so we’re exploring integrating tiny LED lights that could light up to indicate that glucose levels have crossed above or below certain thresholds.
+
+The future rolls around fast these days. Time to start the clock on this prediction from futurist (and now also Google employee) Ray Kurzweil in his [review of Spike Jonze's _Her_](http://www.kurzweilai.net/a-review-of-her-by-ray-kurzweil):
+
+> I would place some of the elements in Jonze's depiction at around 2020, give or take a couple of years, such as the diffident and insulting videogame character he interacts with, and the pin-sized cameras that one can place like a freckle on one's face. Other elements seem more like 2014, such as the flat-panel displays, notebooks and mobile devices... Samantha herself I would place at 2029, when the leap to human-level AI would be reasonably believable.

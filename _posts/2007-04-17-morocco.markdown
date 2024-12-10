@@ -1,0 +1,106 @@
+---
+author: emmetc
+comments: true
+date: 2007-04-17 00:58:57
+layout: post
+slug: morocco
+title: Morocco
+wordpress_id: 273
+categories:
+- photography
+- travel
+---
+
+Paula and I arrived back yesterday afternoon from our week in Morocco. It was my first time visiting a non-Western country. Get ready for some superlatives.
+
+![Chinelos]({{ site.url }}/uploads/2007/04/chinelos.jpg)
+
+We rented a car and drove north from Agadir airport to the small hippie/surfer village of Taghazout, then to the walled city of Essaouira, east to Marrakesh, and back to Agadir through the Atlas Mountains.
+
+[![Our route]({{ site.url }}/uploads/2007/04/morocco-route-small.gif)](http://maps.google.com/maps/ms?ie=UTF8&hl=en&om=0&z=9&ll=31.043522,-8.962097&spn=1.489534,2.622986&msid=104191265105165260376.00000111c1ca12c06c651&msa=0)
+
+Life moves slow in Taghazout. Most of the fishermen come ashore after a couple of hours in the morning, by which time the day has eased into its usual mix of visiting surfers and local loiterers. Beach soccer is pretty popular.
+
+![Taghazout]({{ site.url }}/uploads/2007/04/taghazout.jpg)
+
+![Taghazoute beach]({{ site.url }}/uploads/2007/04/taghazout-beach.jpg)
+
+![Taghazoute windows]({{ site.url }}/uploads/2007/04/taghazout-windows.jpg)
+
+![Taghazoute sunset]({{ site.url }}/uploads/2007/04/taghazout-sunset.jpg)
+
+The roads in Morocco are just as interesting as the cities they lead to. The coastal views are spectacular. Indigenous Berber people line the roads, walking, standing or just squatting, watching the traffic go by. Some work in rocky fields or guide donkeys along the roadside, but mostly they sit in the shade alone, apparently for lack of anything else to do. Some wave frantically at the passing cars, smiling and holding up bottles of olive oil for sale.
+
+![Two men]({{ site.url }}/uploads/2007/04/road-two.jpg)
+
+![Trees]({{ site.url }}/uploads/2007/04/road-trees.jpg)
+
+![Berber farmers]({{ site.url }}/uploads/2007/04/road-berbers.jpg)
+
+![Man on donkey]({{ site.url }}/uploads/2007/04/road-donkey.jpg)
+
+Closer to the city we passed road painters and small crowds of men putting up giant red national flags, and things generally got busier. It was obvious that there was a frantic cleanup job going on, and when we got into the city we heard that the King of Morocco was arriving the following day. The whole town was buzzing in anticipation, and getting their streets and shop fronts ready.
+
+![Essaouira flags]({{ site.url }}/uploads/2007/04/essauoira-flags.jpg)
+
+![Essaouira painting]({{ site.url }}/uploads/2007/04/essauoira-painting.jpg)
+
+![Essaouira sitting]({{ site.url }}/uploads/2007/04/essauoira-sitting.jpg)
+
+Inside the walls of Essaouira is a maze of twisty passages (all alike), lined with markets, tea houses, workshops and restaurants, and opening out into squares and ports.
+
+![Essaouira street]({{ site.url }}/uploads/2007/04/essaouira-street.jpg)
+
+![Essaouira man]({{ site.url }}/uploads/2007/04/essaouira-man.jpg)
+
+![Essaouira fish]({{ site.url }}/uploads/2007/04/essaouira-fish.jpg)
+
+![Essaouira shadow]({{ site.url }}/uploads/2007/04/essaouira-shadows.jpg)
+
+The city is soaked in bright blue.
+
+![Blue door]({{ site.url }}/uploads/2007/04/blue-door.jpg)
+
+![Blue boats]({{ site.url }}/uploads/2007/04/blue-boats.jpg)
+
+![Blue tiles]({{ site.url }}/uploads/2007/04/blue-tiles.jpg)
+
+Each night we stood on the roof terrace of our riad and listened to the final call to prayer of the day echoing out across the city from the mosques as the sun set, and each morning we looked down into the tightly packed living areas.
+
+![Riad night]({{ site.url }}/uploads/2007/04/riad-night.jpg)
+
+On to Marrakesh.
+
+![Road sign]({{ site.url }}/uploads/2007/04/road-sign.jpg)
+
+![Road bike]({{ site.url }}/uploads/2007/04/road-bike.jpg)
+
+Coming from Essaouira, Marrakesh is a hard place to arrive into. After being flagged down by an aggressive motorcycle guide while entering the city and falling for the oldest trick in the Moroccan book (allowing him to guide us through insanely busy streets to his friends _guardian de voiture_ parking area and haggling over price), we found our way to our riad.
+
+![Marrakesh crowd]({{ site.url }}/uploads/2007/04/marrakesh-crowd.jpg)
+
+Outside of the main tourist areas of Marrakesh you see very few Westerners, the poverty is conspicuous, and the density is overwhelming. The streets are a ballet of people on foot, bicycle and moped avoiding and interacting with each other. The culture of repair and reuse is everywhere. Any of the guys in the food markets and craft souks could teach you a hard lesson in business. It's a _real_ city, warts and all.
+
+![Marrakesh shop]({{ site.url }}/uploads/2007/04/marrakesh-shop.jpg)
+
+![Marrakesh market]({{ site.url }}/uploads/2007/04/marrakesh-market.jpg)
+
+![Marrakesh sunset]({{ site.url }}/uploads/2007/04/marrakesh-sunset.jpg)
+
+Final leg of the journey. We too took the scenic route back, up and over the snow-capped Atlas Mountains (2100m) and down the small winding road into the desert on the other side. Children on their way home from school thronged around our car if we stopped nearby and wrangled whatever sweets we had out of us, then chased us down the road. Some held up paper signs with "STOP" scrawled on them and shouted "bonjour!" as we passed.
+
+![Atlas mountains]({{ site.url }}/uploads/2007/04/atlas-mountains.jpg)
+
+![Atlas mosque]({{ site.url }}/uploads/2007/04/atlas-mosque.jpg)
+
+![Atlas village]({{ site.url }}/uploads/2007/04/atlas-village.jpg)
+
+This is a rough edit of the five hundred or so shots we took during the week, far more than I've ever taken before, and that was without even trying. We couldn't help ourselves, it's certainly the most photogenic place I have ever been to, and the visual offering is only a part of the story. Again more than any place I've been to, Morocco is a full sensory experience, and the sounds and smells really are something else. For every photo I took, I wished that I had a microphone with me to record the sounds.
+
+![Necklace]({{ site.url }}/uploads/2007/04/end-necklace.jpg)
+
+What have I not mentioned? The incredible hospitality and openness of the people there, the amazing food, the beautiful weather... I warned you about the superlatives. The running joke of the week was a gameshow-style ding that would sound every time Paula said "so gorgeous" or I said "amazing". Ding!
+
+![Shadow]({{ site.url }}/uploads/2007/04/end-shadow.jpg)
+
+If you can take any more, there are still more photos on [my Flickr](http://www.flickr.com/photos/thoughtwax/sets/72157600084267408/) and on [Paula's](http://flickr.com/photos/beakr/sets/72157600076186561/).

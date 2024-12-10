@@ -1,0 +1,11 @@
+---
+author: None
+comments: true
+date: 2005-02-08 00:00:00
+layout: post
+slug: None
+title: 08/02/2005
+wordpress_id: 127
+---
+
+Here is a [sparkline](http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001Eb&topic_id=1) presenting the wonderful inconsistency I've maintained in posting to this site for a year: [![Sparkline](/images/sparkline.gif)](/?a=1)

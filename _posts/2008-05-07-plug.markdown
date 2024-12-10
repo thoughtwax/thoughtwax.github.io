@@ -1,0 +1,17 @@
+---
+author: emmetc
+comments: true
+date: 2008-05-07 21:04:15
+layout: post
+slug: plug
+title: Plug
+wordpress_id: 242
+categories:
+- personal
+---
+
+Something from real life: my girlfriend Paula is having an exhibition entitled _Ties_ in the [Galway Arts Centre](http://www.galwayartscentre.ie/), 47 Dominick Street, Galway. It's going to be running from tomorrow, May 8th, to the end of the month.
+
+![Wax butterflies]({{ site.url }}/uploads/2008/05/wax-butterflies.jpg)
+
+Also, I finally made a [new website](http://www.paulahenihan.com/) for Paula. She has a [blog](http://www.paulahenihan.com/blog/) there now too. Hooray!

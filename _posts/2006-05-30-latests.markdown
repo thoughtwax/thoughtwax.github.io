@@ -1,0 +1,15 @@
+---
+author: emmetc
+comments: true
+date: 2006-05-30 12:39:40
+layout: post
+slug: latests
+title: latests
+wordpress_id: 198
+---
+
+Three days in Plymouth, and the end of the second year of my Masters. I presented my first draft [project proposal](http://x2.i-dat.org/~ec/synthesis-proposal/) which seemed to go over alright. Also took part in an [Arduino](http://www.arduino.cc/) workshop, making strange things happen with electrical circuits, breadboards and Processing. I made a game of Pong controlled by a potentiometer and a light sensor.
+
+London for the weekend. Staying with friends in Golders Green, I woke up this morning to the sound of birds -- yes, birds in London, a first for me too! Nice area, but where are all the rabbis everyone told me about? Oy vey, I'm disappointed. Inclemency notwithstanding, the city delivered again: Borough Market, the Tate, Old Street, Camden Town, and the ICA this time.
+
+Karin's kitten, who is so attracted to the property of movement that it must make life an unbearable endurance for the poor thing, is completely disoriented by which of my typing fingers should be his next prey. For the sake of his sanity, I'll finish.

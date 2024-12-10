@@ -1,0 +1,15 @@
+---
+author: emmetc
+comments: true
+date: 2005-10-17 20:23:00
+layout: post
+slug: techcamp
+title: TechCamp
+wordpress_id: 163
+---
+
+On Saturday I went to TechCamp, a free self-organising technology conference that was run by the attendees. The guiding rule was that everyone who attended should present some work or contribute in some way. There was a room for moderated open discussions, and a room for presentations, so people floated between them as they wished. I got to chat with lots of nice and interesting geeks, and there's already been talk of organising a follow up session. TechCamp Galway, anyone?
+
+I spoke about how principles of Adaptive Design can be applied to software development - my slides are [online](http://thoughtwax.com/sandbox/TechCamp/), and can be [downloaded](http://thoughtwax.com/sandbox/TechCamp/AdaptiveDesign.zip).
+
+More: [TechCamp wiki](http://www.bdmwiki.com/index.php/Tech_Camp_Ireland) / [TechCamp](http://www.flickr.com/groups/18017142@N00/pool/) on Flickr / [TechCamp](http://www.technorati.com/tag/techcamp) on Technorati

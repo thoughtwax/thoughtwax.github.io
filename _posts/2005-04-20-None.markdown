@@ -1,0 +1,23 @@
+---
+author: None
+comments: true
+date: 2005-04-20 00:00:00
+layout: post
+slug: None
+title: 20/04/2005
+wordpress_id: 137
+---
+
+In the wake of [some](http://realtime.waag.org/) [similar](http://www.openstreetmap.org/) [initiatives](http://twenteenthcentury.com/uo/index.php/LondonFreeMap), the first stirrings of an Irish free and open source mapping project has emerged in the form of [OpenEir](http://eirepreneur.blogs.com/eirepreneur/2005/04/openeir_the_ope.html). It would be great to see this become a successful community project.
+
+
+
+
+
+OpenEir routes are being created using [MyGPS](http://www.faureragani.it/mygps/indexeng.html) on [WorldKit MapProxy](http://brainoff.com/worldkit/mapproxy/) satellite photos.
+
+
+
+
+
+Related archive posts: [1](/?id=26), [2](/?id=69). Here's a [satellite photo](http://brainoff.com/worldkit/mapproxy/?lat=&lon=&addr=&zip=&city=GALWAY&country=ei&d=10&size=800&try=1) and [Google Map](http://maps.google.co.uk/maps?ll=53.266968,-9.060838&spn=0.005600,0.009828&hl=en) of where I live.

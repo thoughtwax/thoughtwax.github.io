@@ -1,0 +1,21 @@
+---
+author: emmetc
+comments: true
+date: 2011-10-06 09:43:38
+layout: post
+slug: steve
+title: Steve
+wordpress_id: 991
+categories:
+- photography
+---
+
+Here are my two favourite photos of Steve Jobs.
+
+![Steve Jobs and Steve Wozniak inventing the future in 1976]({{ site.url }}/uploads/2011/10/steve-and-woz.jpg)
+
+This photograph is about the magic and wonder of technology. Poor Woz almost looks blissfully unaware here, like he has no idea of what's coming next. He's just hanging out, having fun. But look at the young man on the left. He's deep into something. He doesn't know how to make one or even exactly how it works, but goddammit he's going to figure it out, through sheer force of will if he has to, and he's going to make something beautiful with it. He's curious. The way he's peering into whatever little thing he's holding, he truly sees it. He sees what's possible. He clutches it to his chest, keeping the secret to himself for now. But you get the feeling he already knows.
+
+![Steve Jobs riding a 1966 R60/2 BMW Motorocycle in 1982]({{ site.url }}/uploads/2011/10/steve-on-motorbike.jpg)
+
+I saw this one just recently, after he had retired from Apple. It's the other Steve Jobs, the perhaps overly-romanticized version of Steve as a free thinker, a loner, a rebel, an all-round badass. His Side B. Hungry, foolish. This is the guy who read the Whole Earth Catalog, dropped acid, and visited ashrams. The guy who was as weirdly exacting about fashion as everything else he did. But mostly it's a glimpse of the private side the man. Even if he weren't as insanely wise, adventurous, profound or ingenious as the personality that we projected onto and expected of him, he enriched the lives of countless people and he lived his own wonderful story. And now off he goes.

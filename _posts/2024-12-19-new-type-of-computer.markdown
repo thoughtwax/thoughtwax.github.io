@@ -16,11 +16,11 @@ Maybe you try to tame the LLM: add guardrails and safety nets and suggestions an
 
 So computers are about to get weird! There's a ton to figure out. No doubt it will all make sense in retrospect. But it can also be hard, after a big shift like this, to viscerally remember what the before state was actually like. Did the resort match the promise of the brochure? What didn’t you know back then that seems obvious now?
 
-Now that we’re still in the middle of it, the before and after states still just an armspan away. Setting aside the bigger societal questions, here are some high level product-ey questions that I don’t currently have confident answers for, but I’m interested to see what happens:
+For fow we’re still in the middle, with the before and after states still only an armspan away. So setting aside the bigger societal questions, here are some high level product-ey questions that I don’t currently have confident answers for, but I’m interested to see what happens:
 
-* Will LLMs become like computers faster than computers can became like LLMs?
-* What new UI patterns will we have for AI native applications? Will we see a “pull to refresh”. moment? (My esteemed colleague Des is maintaining a great thread of emerging patterns [here](https://x.com/destraynor/status/1861885194430484988).)
-* How will this change how products are sold, and how will market share be divided? Is SaaS really dead? Will we move from subscription-based to usage-based pricing?
-* What level of the tech stack will Agents live at? OS-level (e.g. Siri), browser (Gemini in Chrome), application (ChatGPT), or product (Fin by Intercom)? All of them? Is there a Dunbar’s Number for Agents I’d want to use?
-* Will highly capable AI Agents become the ultimate general-purpose application? How much will it displace? Taken to the illogical extreme, might we end up with just one piece of software?
+* Will probabilistic LLMs become like determinisitc computers faster than deterministic computers can became like probabailistic LLMs?
+* What new UI patterns will we have for AI-native applications? Will we see a “pull to refresh” moment for AI interfaces? (My esteemed colleague Des is maintaining a great thread of emerging patterns [here](https://x.com/destraynor/status/1861885194430484988).)
+* How will this change how products are sold, and how will market share be divided? Is SaaS really dead? Will we move from subscription-based to usage-based pricing? Is the money at the model layer or the application layer?
+* What level of the tech stack will Agents live at? OS-level (e.g. Siri), browser (Gemini in Chrome), application (ChatGPT), or product (Fin by Intercom)? All of them? Is there a Dunbar’s Number for Agents I’d want to use? Will they talk to each other?
+* Will highly capable AI Agents become the ultimate general-purpose application? How much will it displace? Taken to the illogical extreme, might we end up with just one piece of software that does everything?
 * Are we all screwed?

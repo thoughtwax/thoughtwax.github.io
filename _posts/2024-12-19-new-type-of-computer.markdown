@@ -18,7 +18,7 @@ So computers are about to get weird! There's a ton to figure out. No doubt it wi
 
 For fow we’re still in the middle, with the before and after states still only an armspan away. So setting aside the bigger societal questions, here are some high level product-ey questions that I don’t currently have confident answers for, but I’m interested to see what happens:
 
-* Will probabilistic LLMs become like determinisitc computers faster than deterministic computers can became like probabailistic LLMs?
+* Will probabilistic LLMs become like determinisitc computers faster than deterministic computers can become like probabilistic LLMs?
 * What new UI patterns will we have for AI-native applications? Will we see a “pull to refresh” moment for AI interfaces? (My esteemed colleague Des is maintaining a great thread of emerging patterns [here](https://x.com/destraynor/status/1861885194430484988).)
 * How will this change how products are sold, and how will market share be divided? Is SaaS really dead? Will we move from subscription-based to usage-based pricing? Is the money at the model layer or the application layer?
 * What level of the tech stack will Agents live at? OS-level (e.g. Siri), browser (Gemini in Chrome), application (ChatGPT), or product (Fin by Intercom)? All of them? Is there a Dunbar’s Number for Agents I’d want to use? Will they talk to each other?

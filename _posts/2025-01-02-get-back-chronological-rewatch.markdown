@@ -18,7 +18,9 @@ However if you *are* that certain type of person then you immediately binged the
 
 It turns out that listening to an album pretty intently for your entire life (again, you are this type of person in this scenario) and then getting to watch an excruciatingly detailed documentary revealing the entire process of creation is (for you, this type of person) Tutankhamun-level stuff. It’s almost too much information to take in at once. And so, for this wretched creature, even one eight-hour viewing is somehow still not enough.
 
-Nonetheless an eight-hour rewatch remains a daunting prospect, even for the faithful. Fear not: one bite at a time. The documentary covers the whole month of January 1969, from the band first assembling to kick around new ideas on the 2nd to the complete rooftop concert and conclusion on the 31st. Follow along with this phenonmenal creative achievement in real time for about 30 mins a day.
+![The Beatles face a daunting task](http://thoughtwax.com/uploads/2025/beatles.jpg)
+
+Nonetheless an eight-hour rewatch remains an intimidating prospect, even for the faithful. Fear not: one bite at a time. The documentary covers the whole month of January 1969, from the band first assembling to kick around new ideas on the 2nd to the complete rooftop concert and conclusion on the 31st. Follow along with this phenonmenal creative achievement in real time for about 30 mins a day.
 
 Also, the days of the week line up in 2025. When it’s the weekend for the Beatles, it’s the weekend for you too.
 

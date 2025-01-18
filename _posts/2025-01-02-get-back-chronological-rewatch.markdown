@@ -26,61 +26,61 @@ Also, the days of the week line up in 2025. When it’s the weekend for the Beat
 
 ---
 
-Daily timestamps, created by my digtial serf using [this excellent fan page](https://brianhassett.com/2021/12/the-beatles-get-back-time-coded-and-annotated/).
+Daily timestamps, created by my digtial serf using [this charming fan page](https://brianhassett.com/2021/12/the-beatles-get-back-time-coded-and-annotated/).
 
 
 **January 2, 1969**  
-*Part 1*: 00:00:00–00:27:16 (27 mins)  
-The project begins; Paul introduces the idea of a live show; Early rehearsals of “Don’t Let Me Down” and “Two of Us.”
+*Part 1*: 00:00:00 – 00:23:20 (23 mins)  
+Intro; The project begins; Paul introduces the idea of a live show; Early rehearsals of “Don’t Let Me Down” and “Two of Us.”
 
 **January 3, 1969**  
-*Part 1*: 00:27:17–00:50:13 (23 mins)  
-Continued rehearsals at Twickenham; Development of “I’ve Got a Feeling” and “She Came in Through the Bathroom Window”; First signs of creative tensions.
+*Part 1*: 00:23:20 – 00:44:20 (21 mins)  
+Continued rehearsals at Twickenham; Development of “I’ve Got a Feeling” and "All Things Must Pass"; Billy Preston is mentioned.
 
 **January 6, 1969**  
-*Part 1*: 00:50:14–01:16:42 (26 mins)  
+*Part 1*: 00:44:20 – 01:16:42 (26 mins)  
 The group returns after a weekend break; George works on “I Me Mine”; Tensions between George and Paul escalate.
 
 **January 7, 1969**  
-*Part 1*: 01:16:43–01:44:30 (28 mins)  
+*Part 1*: 01:16:43 – 01:44:30 (28 mins)  
 Paul pushes for more structure; George becomes increasingly frustrated; Experimentation with “Get Back.”
 
 **January 8, 1969**  
-*Part 1*: 01:44:31–02:12:18 (28 mins)  
+*Part 1*: 01:44:31 – 02:12:18 (28 mins)  
 Paul and John harmonize on “Two of Us”; George distances himself creatively; Mood improves briefly with collective improvisations.
 
 **January 9, 1969**  
-*Part 1*: 02:12:19–02:30:00 (18 mins)  
+*Part 1*: 02:12:19 – 02:30:00 (18 mins)  
 Further work on “Get Back”; Tensions remain high; Discussions about the project’s direction.
 
 **January 10, 1969**  
-*Part 1*: 02:30:01–02:36:25 (6 mins)  
+*Part 1*: 02:30:01 – 02:36:25 (6 mins)  
 George Harrison leaves the band; Paul, John, and Ringo continue rehearsals without him.
 
 **January 13, 1969**  
-*Part 2*: 00:00:00–00:33:42 (34 mins)  
+*Part 2*: 00:00:00 – 00:33:42 (34 mins)  
 The band meets to reconcile with George; Move to Apple Studios is finalized.
 
 **January 14, 1969**  
-*Part 2*: 00:33:43–01:01:16 (28 mins)  
+*Part 2*: 00:33:43 – 01:01:16 (28 mins)  
 Rehearsals resume at Apple Studios; Billy Preston is introduced to the sessions.
 
 **January 15, 1969**  
-*Part 2*: 01:01:17–01:30:29 (29 mins)  
+*Part 2*: 01:01:17 – 01:30:29 (29 mins)  
 Billy Preston officially joins the sessions; Mood improves significantly; Work on “Don’t Let Me Down” and “I’ve Got a Feeling.”
 
 **January 16–20, 1969**  
-*Part 2*: 01:30:30–02:53:17 (83 mins)  
+*Part 2*: 01:30:30 – 02:53:17 (83 mins)  
 Intense studio sessions; Progress on “Let It Be,” “The Long and Winding Road,” and “Get Back”; Early discussions about the rooftop concert.
 
 **January 21–28, 1969**  
-*Part 3*: 00:00:00–01:30:00 (90 mins)  
+*Part 3*: 00:00:00 – 01:30:00 (90 mins)  
 Recording of album tracks continues; Final preparations for the rooftop concert; Refinement of performances for the live show.
 
 **January 30, 1969**  
-*Part 3*: 01:30:01–02:18:35 (48 mins)  
+*Part 3*: 01:30:01 – 02:18:35 (48 mins)  
 The iconic rooftop concert; The Beatles perform “Get Back,” “Don’t Let Me Down,” and others live.
 
 **January 31, 1969**  
-*Part 3*: 02:18:36–End (18 mins)  
+*Part 3*: 02:18:3 6 –End (18 mins)  
 Final studio recordings for “Let It Be” and “The Long and Winding Road”; The project concludes.

@@ -33,4 +33,4 @@ So now I can write LLM prompts that include handy little command-line flags:
 Once committed to muscle memory I've found these very useful. It’s also smart enough to recognise standalone flags as a follow up to the previous command; so if you don’t like the output you just got, you just reply with a flag for a revised version. I find this is how I use these flags most often so far, when I want to interrupt a response and ask for a revision.
 ![Prompt example with follow up flags](http://thoughtwax.com/uploads/2025/prompt2.png) 
 
-The received wisdom at the moment is that we'll soon get new more powerful user interfaces for working with AI. In the meantime, there's a lot of scope to extend the existing chat paradigms, and pulling in ideas from other areas like Command Line Interfaces. LMK if you come up with your own useful prompt flag ideas!
+The received wisdom at the moment is that we'll soon get new more powerful user interfaces for working with AI. In the meantime, there's fun to be had with existing chat paradigms, including ideas from Command Line Interfaces. LMK if you come up with your own useful prompt flag ideas!

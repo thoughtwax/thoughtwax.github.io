@@ -3,7 +3,9 @@
 <head>
 
   <meta charset="utf-8">
-  <title>{{ page.title }}</title>
+  <title>{{ page.title }} {% if page.layout == "post" %}
+            — thoughtwax
+          {% endif %}</title>
   <meta name="description" content="A blog by Emmet Connolly, digital product designer">
   <meta name="author" content="Emmet Connolly">
 
@@ -33,6 +35,10 @@
         <div class="intro">
           A blog by <a href="http://emmetconnolly.com">Emmet Connolly</a>
           <!--<br /><br /><a href="http://twitter.com/thoughtwax">Follow me on Twitter &rarr;</a>-->
+
+          {% if page.show_sidebar_message == "reading" %}
+            <br /><br /><br /><p>A running list of books I've been reading. Because Goodreads sucks.</p>
+          {% endif %}
         </div>
       </div>
       </div>
@@ -51,7 +57,7 @@
       <div class="eight columns">
         <p>
           <strong><a href="/about/">About me</a></strong> - <a href="/archive/">Archive</a> - <a href="/reading/">Reading</a> - <a href="/feed/">RSS feed</a><br />
-          <a href="http://twitter.com/thoughtwax">@thoughtwax</a><!-- - <a href="http://instagram.com/thoughtwax">instagram</a> - <a href="http://thoughtwax.tumblr.com/">tumblr</a> - <a href="http://www.vimeo.com/thoughtwax">vimeo</a> - <a href="https://pinboard.in/u:thoughtwax">pinboard</a>--><br />
+          <a href="http://twitter.com/thoughtwax">@thoughtwax</a> -  <a href="https://www.linkedin.com/in/emmetconnolly/">LinkedIn</a><!-- - <a href="http://instagram.com/thoughtwax">instagram</a> - <a href="http://thoughtwax.tumblr.com/">tumblr</a> - <a href="http://www.vimeo.com/thoughtwax">vimeo</a> - <a href="https://pinboard.in/u:thoughtwax">pinboard</a>--><br />
         </p>
       </div>
     </div>

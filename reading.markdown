@@ -2,6 +2,7 @@
 layout: default
 title: Reading log
 permalink: /reading/index.html
+show_sidebar_message: reading
 ---
 
 

@@ -40,6 +40,10 @@ p.meta, .footer p { opacity: 0.6; }
 .footer a { font-weight: normal; }
 .footer strong a { font-weight: bold; }
 
+ul { list-style-position: none; list-style-type: disc; }
+
+li { padding-left: 2em; text-indent: -1.5em; }
+
 ul.posts { list-style-type: none; margin-bottom: 2em; }
 ul.posts span { color: #aaa; }
 ul.posts li.archive span { padding-right: 20px; }

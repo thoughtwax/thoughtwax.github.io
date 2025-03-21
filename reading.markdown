@@ -10,7 +10,7 @@ show_sidebar_message: reading
 |------|-------|--------|--------|
 | 2025 | 1971: Never a Dull Moment | David Hepworth | ★★★★☆ |
 | 2025 | The Old Man and the Gun | David Grann | ★★★☆☆ |
-| 2025 | The Name of the Wind | PAtrick Rothfuss | ★★★★☆ |
+| 2025 | The Name of the Wind | Patrick Rothfuss | ★★★★☆ |
 | 2024 | 11/22/63 | Stephen King | ★★★★☆ |
 | 2024 | Mistborn: The Final Empire | Brandon Sanderson | ★★☆☆☆ |
 | 2024 | Small Things Like These | Claire Keegan | ★★★★☆ |

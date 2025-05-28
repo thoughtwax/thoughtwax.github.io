@@ -8,6 +8,8 @@ show_sidebar_message: reading
 
 | Year | Title | Author | Rating |
 |------|-------|--------|--------|
+| 2025 | Watchmen _(reread)_ | Alan Moore & Dave Gibbons | ★★★★★ |
+| 2025 | Abundance: | Ezra Klein & Derek Thompson | ★★★☆☆ |
 | 2025 | 1971: Never a Dull Moment | David Hepworth | ★★★★☆ |
 | 2025 | The Old Man and the Gun | David Grann | ★★★☆☆ |
 | 2025 | The Name of the Wind | Patrick Rothfuss | ★★★★☆ |

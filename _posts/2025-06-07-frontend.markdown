@@ -1,0 +1,37 @@
+---
+layout: post
+title: Designers will Inherit the Frontend
+author: emmetc
+---
+
+_I posted [this](https://www.linkedin.com/posts/emmetconnolly_last-week-after-ten-years-at-intercom-i-activity-7336000287649767424-DrUk/) and a [related post](https://www.linkedin.com/posts/emmetconnolly_the-design-team-at-intercom-are-developing-activity-7336441146304331777-nmSI?utm_source=share&utm_medium=member_desktop&rcm=ACoAAABEXGwB7X9VnQU4mrnenO1yPB55jjz463Y) on LinkedIn and they did numbers, as they say, so I'm replicating here for posterity._
+
+---
+
+Last week, after ten years at Intercom, I shipped my first code change to production. Just a little UI tweak. But it helped crystallise a major belief I'm developing about how design roles will evolve.
+
+I now think that in the near future designers will basically be responsible not just for designing the UI, but for both designing and building the entire frontend. **Designers, not Engineers, will inherit product UI.**
+
+The old days of designers drawing convincing pictures of user interfaces, which are later recreated by someone else in code, are over. And good riddance: it was inefficient, frustrating, and is thankfully no longer necessary. Soon most frontend engineering tasks will be carried out by designers, with the “handoff” or primary interface between Design and Eng being at the front/back end distinction.
+
+Here’s how I think we’ll get there.
+
+At companies like Intercom today, designers are already approaching frontend ownership from two directions:
+
+1 **Ideation.** Lots of designers have started vibe coding throwaway prototypes in Lovable et al. This is great! Prototypes are the new wireframes. There is almost zero technical barrier here, every designer can do this today.
+
+2 **Dev Mode.** A bit better than drawing all your own redline annotations onto static mockups and logging P3 bugs… but only a bit.
+
+You can easily imagine a tool-driven acceleration of each of these:
+
+1 **Early build.** Instead of a throwaway prototype, vibe coding tools now ingest your Design System, and spit out something built with your actual product components that can be iterated into the final UI.
+
+2 **QA and polish.** Instead of describing changes in Dev Mode, designers use Cursor etc. to make simple changes to production code, submitting PRs.
+
+(This is the type of change I made this week, and it’s eminently doable for non-Engineers, even in a large/mature codebase like Intercom’s. Every designer at Intercom is going to ship code to production this quarter.)
+
+These two trends-—starting to generate the first build of the UI from one side, and nibbling away at quality-of-life changes from the other—-are converging at the same place: designers will be responsible for the end to end design and build of the user interface.
+
+Like all predictions this one will be wrong in some very specific ways. But I believe this is directionally what will happen, or at least where an ambitious next generation of designers will gravitate—especially those who value quality, speed, and self-determination. Prepare accordingly!
+
+![Evolution of the design role diagram](http://thoughtwax.com/uploads/2025/frontend.png)

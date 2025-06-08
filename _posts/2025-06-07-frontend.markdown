@@ -34,4 +34,4 @@ These two trends-—starting to generate the first build of the UI from one side
 
 Like all predictions this one will be wrong in some very specific ways. But I believe this is directionally what will happen, or at least where an ambitious next generation of designers will gravitate—especially those who value quality, speed, and self-determination. Prepare accordingly!
 
-![Evolution of the design role diagram](http://thoughtwax.com/uploads/2025/frontend.png)
+[![Evolution of the design role diagram](http://thoughtwax.com/uploads/2025/frontend.png)](https://thoughtwax.com/uploads/2025/frontend.png)

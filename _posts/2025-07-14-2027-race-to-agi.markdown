@@ -1,0 +1,29 @@
+---
+layout: post
+title: "2027: Race to AGI!"
+author: emmetc
+---
+
+I made a game! **2027: RACE TO AGI** is a satirical game about the wild world of Artificial General Intelligence research: where good intentions meet impossible choices, and the future of humanity is at stake!
+
+You are the fresh-faced CEO of OpenBrain, a leading AI lab. Can you navigate a series of near-impossible decisions to achieve ALIGNED SUPERINTELLIGENCE, or will it be GAME OVER for humanity?
+
+👉 <a href="https://thoughtwax.com/2027-race-to-agi/">Play it now!</a> 👈
+
+<iframe width="628" height="353"  src="https://www.youtube.com/embed/g9v7klcryqY?si=0UjD58Cv2PM2tXIL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
+
+I designed and coded this over a total of about 20 hours using mostly Claude Code and Midjourney. The bulk of the time was spent on playtesting the game itself and fixing small UI issues.
+
+That might sound pretty chill, but the last mile problem for production-ready UI is still very real. User expectation for game UI performance is high, and getting rid of web jank was a pain. Just like in the real world, 90% of the work happens in the last 10% of the project.
+
+Like many people I have a digital junk drawer full of half-finished vibe-coded experiments. Here I mostly wanted to learn by forcing myself to actually complete something bigger than a one-day project. Vibe coding sometimes reminds me of the the observation about modern art: "I could have done that" + "Yeah, but you didn’t.” (The source code is <a href="https://github.com/thoughtwax/2027-race-to-agi">on Github</a>).
+
+Finally, I wanted to explore the topic of the game, AGI research.
+
+During testing I only managed to reach the successful end state of "_Aligned AGI_" a couple of times. (There are several unique game over states.) I realised that my game was clearly too hard, and made a note in my TODO.md file to revisit the difficulty curve.
+
+But as I continued testing, I noticed myself making in-game choices that were _only_ to the end of winning, as opposed to making the correct choices. That is, I wasn't making decisions as much as I was simply trying to beat the game. I wondered how powerful that pull must be for a real person in real life.
+
+And so I mostly left it as it was. More than attempting to model reality, the best cautionary lesson here may be that in games like the one we're currently playing, there are many ways to lose, and very few to win.
+
+That said, if you do manage to beat the game, take a screenshot and send it to me! I’d love to know that at least one of us can do it.

@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-06-22 00:00:00
 layout: post
-slug: None
-title: 22/06/2004
-wordpress_id: 52
+title: Street Memes
 ---
 
 [Street Memes](http://www.streetmemes.com/), tracking the spread of street art.

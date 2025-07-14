@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-05-17 00:00:00
 layout: post
-slug: None
-title: 17/05/2005
-wordpress_id: 140
+title: Ontology is Overrated
 ---
 
 [Ontology is Overrated: Categories, Links, and Tags](http://shirky.com/writings/ontology_overrated.html) provides a decent overview of the failings of a traditional system of content categorisation when applied to online content, the alternatives provided by user-developed classification, and it's roots in hyperlinking on the web.

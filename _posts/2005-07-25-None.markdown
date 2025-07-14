@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-07-25 00:00:00
 layout: post
-slug: None
-title: 25/07/2005
-wordpress_id: 149
+title: Brussels and Invisible Cities
 ---
 
 Back from a thoroughly enjoyable weekend spent exploring the streets of Brussels.

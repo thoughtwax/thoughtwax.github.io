@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-10-12 00:00:00
 layout: post
-slug: None
-title: 12/10/2004
-wordpress_id: 99
+title: GPS Drawing
 ---
 
 [GPS Drawing](http://www.gpsdrawing.com/)

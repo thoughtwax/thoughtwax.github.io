@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-07-04 00:00:00
 layout: post
-slug: None
-title: 04/07/2005
-wordpress_id: 147
+title: LAMP vs WIMP
 ---
 
 A friend asked me what _LAMP_ in the previous post means. It stands for Linux/Apache/MySql/PHP -- a robust and stable collection of Open Source programs used for web development.

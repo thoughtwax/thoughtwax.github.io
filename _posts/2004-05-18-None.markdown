@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-05-18 00:00:00
 layout: post
-slug: None
-title: 18/05/2004
-wordpress_id: 40
+title: Lego Robot Solves Rubik's Cube
 ---
 
 [Rubik's cube solving Lego robot](http://jpbrown.i8.com/cubesolver.html)

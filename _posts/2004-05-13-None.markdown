@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-05-13 00:00:00
 layout: post
-slug: None
-title: 13/05/2004
-wordpress_id: 37
+title: Sound Waveforms
 ---
 
 Added new Flash to the Projects sections of [Thoughtwax](http://www.thoughtwax.com/). Sound Waveforms is based on the video for [Cornelius](http://www.matadorrecords.com/cornelius/)' 'Bird Watching at Inner Forest'. Use your microphone to control the lines.

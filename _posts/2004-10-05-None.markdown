@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-10-05 00:00:00
 layout: post
-slug: None
-title: 05/10/2004
-wordpress_id: 98
+title: Massive Change
 ---
 
 [Massive Change](http://massivechange.com/), the future of global design. Or, Now that we can do anything, what will we do?

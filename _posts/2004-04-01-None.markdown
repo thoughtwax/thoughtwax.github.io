@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-04-01 00:00:00
 layout: post
-slug: None
-title: 01/04/2004
-wordpress_id: 28
+title: GoCode
 ---
 
 A [GoCode](http://www.codecorp.com/products/gocode.htm) is a tiny printed barcode-like hyperlink. Reminds me of Edward Tufte's [Sparklines](http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001Eb&topic_id=1&topic=).

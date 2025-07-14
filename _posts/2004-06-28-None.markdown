@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-06-28 00:00:00
 layout: post
-slug: None
-title: 28/06/2004
-wordpress_id: 53
+title: Bob Dylan
 ---
 
 I saw [Bob](http://fi5e.com/typo/typo_dylan.html) yesterday.

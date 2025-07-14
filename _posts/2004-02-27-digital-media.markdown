@@ -1,11 +1,8 @@
 ---
-author: emmetc
 comments: true
 date: 2004-02-27 00:00:00
 layout: post
-slug: digital-media
-title: 27/02/2004
-wordpress_id: 7
+title: Digital Media Links
 ---
 
 Some digital media links to get things rolling...

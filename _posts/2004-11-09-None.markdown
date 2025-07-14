@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-11-09 00:00:00
 layout: post
-slug: None
-title: 09/11/2004
-wordpress_id: 108
+title: Messa di Voce
 ---
 
 [Messa di Voce](http://www.tmema.org/messa/messa.html)

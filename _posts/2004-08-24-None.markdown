@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-08-24 00:00:00
 layout: post
-slug: None
-title: 24/08/2004
-wordpress_id: 69
+title: GPS Photo Mapping and Drawing
 ---
 
 GPS photo mapping projects at [Tokyo Picturesque](http://www.downgoesthesystem.com/devzone/exiftest/final/) and [Perspectives](http://www.marumushi.com/apps/perspectives/) ([more](http://marcosweskamp.marumushi.com/))

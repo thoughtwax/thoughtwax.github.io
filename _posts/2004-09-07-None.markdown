@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-09-07 00:00:00
 layout: post
-slug: None
-title: 07/09/2004
-wordpress_id: 84
+title: runme.org
 ---
 
 [runme.org](http://www.runme.org/) - "Say it with sortware art!" Lots to see and do here.

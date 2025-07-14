@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-11-17 00:00:00
 layout: post
-slug: None
-title: 17/11/2004
-wordpress_id: 111
+title: The Urban Archipelago
 ---
 
 [The Urban Archipelago](http://www.urbanarchipelago.com/) - the United Cities of America.

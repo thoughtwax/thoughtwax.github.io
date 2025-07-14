@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-11-23 00:00:00
 layout: post
-slug: None
-title: 23/11/2004
-wordpress_id: 115
+title: DRM and Digital Media Copyright Lectures
 ---
 
 DRM and Digital Media copyright lectures online:

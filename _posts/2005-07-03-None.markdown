@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-07-03 00:00:00
 layout: post
-slug: None
-title: 03/07/2005
-wordpress_id: 146
+title: Re-News Project Wins Award
 ---
 
 Back and recovered from Bristol and Submerge, where much enjoyment was had.

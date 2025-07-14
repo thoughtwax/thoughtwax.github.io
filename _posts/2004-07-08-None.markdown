@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-07-08 00:00:00
 layout: post
-slug: None
-title: 08/07/2004
-wordpress_id: 57
+title: Data Mapping Artists
 ---
 
 Mapping:

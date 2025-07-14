@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-04-06 00:00:00
 layout: post
-slug: None
-title: 06/04/2005
-wordpress_id: 135
+title: Wrong Map Right Outcome
 ---
 
 > 

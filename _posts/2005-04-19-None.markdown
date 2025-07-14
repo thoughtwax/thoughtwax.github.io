@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-04-19 00:00:00
 layout: post
-slug: None
-title: 19/04/2005
-wordpress_id: 136
+title: Walk Shuffle Project Launch
 ---
 
 Back to life after a little server-move induced downtime. Technology, eh?

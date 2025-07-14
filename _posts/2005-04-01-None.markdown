@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-04-01 00:00:00
 layout: post
-slug: None
-title: 01/04/2005
-wordpress_id: 134
+title: Glastonbury Silent Disco
 ---
 
 [The Guardian](http://www.guardian.co.uk/arts/glastonbury2005/story/0,15865,1447240,00.html) reports on Glastonbury's plan to avoid late night noise pollution by issuing 3,000 clubbers with wireless headphones.

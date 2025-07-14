@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-05-04 00:00:00
 layout: post
-slug: None
-title: 04/05/2005
-wordpress_id: 138
+title: Geotagging and Social Networks
 ---
 
 A congervence of a number of recent interests has led me to become increasingly keen the idea of a combination of [spatial annotation](http://www.elasticspace.com/2004/06/spatial-annotation) and [folksonomic](http://en.wikipedia.org/wiki/Folksonomy) social networks. I really think there are going to be huge developments in this area in the next year, and especially once GPS-enabled cameraphones become available.

@@ -1,11 +1,8 @@
 ---
-author: emmetc
 comments: true
 date: 2004-02-29 00:00:00
 layout: post
-slug: proce55ing
-title: 29/02/2004
-wordpress_id: 19
+title: Processing
 ---
 
 I've been experimenting with [Proce55ing](http://www.proce55ing.net/), an open source programming environment for producing visuals, developed by [Ben Fry](http://acg.media.mit.edu/people/fry) and [Casey Reas](http://www.groupc.net/) at the [Aesthetics + Computation Group, MIT](http://acg.media.mit.edu/).

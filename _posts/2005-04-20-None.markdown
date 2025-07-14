@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-04-20 00:00:00
 layout: post
-slug: None
-title: 20/04/2005
-wordpress_id: 137
+title: OpenEir Irish Mapping Project
 ---
 
 In the wake of [some](http://realtime.waag.org/) [similar](http://www.openstreetmap.org/) [initiatives](http://twenteenthcentury.com/uo/index.php/LondonFreeMap), the first stirrings of an Irish free and open source mapping project has emerged in the form of [OpenEir](http://eirepreneur.blogs.com/eirepreneur/2005/04/openeir_the_ope.html). It would be great to see this become a successful community project.

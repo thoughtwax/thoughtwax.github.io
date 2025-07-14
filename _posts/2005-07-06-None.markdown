@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-07-06 00:00:00
 layout: post
-slug: None
-title: 06/07/2005
-wordpress_id: 148
+title: EU Software Patents Rejected
 ---
 
 In a piece of good news, the [EU Patents Directive](http://noepatents.eu.org/index.php/NO_Software_Patents) was overturned by a large majority this morning in the European Parliament. One of the speakers in the [Exploiting Potential](http://www.submerge.org.uk/exploitingpotential/) symposium last week discussed this issue at length, and a couple of days ago I emailed the Irish MEPs to express my opposition to the proposal.

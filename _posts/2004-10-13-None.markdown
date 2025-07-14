@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-10-13 00:00:00
 layout: post
-slug: None
-title: 13/10/2004
-wordpress_id: 100
+title: The Insecurities Project
 ---
 
 [The Insecurities Project](http://www.insecuritiesproject.com/)

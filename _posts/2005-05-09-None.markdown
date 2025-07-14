@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-05-09 00:00:00
 layout: post
-slug: None
-title: 09/05/2005
-wordpress_id: 139
+title: Locative Media as Narrative
 ---
 
 > If we produce a work of art that is based on data aqcuired from a locative device such as GPS, Bluetooth or WiFi the fact that it tells a story of some sort, is a given. It's inherent. To produce the data, the device would have to physically move from point A to B to C etc... the fact that it describes a story is unavoidable.

@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-05-11 00:00:00
 layout: post
-slug: None
-title: 11/05/2004
-wordpress_id: 36
+title: They Rule
 ---
 
 An updated version of [They Rule](http://www.theyrule.net/), an online project similar to the work of [Mark Lombardi](http://www.pierogi2000.com/flatfile/lombardi.html), is live. There's an intersting program on Lombardi at [NPR](http://www.npr.org/display_pages/features/feature_1487185.html).

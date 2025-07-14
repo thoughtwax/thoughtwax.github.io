@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-06-18 00:00:00
 layout: post
-slug: None
-title: 18/06/2004
-wordpress_id: 51
+title: DIY Pirate Radio with iPod
 ---
 
 [How To Make your own Pirate Radio Station with an iPod](http://www.engadget.com/entry/3597373383872462/) using the [iTrip](http://www.griffintechnology.com/products/itrip/) accessory.

@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-05-24 00:00:00
 layout: post
-slug: None
-title: 24/05/2005
-wordpress_id: 141
+title: Brian Eno Windows 95 Sound
 ---
 
 [Brian Eno on creating the Windows 95 start-up sound:](http://en.wikiquote.org/wiki/Brian_Eno)

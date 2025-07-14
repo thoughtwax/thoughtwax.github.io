@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-10-20 00:00:00
 layout: post
-slug: None
-title: 20/10/2004
-wordpress_id: 101
+title: A Map Larger Than the Territory
 ---
 
 [A Map Larger Than the Territory](http://www.mapterritory.com/)

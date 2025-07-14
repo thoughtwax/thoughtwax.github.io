@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2005-02-21 00:00:00
 layout: post
-slug: None
-title: 21/02/2005
-wordpress_id: 129
+title: iPods and Urban Isolation
 ---
 
 [Dr. Michael Bull](http://www.sussex.ac.uk/mediastudies/profile119032.html) talks about the social and cultural impact of the personal stereo in a [Wired Magazine interview](http://www.wired.com/news/mac/0,2125,62396,00.html) from last year, raising some questions on the privatization of public space.

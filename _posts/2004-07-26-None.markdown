@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-07-26 00:00:00
 layout: post
-slug: None
-title: 26/07/2004
-wordpress_id: 60
+title: Wordcount
 ---
 
 [Wordcount](http://www.wordcount.org/main.php) - tracking the way we use language

@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-06-30 00:00:00
 layout: post
-slug: None
-title: 30/06/2004
-wordpress_id: 55
+title: Darklight Film Festival
 ---
 
 Looks like [Darklight 5](http://www.darklight-filmfestival.com/) is set to go ahead in Dublin this summer...

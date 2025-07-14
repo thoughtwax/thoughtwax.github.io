@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-03-31 00:00:00
 layout: post
-slug: None
-title: 31/03/2004
-wordpress_id: 26
+title: Photo Mapping and Information Visualization
 ---
 
 Seems a lot of attention has being paid to **information visualisation using maps** recently, such as projects like [GeoURL](http://geourl.org/) and [Zipdecode](http://acg.media.mit.edu/people/fry/zipdecode/). Overlaying geographic data onto a map is interesting, but I also like it when this geographic data is combined with local photography to produce a map of an area that can be viewed at different scales through photos of each section.

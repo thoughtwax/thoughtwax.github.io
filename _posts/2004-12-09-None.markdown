@@ -1,11 +1,8 @@
 ---
-author: None
 comments: true
 date: 2004-12-09 00:00:00
 layout: post
-slug: None
-title: 09/12/2004
-wordpress_id: 119
+title: paraSITE
 ---
 
 Artist Michael Rakowitz' [paraSITE](http://www.possibleutopia.com/mike/) reclaims urban spaces on behalf of homeless people by exploiting existing public architecture. Exterior ventilation systems are used to inflate and supply warmth to easily transportable sleeping structures. The objects simultaneously meet a practical need of providing shelter and act as a visible form of protest against the "homeless-proofing" of cities:

@@ -1,11 +1,8 @@
 ---
-author: emmetc
 comments: true
 date: 2004-03-19 00:00:00
 layout: post
-slug: irish-digital-media
-title: 19/03/2004
-wordpress_id: 21
+title: Irish Digital Media
 ---
 
 Some Irish Digital Media links:

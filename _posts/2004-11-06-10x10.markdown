@@ -1,0 +1,8 @@
+---
+comments: true
+date: 2004-11-06 00:00:00
+layout: post
+title: 10x10
+---
+
+[10x10](http://www.tenbyten.org/10x10.html) is "an interactive exploration of the words and pictures that define the time", drawing popular words and images from RSS news feeds. The developer has also [structured](http://www.tenbyten.org/developers.html) the site to allow others to make use of it's data. More goodness at [Number27](http://www.number27.org/).

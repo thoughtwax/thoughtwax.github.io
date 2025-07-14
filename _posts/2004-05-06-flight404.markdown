@@ -1,0 +1,8 @@
+---
+comments: true
+date: 2004-05-06 00:00:00
+layout: post
+title: Flight404's New Processing Showcase
+---
+
+New version of [Flight404](http://www.flight404.com/version7/index.html) is live, showcasing some sweet [Processing](http://www.proce55ing.org) work.

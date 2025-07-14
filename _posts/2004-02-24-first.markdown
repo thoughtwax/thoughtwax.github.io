@@ -1,11 +1,8 @@
 ---
-author: emmetc
 comments: true
 date: 2004-02-24 00:00:00
 layout: post
-slug: first
-title: 24/02/2004
-wordpress_id: 1
+title: First Post
 ---
 
 Blog.Thoughtwax is has been put together for a number of reasons.

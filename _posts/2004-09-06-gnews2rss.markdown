@@ -1,0 +1,8 @@
+---
+comments: true
+date: 2004-09-06 00:00:00
+layout: post
+title: Gnews2RSS
+---
+
+[Gnews2RSS](http://voidstar.com/gnews2rss.php), an experimental convertor that takes a Google News search and turns it into RSS. Perfect for [scraping](/?id=27).

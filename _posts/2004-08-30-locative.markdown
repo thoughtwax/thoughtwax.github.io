@@ -1,0 +1,8 @@
+---
+comments: true
+date: 2004-08-30 00:00:00
+layout: post
+title: Locative
+---
+
+[Locative](http://locative.x-i.net/) - GPS mapping

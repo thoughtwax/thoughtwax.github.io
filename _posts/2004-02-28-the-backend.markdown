@@ -1,11 +1,8 @@
 ---
-author: emmetc
 comments: true
 date: 2004-02-28 00:00:00
 layout: post
-slug: the-backend
-title: 28/02/2004
-wordpress_id: 18
+title: The Backend
 ---
 
 Finished the backend.

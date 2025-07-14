@@ -17,7 +17,7 @@ The "last 20%" problem for these tools will therefore likely persist for a littl
 
 **Complexity as a feature**
 
-I am rather talking instead about using Claude Code to work on code locally on my own computer. Claude Code's Opus 4 is a beast. It can handle everything from _“Read this detailed PRD and start building”_ to _“Fix this bug.”_ It goes beyond code generation: it has unnerving levels of root access, it runs scripts, pushes to GitHub, controls tools via MCP. And it has a charming and clever ASCII interface that makes me smile.
+I am rather talking instead about using Claude Code to work on code locally on my own computer. Claude Code's Opus 4 is a beast. It can handle everything from _“Read this detailed PRD and start building”_ to _“Fix this bug.”_ It goes beyond code generation: it has an almost unnerving levels of root access to your computer, it runs scripts, pushes to GitHub, controls tools via MCP, etc. It's a natural language interface to the command line. Plus it has a charming and clever ASCII interface that makes me smile.
 
 I am, as stated up top, a nerd. But I've never had this level of ability. I have some preexisting knowledge of code, and I generally enjoy doing things on the computer. I've done a bunch of tweaking to get my setup just the way I want it. In that spirit, here is my current setup, with Claude Code running *inside* of Cursor:
 
@@ -46,21 +46,21 @@ The whole stack is a lumpy contradiction: incredibly powerful, impossibly fragil
 
 PHP and MySQL had a similar problem back in the day. Web designers could see that adding a bit of extra code to their HTML looked pretty easy. But setting up the LAMP stack was hard too. The coding part felt achievable, it was the infrastructure that was the hard part.
 
-Then along came MAMP:
+Then along came [MAMP](https://en.wikipedia.org/wiki/MAMP):
 
 ![Screenshot of MAMP](http://thoughtwax.com/uploads/2025/cursor-mamp.png)
 
 Ahh, that's better. Look at the friendly little traffic lights there. And actual buttons for common tasks like starting and stopping your server.
 
-Here's what the equivalent task looks like today 25 years later, in Cursor (valuation: a cool $10b):
+Here's what the equivalent task looks like today 25 years later, in Cursor (latest valuation: a cool $10b):
 
 ![Screenshot of Claude Code running inside Cursor](http://thoughtwax.com/uploads/2025/cursor-terminal.png)
 *Running a couple of local servers should be easier than this.*
 
-Cursor needs its MAMP moment. MAMP made web development accessible to people who didn’t want to wrestle with system config files or error messages. The power is there but the ease-of-adoption is exactly what most non-vibe AI coding environments are still missing. Coding remains very unevenly distributed for now.
+**Cursor needs its MAMP moment.** MAMP made web development accessible to people who didn’t want to wrestle with system config files or error messages. The power is there but the ease-of-adoption is exactly what most non-vibe AI coding environments are still missing. Coding remains very unevenly distributed for now.
 
-Some of the things I'd like to see in a gentler IDE are practical: ability to manage multiple projects, an easy way to see and manage local development servers, automatic or simple source control wrapping, better native support for image and voice input.
+Some of the things I'd like to see in a better IDE are practical: ability to manage multiple projects, an easy way to see and manage local development servers, automatic or simple source control wrapping, better native support for image and voice input.
 
-But also, if you'll allow me, the vibes could also be better. Think of a local, cozy, joyful studio space where ideas can manifest and break without consequence.
+But also, if you'll allow me, the vibes could also be better. Think of a local, cozy, joyful, friendly studio space where ideas can manifest and break without consequence.
 
 The models and vibes are here. What’s missing is the scaffolding that makes building feel like play again.

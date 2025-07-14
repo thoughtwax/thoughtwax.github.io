@@ -4,7 +4,7 @@ title: "2027: Race to AGI!"
 author: emmetc
 ---
 
-I made a game! **2027: RACE TO AGI** is a satirical game about the wild world of Artificial General Intelligence research: where good intentions meet impossible choices, and the future of humanity is at stake!
+I made a game! ***<a href="https://thoughtwax.com/2027-race-to-agi/">2027: RACE TO AGI!</a>*** is a satirical game about the wild world of Artificial General Intelligence research: where good intentions meet impossible choices, and the future of humanity is at stake!
 
 You are the fresh-faced CEO of OpenBrain, a leading AI lab. Can you navigate a series of near-impossible decisions to achieve ALIGNED SUPERINTELLIGENCE, or will it be GAME OVER for humanity?
 

@@ -8,6 +8,9 @@ show_sidebar_message: reading
 
 | Year | Title | Author | Rating |
 |------|-------|--------|--------|
+| 2025 | The River of Doubt | Candice Millard | ★★★★★ |
+| 2025 | The Lessons of History | Ariel Durant & Will Durant | ★★★☆☆ |
+| 2025 | The Wizard and the Prophet _(reread)_ | Charles C. Mann | ★★★★★ |
 | 2025 | Watchmen _(reread)_ | Alan Moore & Dave Gibbons | ★★★★★ |
 | 2025 | Abundance: | Ezra Klein & Derek Thompson | ★★★☆☆ |
 | 2025 | 1971: Never a Dull Moment | David Hepworth | ★★★★☆ |

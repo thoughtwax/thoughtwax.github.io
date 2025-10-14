@@ -1,0 +1,27 @@
+---
+layout: post
+title: "Oats"
+author: emmetc
+---
+
+> One way to think about the industrial revolutions is every time you figure out the industrial revolution, you're finding some way of bypassing a constraint or bypassing a bottleneck. The bottleneck prior to what we call the Industrial Revolution was metabolism. How much oats can a human or a horse physically digest and then convert into useful mechanical output for their peasant overlord or whatever?
+> 
+> Nowadays we would giggle to think that the amount of food we produce is meaningful in the context of the economic power of a particular country. Because 99% of the energy that we consume routes around our guts, through the gas tanks of our cars and through our aircraft and in our grids.
+> 
+> Right now, the AI revolution is about routing around cognitive constraints, that in some ways writing, the printing press, computers, the Internet have already allowed us to do to some extent.
+
+-- [Casey Handmer](https://www.dwarkesh.com/p/casey-handmer)
+
+This is an excellent analogy, but perhaps only partially complete. We've been externalising bottlenecks since forever.
+
+When humans got smart enough to start cooking food they were [externalising digestion](https://en.wikipedia.org/wiki/Catching_Fire:_How_Cooking_Made_Us_Human), which led to smaller guts and jaws, which in turn freed up energy for even larger brains to develop. Modern humans are the only animals that require their food to be cooked, but are also the smartest; an evolutionary tradeoff that turned out to be a winner.
+
+So now we can try to fill in the blanks:
+
+* Cooking (_2M years ago_): Externalise digestion → energy surplus → bigger brains
+* Industrial Revolution (_250 years ago_): Externalise metabolism → energy surplus → bigger economy
+* AI Revolution (_2 years ago_): Externalise cognition → cognitive surplus → ???
+
+If externalising digestion gave us intelligence, and externalising metabolism gave us industrial civilization, what does externalising intelligence give us? And if each of these steps bootstraps the next, and are apparently happening exponentially faster, then...?
+
+Just as it would have been impossible to predict the impact of cooking or the steam engine (the OG [GPT](https://en.wikipedia.org/wiki/General-purpose_technology)!), we have no way of imaginging what will happen as a result of AI. The main difference is that this time we seem capable of seeing the thing coming, but still have no way of remotely knowing [what it is](https://substack.com/home/post/p-176010505).

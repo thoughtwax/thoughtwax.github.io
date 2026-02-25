@@ -8,6 +8,10 @@ show_sidebar_message: reading
 
 | Year | Title | Author | Rating |
 |------|-------|--------|--------|
+| 2026 | The Scaling Era: An Oral History of AI, 2019–2025 | Dwarkesh Patel | ★★★★★ |
+| 2026 | The Maniac | Benjamín Labatut | ★★★★☆ |
+| 2026 | WE3 | Grant Morrison & Frank Quitely | ★★★☆☆ |
+| 2026 | Insomnia | Robbie Robertson | ★★☆☆☆ |
 | 2025 | The River of Doubt | Candice Millard | ★★★★★ |
 | 2025 | The Lessons of History | Ariel Durant & Will Durant | ★★★☆☆ |
 | 2025 | The Wizard and the Prophet _(reread)_ | Charles C. Mann | ★★★★★ |

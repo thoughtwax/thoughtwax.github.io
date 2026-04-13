@@ -11,6 +11,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.summary | default: page.content | strip_html | truncatewords: 30 }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://thoughtwax.com{{ page.url }}">
+  <meta property="og:site_name" content="Thoughtwax">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@thoughtwax">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 

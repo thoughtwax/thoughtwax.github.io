@@ -20,6 +20,6 @@ In any case, here is what Claude responded with:
 
 This was, unsurprisingly/unnervingly (per nowadays), a perfect interpretation of what I'd had mashed upon the keyboard.
 
-I am genuinely not sure what to make of this. Should I now start typing as if I lacked opposable thumbs? Can I start sending emails like this, knowing that some AI-powered Garbled Ramblings Unscrambler on the other end can spellcheck it for me? This seems like it might be bad for global literacy, but also good for my WPM. Must be an interesting time to be a computational linguist!
+I am genuinely not sure what to make of this. Should I now start typing as if I lacked opposable thumbs? Can I start sending emails like this, knowing that some AI-powered Garbled Ramblings Unscrambler on the other end can spellcheck it for me? This seems like it might be bad for global literacy, but also good for my WPM score, so...? Touch typing is now an obsolete skill, I guess. I wonder if chorded keyboards or other input modes are suddenly more viable now? This combined with voice input really changes how we use computers, and probably how we communicate. Must be an interesting time to be a computational linguist!
 
-_(* And yes, the irony of "techniceally," and indeed its very inclusion in this post, were explored at length by both our in-house Styleguide and Editorial departments.)_
+_(* Rest assured the irony of "techniceally," and indeed its very inclusion in this post, were hotly debated between our in-house Styleguide and Editorial departments.)_

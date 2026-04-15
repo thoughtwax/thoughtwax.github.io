@@ -6,8 +6,6 @@ author: emmetc
 
 Hiring in the tech industry is chronically hard on both sides. So even the most well-crafted interview process is by definition a lossy signal at best.
 
-<!-- more -->
-
 A candidate might get "strong hire" from the entire loop; conversely, a company may seem like the greatest place to work. And they often are! But you won't actually know for sure until you've worked together. *Being Interviewed* and *Actually Doing The Job* are two very different skillsets (as are interviewing someone and managing them), so one is a rough proxy for the other at best. This room for error is why safeguards like "statutory probationary period" or "fuck this place I'm outta here" exist.
 
 The modern Irish political system has a similar problem, but lacks any of the built-in escape hatches.

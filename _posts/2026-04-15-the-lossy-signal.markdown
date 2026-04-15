@@ -26,9 +26,9 @@ Another concept from the tech world is that of "fat kings," often referred to in
 
 The Irish State's version of this dynamic is Foreign Direct Investment, a seemingly undisruptable annual dividend that stubbornly insists on throwing more of itself at the government each year regardless of how pitifully they actually manage things.
 
-Thus both ARR and FDI can paper over a lot of systemic cracks. But in both companies and electorates that are subject to this dynamic, you inevitably end up getting sloppy, and hiring people for how well they interview rather than finding out if they can do the job well.
+Thus both ARR and FDI can paper over a lot of systemic cracks. But in both companies and electorates that are subject to this dynamic, you inevitably end up getting sloppy, and hiring people for how well they interview rather than finding out how well they can do the job.
 
-Irish politicians are professional at interviewing, not at governing. This is why we end up with completely unqualified people running complex departments, and may be why we don't seem to have a strategy as a country.
+Irish politicians are professional at getting elected, not at governing. We can blame them for this, but to be fair we as an electorate don't exactly provide a crisp job spec: we vote back in the same two centrist parties, elect a leftist president, and show up at right-inflected protests. It is unsurprising that in response we get milquetoast politicians. This is why we end up with completely unqualified people running complex departments, and may be why we don't seem to have a strategy as a country.
 
 <p style="text-align: center;">
 <img src="/uploads/2026/filing-metaphor.gif" alt="My New Filing Technique is Unstoppable #166">

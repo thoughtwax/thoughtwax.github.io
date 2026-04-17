@@ -18,7 +18,7 @@ The modern Irish political system has a similar problem, but lacks any of the bu
 The recurring electoral cycle sees us re-interviewing the same candidate pool for the same jobs every few years, and apparently selecting for some inchoate combination of soundness, cuteness, parish pump potholery, and above all else, an unholy ability to stick to the script. Irish politicians (famously over-represented by ex-teachers and landlords) and especially Ministers are not selected for their role specialisation, prior knowledge, or ability to do the actual job.
 
 <p style="text-align: center;">
-<img src="/uploads/2026/filing-003.gif" alt="My New Filing Technique is Unstoppable #3">
+<img src="/uploads/2026/filing-003.gif" alt="My New Filing Technique is Unstoppable #3" style="background:#fff">
 <br><small><a href="http://www.mnftiu.cc/2002/11/26/filing-003/">My New Filing Technique is Unstoppable, #3</a></small>
 </p>
 
@@ -31,7 +31,7 @@ Thus both ARR and FDI can paper over a lot of systemic cracks. But in both compa
 Irish politicians are professional at getting elected, not at governing. We can blame them for this, but to be fair we as an electorate don't exactly provide a crisp job spec: we vote back in the same two centrist parties, elect a leftist president, and show up at right-inflected protests. It is unsurprising that in response we get milquetoast politicians. This is why we end up with completely unqualified people running complex departments, and may be why we don't seem to have a strategy as a country.
 
 <p style="text-align: center;">
-<img src="/uploads/2026/filing-metaphor.gif" alt="My New Filing Technique is Unstoppable #166">
+<img src="/uploads/2026/filing-metaphor.gif" alt="My New Filing Technique is Unstoppable #166" style="background:#fff">
 <br><small><a href="http://www.mnftiu.cc/2006/03/13/filing-166/">My New Filing Technique is Unstoppable, #166</a></small>
 </p>
 

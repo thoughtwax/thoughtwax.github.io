@@ -8,6 +8,7 @@ show_sidebar_message: reading
 
 | Year | Title | Author | Rating |
 |------|-------|--------|--------|
+| 2026 | The Path to Power: The Years of Lyndon Johnson (Volume 1) | Robert Caro | ★★★★★ |
 | 2026 | The Scaling Era: An Oral History of AI, 2019–2025 | Dwarkesh Patel | ★★★★★ |
 | 2026 | The Maniac | Benjamín Labatut | ★★★★☆ |
 | 2026 | WE3 | Grant Morrison & Frank Quitely | ★★★☆☆ |

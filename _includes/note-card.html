@@ -1,0 +1,47 @@
+{% assign note = include.note %}
+<article class="note-card h-entry" id="note-{{ note.note_id }}">
+  <div class="note-card__content e-content">
+    {{ note.content }}
+  </div>
+
+  {% if note.media_url %}
+    <figure class="note-card__media">
+      <img
+        class="u-photo"
+        src="{{ note.media_url }}"
+        alt="{{ note.media_alt | default: '' | escape }}"
+        loading="lazy"
+      >
+    </figure>
+  {% endif %}
+
+  {% if note.link_url %}
+    <a class="note-link-card u-bookmark-of" href="{{ note.link_url | escape }}">
+      {% if note.link_image %}
+        <img
+          class="note-link-card__image"
+          src="{{ note.link_image | escape }}"
+          alt=""
+          loading="lazy"
+        >
+      {% endif %}
+      <span class="note-link-card__body">
+        <strong>{{ note.link_title | default: note.link_url | escape }}</strong>
+        {% if note.link_description %}
+          <span>{{ note.link_description | escape }}</span>
+        {% endif %}
+        <small>{{ note.link_host | escape }}</small>
+      </span>
+    </a>
+  {% endif %}
+
+  <footer class="note-card__footer">
+    <a class="u-url" href="{{ note.url }}">
+      <time class="dt-published" datetime="{{ note.date | date_to_xmlschema }}">
+        {{ note.date | date: "%d %b %Y, %H:%M" }}
+      </time>
+    </a>
+    <span aria-hidden="true">/</span>
+    <span>Note {{ note.note_id }}</span>
+  </footer>
+</article>

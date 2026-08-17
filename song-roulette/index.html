@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#f4f0e6" />
+  <title>Song Roulette</title>
+  <style>
+    :root{
+      --paper:#f4f0e6; --ink:#11110f; --muted:#77736a; --line:#cbc4b5;
+      --card:#fffdf7; --accent:#ef5038; --good:#16784a; --shadow:0 18px 60px rgba(28,22,10,.10);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif}
+    body{min-height:100dvh}
+    button,select,input{font:inherit}
+    button{color:inherit}
+    .app{min-height:100dvh;display:flex;flex-direction:column;max-width:680px;margin:0 auto;padding:env(safe-area-inset-top) 18px calc(18px + env(safe-area-inset-bottom))}
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 2px 14px}
+    .brand{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+    .tiny{font-size:12px;color:var(--muted)}
+    .filters{display:flex;gap:8px;overflow-x:auto;padding:0 0 16px;scrollbar-width:none}
+    .filters::-webkit-scrollbar{display:none}
+    .pill{border:1px solid var(--line);background:transparent;border-radius:999px;padding:9px 12px;white-space:nowrap;font-size:13px}
+    .pill.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+    .card{background:var(--card);border:1px solid rgba(50,42,22,.10);border-radius:28px;min-height:430px;padding:26px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}
+    .kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+    h1{font-size:clamp(38px,11vw,64px);line-height:.94;letter-spacing:-.055em;margin:18px 0 12px;max-width:11ch}
+    .artist{font-size:21px;letter-spacing:-.02em;margin-bottom:8px}
+    .meta{font-size:13px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+    .challenge{margin-top:26px;border-top:1px solid var(--line);padding-top:18px;font-size:15px;line-height:1.45}
+    .hint{display:none;margin-top:14px;padding:14px 15px;border-radius:16px;background:#ebe5d8;line-height:1.45;font-size:14px}
+    .hint.show{display:block}
+    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .btn{border:1px solid var(--line);background:transparent;border-radius:16px;padding:15px 12px;font-weight:700}
+    .btn.primary{grid-column:1/-1;background:var(--accent);border-color:var(--accent);color:white;font-size:18px;padding:17px}
+    .btn.good{border-color:rgba(22,120,74,.4);color:var(--good)}
+    .below{padding:16px 2px 0;display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .stats{font-size:12px;color:var(--muted);line-height:1.45}
+    .linkbtn{border:0;background:none;padding:0;color:var(--muted);text-decoration:underline;text-underline-offset:3px;font-size:12px}
+    dialog{width:min(92vw,620px);border:0;border-radius:24px;background:var(--card);color:var(--ink);padding:0;box-shadow:0 30px 100px rgba(0,0,0,.25)}
+    dialog::backdrop{background:rgba(20,18,13,.42);backdrop-filter:blur(4px)}
+    .sheet{padding:24px}
+    .sheet h2{margin:0 0 6px;font-size:28px;letter-spacing:-.04em}
+    .sheet p{color:var(--muted);font-size:14px;line-height:1.45}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+    select,input[type=file]{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px;background:white}
+    .sheet-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+    .notice{font-size:12px;color:var(--muted);line-height:1.45;margin-top:10px}
+    @media(max-width:420px){.card{min-height:410px;padding:22px}.row{grid-template-columns:1fr}.app{padding-left:14px;padding-right:14px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand">Song Roulette</div>
+    <button class="linkbtn" id="settingsBtn">library + filters</button>
+  </header>
+
+  <div class="filters" id="filterPills"></div>
+
+  <main class="card">
+    <div>
+      <div class="kicker" id="roundLabel">Your challenge</div>
+      <h1 id="track">Tap roulette.</h1>
+      <div class="artist" id="artist">One song. No tabs. See what happens.</div>
+      <div class="meta" id="meta"></div>
+      <div class="challenge" id="challenge">Try to find the key, the main changes and a convincing groove by ear. Ask for the chord hint only when you need it.</div>
+      <div class="hint" id="hint"></div>
+    </div>
+    <div class="actions">
+      <button class="btn" id="hintBtn">Hint: chords</button>
+      <button class="btn good" id="playedBtn">I can play it</button>
+      <button class="btn primary" id="spinBtn">ROULETTE</button>
+    </div>
+  </main>
+
+  <div class="below">
+    <div class="stats" id="stats">Starter deck · 0 played</div>
+    <button class="linkbtn" id="nopeBtn">too hard / skip</button>
+  </div>
+</div>
+
+<dialog id="settings">
+  <div class="sheet">
+    <h2>Tune the wheel</h2>
+    <p>Import Spotify Extended Streaming History JSON locally. Nothing leaves this browser. Your most-played tracks become the pool.</p>
+    <div class="row">
+      <div>
+        <label for="decade">Release decade</label>
+        <select id="decade"><option value="all">Any decade</option></select>
+      </div>
+      <div>
+        <label for="artistFilter">Artist</label>
+        <select id="artistFilter"><option value="all">Any artist</option></select>
+      </div>
+      <div>
+        <label for="difficulty">Difficulty</label>
+        <select id="difficulty">
+          <option value="all">Anything</option>
+          <option value="1">Easy</option>
+          <option value="2">Easy–intermediate</option>
+          <option value="3">Intermediate</option>
+          <option value="4">Spicy</option>
+          <option value="5">Cruel</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label for="historyFiles">Spotify history JSON</label>
+      <input id="historyFiles" type="file" accept=".json,application/json" multiple />
+      <div class="notice">Spotify history usually gives artist, track, play time and URI, but not release year or guitar difficulty. Imported tracks therefore enter the “Any decade / Anything” pool unless you enrich them later.</div>
+    </div>
+    <div class="sheet-actions">
+      <button class="btn" id="resetBtn">Reset library</button>
+      <button class="btn" id="closeBtn">Done</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const STARTER = [{"artist":"The Beatles","track":"Get Back","year":1969,"difficulty":2,"hint":"A • D • G • A. Lock into the choppy A-major groove; the lead fills are optional.","source":"starter"},{"artist":"The Beatles","track":"Don't Let Me Down","year":1969,"difficulty":2,"hint":"E • F♯m • B7. Keep the rhythm loose and let the vocal phrasing tell you where the changes land.","source":"starter"},{"artist":"The Beatles","track":"Ticket to Ride","year":1965,"difficulty":2,"hint":"A • D7 • E. Start with the droning A riff, then worry about the full chord changes.","source":"starter"},{"artist":"The Beatles","track":"Norwegian Wood","year":1965,"difficulty":2,"hint":"D-shape centre with a descending melodic figure; the bridge moves through Dm/G/C/F before returning.","source":"starter"},{"artist":"Pink Floyd","track":"Wish You Were Here","year":1975,"difficulty":2,"hint":"Em7 • G • A7sus4 • C • D. Nail the intro embellishments around open G first.","source":"starter"},{"artist":"Pink Floyd","track":"Breathe (In the Air)","year":1973,"difficulty":3,"hint":"Em(add9) • A7, then Cmaj7 • Bm7 • Fmaj7 • G • D7#9. Think colour and voicing, not speed.","source":"starter"},{"artist":"Faces","track":"Stay With Me","year":1971,"difficulty":3,"hint":"E-centred rock shuffle. Think E • D • A with dominant/blues colour and a very loose right hand.","source":"starter"},{"artist":"Faces","track":"Ooh La La","year":1973,"difficulty":2,"hint":"Open-chord folk-rock feel. Centre it around D/G/A shapes and keep the strum buoyant.","source":"starter"},{"artist":"Oasis","track":"Live Forever","year":1994,"difficulty":2,"hint":"G • D • Am7 • C • D. The trick is dynamics and confident downstrokes, not chord complexity.","source":"starter"},{"artist":"Oasis","track":"Supersonic","year":1994,"difficulty":3,"hint":"F♯m7-centred. Use ringing common tones between F♯m7 • A • B7-ish shapes; attitude counts.","source":"starter"},{"artist":"Oasis","track":"Slide Away","year":1994,"difficulty":3,"hint":"C#m7 • A • E • G♯. Let open strings/ringing extensions make the big wall of sound.","source":"starter"},{"artist":"Blur","track":"Coffee & TV","year":1999,"difficulty":3,"hint":"B • G#m • F# • E family, with Graham Coxon's little melodic chord decorations doing the work.","source":"starter"},{"artist":"The Strokes","track":"Someday","year":2001,"difficulty":3,"hint":"A-major family. Use tight triads/double-stops rather than cowboy chords; the rhythm is the challenge.","source":"starter"},{"artist":"The Strokes","track":"Last Nite","year":2001,"difficulty":2,"hint":"C • Dm • G territory. Keep it clipped, bright and relentlessly even.","source":"starter"},{"artist":"Pixies","track":"Where Is My Mind?","year":1988,"difficulty":2,"hint":"E • C#m • G# • A. Four chords; make the arpeggiated figure ring cleanly.","source":"starter"},{"artist":"The Smiths","track":"There Is a Light That Never Goes Out","year":1986,"difficulty":3,"hint":"Capo-friendly open-chord shapes work well. Focus on the flowing right hand more than exact Marr voicings.","source":"starter"},{"artist":"Radiohead","track":"High and Dry","year":1995,"difficulty":2,"hint":"F#m11 • A • E. Let the top strings ring and resist over-strumming.","source":"starter"},{"artist":"Radiohead","track":"Fake Plastic Trees","year":1995,"difficulty":2,"hint":"A • Asus4 • Dmaj9-ish • E. Mostly open shapes; the challenge is the build.","source":"starter"},{"artist":"The Rolling Stones","track":"Dead Flowers","year":1971,"difficulty":2,"hint":"D • A • G. Country-rock pocket; make the chord changes lazy rather than square.","source":"starter"},{"artist":"The Kinks","track":"Waterloo Sunset","year":1967,"difficulty":3,"hint":"E • B • A with passing bass/chord movement. Get the descending feel before adding details.","source":"starter"},{"artist":"Blondie","track":"Call Me","year":1980,"difficulty":3,"hint":"D-minor rock/new-wave centre. Start with Dm • F • B♭ • C/A-type movement and keep it urgent.","source":"starter"},{"artist":"Neil Young","track":"Cinnamon Girl","year":1969,"difficulty":2,"hint":"Drop D helps. The main riff is built from chunky D-family shapes; rhythm and muting sell it.","source":"starter"},{"artist":"Pulp","track":"Common People","year":1995,"difficulty":2,"hint":"C • G • F family. Simple harmony; the game is sustaining the escalating pulse.","source":"starter"},{"artist":"David Bowie","track":"Queen Bitch","year":1971,"difficulty":3,"hint":"C/G/D rock shapes with glam swagger. Keep the right hand brisk and slightly ahead of the beat.","source":"starter"},{"artist":"The Velvet Underground","track":"Sweet Jane","year":1970,"difficulty":2,"hint":"D • A • G with the famous little turnaround. Make it conversational, not metronomic.","source":"starter"}];
+const storage={get(key,fallback){try{const raw=window.localStorage.getItem(key);return raw?JSON.parse(raw):fallback}catch(_){return fallback}},set(key,value){try{window.localStorage.setItem(key,JSON.stringify(value))}catch(_){}},remove(key){try{window.localStorage.removeItem(key)}catch(_){}}};
+let library=storage.get("sr_library",STARTER);if(!Array.isArray(library)||!library.length)library=STARTER;
+let settings=storage.get("sr_settings",{decade:"all",artist:"all",difficulty:"all"});settings=Object.assign({decade:"all",artist:"all",difficulty:"all"},settings||{});
+let history=storage.get("sr_results",{played:0,skipped:0,seen:{}});history=Object.assign({played:0,skipped:0,seen:{}},history||{});history.seen=history.seen||{};let current=null;
+const $=id=>document.getElementById(id);const trackEl=$("track"),artistEl=$("artist"),metaEl=$("meta"),hintEl=$("hint");const settingsDialog=$("settings");
+function difficultyName(n){return["","easy","easy–intermediate","intermediate","spicy","cruel"][Number(n)]||"unrated"}
+function decades(){return[...new Set(library.map(s=>s.year?Math.floor(s.year/10)*10:null).filter(Boolean))].sort()}
+function rebuildDecades(){const sel=$("decade"),old=settings.decade;sel.innerHTML='<option value="all">Any decade</option>'+decades().map(d=>`<option value="${d}">${d}s</option>`).join("");sel.value=[...sel.options].some(o=>o.value===String(old))?old:"all"}
+function rebuildArtists(){const counts=new Map();for(const s of library)counts.set(s.artist,(counts.get(s.artist)||0)+Number(s.plays||1));const artists=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).map(x=>x[0]);const sel=$("artistFilter"),old=settings.artist;sel.innerHTML='<option value="all">Any artist</option>'+artists.map(a=>`<option value="${a.replace(/\"/g,'&quot;')}">${a}</option>`).join("");sel.value=artists.includes(old)?old:"all"}
+function filtered(){let pool=library.filter(s=>{const decadeOk=settings.decade==="all"||(s.year&&Math.floor(s.year/10)*10===Number(settings.decade));const artistOk=settings.artist==="all"||s.artist===settings.artist;const diffOk=settings.difficulty==="all"||Number(s.difficulty)===Number(settings.difficulty);return decadeOk&&artistOk&&diffOk});if(!pool.length)pool=library;return pool}
+function weight(s){const plays=Math.max(1,Number(s.plays||1));const seen=history.seen[s.artist+" — "+s.track]||0;return Math.sqrt(plays)/(1+seen*1.8)}
+function chooseWeighted(pool){const weighted=pool.map(s=>[s,weight(s)]);const total=weighted.reduce((a,x)=>a+x[1],0);let r=Math.random()*total;for(const[s,w]of weighted){r-=w;if(r<=0)return s}return pool[pool.length-1]}
+function spin(){current=chooseWeighted(filtered());const key=current.artist+" — "+current.track;history.seen[key]=(history.seen[key]||0)+1;saveResults();trackEl.textContent=current.track;artistEl.textContent=current.artist;const bits=[];if(current.year)bits.push(current.year);if(current.difficulty)bits.push(difficultyName(current.difficulty));if(current.plays)bits.push(`${current.plays} listens`);metaEl.textContent=bits.join(" · ");hintEl.textContent=current.hint||"No chord hint in the local library yet. First: identify the tonal centre, then test I–IV–V / vi against the recording.";hintEl.classList.remove("show");$("roundLabel").textContent="Your challenge";updateStats()}
+function saveResults(){storage.set("sr_results",history)}
+function updateStats(){const imported=library.filter(s=>s.source==="spotify").length;$("stats").textContent=`${imported?imported+" Spotify tracks":"Starter deck"} · ${history.played} played · ${history.skipped} skipped`}
+function result(kind){if(!current)return spin();history[kind]++;saveResults();updateStats();spin()}
+function saveSettings(){settings.decade=$("decade").value;settings.artist=$("artistFilter").value;settings.difficulty=$("difficulty").value;storage.set("sr_settings",settings);renderPills()}
+function renderPills(){const items=[settings.decade==="all"?"all decades":settings.decade+"s",settings.artist==="all"?"any artist":settings.artist,settings.difficulty==="all"?"all levels":difficultyName(settings.difficulty),library.some(s=>s.source==="spotify")?"my Spotify history":"starter deck"];$("filterPills").innerHTML=items.map((x,i)=>`<button class="pill ${i===2?'active':''}">${x}</button>`).join("")}
+function normalizeEntry(e){const track=e.master_metadata_track_name||e.trackName||e.track_name||e.track;const artist=e.master_metadata_album_artist_name||e.artistName||e.artist_name||e.artist;const ms=Number(e.ms_played??e.msPlayed??e.ms??0);const uri=e.spotify_track_uri||e.spotifyTrackUri||e.uri||"";if(!track||!artist||ms<30000)return null;return{track:String(track),artist:String(artist),ms,uri}}
+async function importHistory(files){const agg=new Map();for(const file of files){const raw=JSON.parse(await file.text());const entries=Array.isArray(raw)?raw:(raw.streaming_history||raw.items||[]);for(const e of entries){const n=normalizeEntry(e);if(!n)continue;const key=(n.uri||`${n.artist}||${n.track}`).toLowerCase();const old=agg.get(key)||{artist:n.artist,track:n.track,uri:n.uri,plays:0,msPlayed:0,source:"spotify"};old.plays++;old.msPlayed+=n.ms;agg.set(key,old)}}const imported=[...agg.values()].filter(x=>x.plays>=2).sort((a,b)=>b.msPlayed-a.msPlayed);const starterMap=new Map(STARTER.map(s=>[(s.artist+"||"+s.track).toLowerCase(),s]));library=imported.map(s=>Object.assign({},starterMap.get((s.artist+"||"+s.track).toLowerCase())||{},s));if(!library.length)throw new Error("No tracks found. Choose Spotify streaming-history JSON files.");storage.set("sr_library",library);rebuildDecades();rebuildArtists();renderPills();updateStats();spin()}
+$("spinBtn").onclick=spin;$("hintBtn").onclick=()=>{if(!current)spin();else hintEl.classList.toggle("show")};$("playedBtn").onclick=()=>result("played");$("nopeBtn").onclick=()=>result("skipped");$("settingsBtn").onclick=()=>{if(settingsDialog.showModal)settingsDialog.showModal();else settingsDialog.setAttribute("open","")};$("closeBtn").onclick=()=>{saveSettings();if(settingsDialog.close)settingsDialog.close();else settingsDialog.removeAttribute("open");spin()};$("decade").onchange=saveSettings;$("artistFilter").onchange=saveSettings;$("difficulty").onchange=saveSettings;$("historyFiles").onchange=async e=>{try{await importHistory([...e.target.files])}catch(err){alert(err.message)}};$("resetBtn").onclick=()=>{storage.remove("sr_library");library=STARTER;settings={decade:"all",artist:"all",difficulty:"all"};storage.set("sr_settings",settings);rebuildDecades();rebuildArtists();renderPills();updateStats();spin()};
+rebuildDecades();rebuildArtists();$("artistFilter").value=settings.artist;$("difficulty").value=settings.difficulty;renderPills();updateStats();spin();
+</script>
+</body>
+</html>

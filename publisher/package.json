@@ -1,0 +1,20 @@
+{
+  "name": "thoughtwax-notes-publisher",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:local": "wrangler d1 execute thoughtwax-notes-publisher --local --file=schema.sql",
+    "db:remote": "wrangler d1 execute thoughtwax-notes-publisher --remote --file=schema.sql",
+    "webhook:set": "node scripts/set-webhook.mjs",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "wrangler": "4.118.0"
+  },
+  "overrides": {
+    "undici": "7.29.0"
+  }
+}

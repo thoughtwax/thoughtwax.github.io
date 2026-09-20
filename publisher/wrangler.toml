@@ -1,0 +1,15 @@
+name = "thoughtwax-notes-publisher"
+main = "src/index.js"
+compatibility_date = "2026-08-04"
+
+[vars]
+GITHUB_OWNER = "thoughtwax"
+GITHUB_REPO = "thoughtwax.github.io"
+GITHUB_BRANCH = "master"
+SITE_URL = "https://thoughtwax.com"
+MAX_PHOTO_BYTES = "10485760"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "thoughtwax-notes-publisher"
+database_id = "0ea2329e-4bfc-41d1-b245-248f34e4c1c0"

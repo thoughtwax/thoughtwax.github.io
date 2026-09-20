@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="/css/notes.css?v=1">
+
+<div class="notes-page">
+  <header class="notes-heading">
+    <p class="notes-heading__label">Note {{ page.note_id }}</p>
+    <p class="notes-heading__back"><a href="/notes/">All notes</a></p>
+  </header>
+
+  {% include note-card.html note=page %}
+</div>

@@ -1,0 +1,28 @@
+---
+layout: default
+title: Notes — thoughtwax
+permalink: /notes/index.html
+summary: Short notes by Emmet Connolly.
+---
+<link rel="stylesheet" href="/css/notes.css?v=1">
+
+<div class="notes-page h-feed">
+  <header class="notes-heading">
+    <div>
+      <p class="notes-heading__label">Thoughtwax / Notes</p>
+      <h2 class="p-name">Notes</h2>
+    </div>
+    <p class="notes-heading__feed"><a href="/notes/feed.xml">RSS</a></p>
+  </header>
+
+  {% assign notes = site.notes | sort: "note_id" | reverse %}
+  {% if notes.size > 0 %}
+    <div class="notes-feed">
+      {% for note in notes %}
+        {% include note-card.html note=note %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="notes-empty">No notes yet.</p>
+  {% endif %}
+</div>

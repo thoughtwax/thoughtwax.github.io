@@ -1,6 +1,6 @@
 body { font: 13px/20px 'JetBrains Mono', 'Inconsolata', 'Courier New', monospace; margin: 0; background-color: #f7f6f2; }
 
-.container {margin: 8em auto 2em;}
+.container {margin: 8em auto 2em; max-width: 640px;}
 .intro { opacity: 0.6; }
 .intro a { font-weight: normal; }
 

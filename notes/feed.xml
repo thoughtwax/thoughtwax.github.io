@@ -1,0 +1,22 @@
+---
+layout: none
+permalink: /notes/feed.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>{{ site.name }}: notes</title>
+		<description>Short notes by Emmet Connolly.</description>
+		<link>http://thoughtwax.com/notes/</link>
+		<atom:link href="http://thoughtwax.com/notes/feed.xml" rel="self" type="application/rss+xml" />
+		{% assign notes = site.posts | where: "layout", "note" %}
+		{% for post in notes limit:20 %}
+			<item>
+				<description>{{ post.content | xml_escape }}</description>
+				<pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+				<link>http://thoughtwax.com{{ post.url }}</link>
+				<guid isPermaLink="true">http://thoughtwax.com{{ post.url }}</guid>
+			</item>
+		{% endfor %}
+	</channel>
+</rss>

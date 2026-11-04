@@ -78,3 +78,16 @@ p.meta + .note { margin-top: -28px; } /* a post's 88px meta margin collapses to 
 .note a.hash:hover { color: #0FA0CE; }
 .note + h2 { margin-top: 80px; }
 #post > .note:last-child { margin-bottom: 0; }
+
+/* Rhythm: 8px baseline grid, set in the Rhythm tool. Kept last so it wins over the rules above. */
+p, li { font: 18px/32px 'EB Garamond', Georgia, serif; margin-bottom: 25px; }
+pre, blockquote, dl, figure, table, ul, ol, form { margin-bottom: 25px; }
+body, .intro p, .footer p, ul.posts li, .note p, .note li { font-size: 13px; line-height: 16px; }
+h2 { font-size: 50px; line-height: 36px; margin: 0 0 25.2px; }
+p.meta { font-size: 12px; line-height: 16px; margin-bottom: 88px; }
+.note { margin-bottom: 40px; }
+p.meta + .note { margin-top: -28px; }
+.note + h2 { margin-top: 80px; }
+
+/* Notes page */
+p.meta-intro { font: 13px/16px 'IBM Plex Mono', 'Courier New', monospace; color: #575757; opacity: 0.6; margin-bottom: 48px; }

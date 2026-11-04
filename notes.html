@@ -1,0 +1,22 @@
+---
+layout: default
+title: Notes - thoughtwax
+permalink: /notes/
+---
+
+<div id="post">
+  <h2>Notes</h2>
+  <p class="meta-intro">Short things, newest first. <a href="/notes/feed.xml">RSS feed for notes</a></p>
+
+  {% assign notes = site.posts | where: "layout", "note" %}
+  {% for post in notes %}
+    <div class="note h-entry">
+      <a class="hash u-url" href="{{ post.url }}" aria-label="Permalink to this note">#</a>
+      <div class="e-content">
+        {{ post.content }}
+      </div>
+    </div>
+  {% else %}
+    <p>No notes yet.</p>
+  {% endfor %}
+</div>

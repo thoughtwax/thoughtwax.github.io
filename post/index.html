@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>New note — thoughtwax</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Note">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="icon" href="icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f7f6f2;
+      --ink: #333;
+      --soft: #8f8d87;
+      --rule: #dedbd3;
+      --field: #fffefb;
+      --accent: #930909;
+      --ok: #2f6b3a;
+      --bad: #a3271b;
+      --mono: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #1c1b19;
+        --ink: #e8e6e1;
+        --soft: #9a978f;
+        --rule: #3a3833;
+        --field: #24231f;
+        --accent: #e0645a;
+        --ok: #7cc48a;
+        --bad: #f08a7e;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--paper); color: var(--ink); }
+    body {
+      font: 16px/1.5 var(--mono);
+      -webkit-text-size-adjust: 100%;
+      padding: env(safe-area-inset-top) max(16px, env(safe-area-inset-right)) calc(24px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+    }
+    main { max-width: 640px; margin: 0 auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 0 12px;
+    }
+    header h1 { font: 600 13px/1 var(--mono); letter-spacing: 0.2em; text-transform: uppercase; margin: 0; }
+    header h1 span { color: var(--accent); }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    .icon-btn {
+      background: none; border: 0; padding: 8px; margin: -8px; color: var(--soft);
+      font-size: 13px; text-decoration: underline; text-underline-offset: 3px;
+    }
+
+    .toolbar {
+      display: flex; gap: 6px; padding: 8px 0; position: sticky; top: 0; background: var(--paper); z-index: 2;
+    }
+    .toolbar button {
+      min-width: 44px; height: 40px; padding: 0 10px;
+      background: var(--field); border: 1px solid var(--rule); border-radius: 8px;
+      font-size: 15px;
+    }
+    .toolbar button[aria-pressed="true"] { border-color: var(--ink); background: var(--rule); }
+    .toolbar .b { font-weight: 600; }
+    .toolbar .i { font-style: italic; }
+
+    #editor {
+      min-height: 38vh; padding: 14px; outline: none;
+      background: var(--field); border: 1px solid var(--rule); border-radius: 10px;
+      font-size: 16px; line-height: 1.55; overflow-wrap: anywhere;
+    }
+    #editor:focus { border-color: var(--soft); }
+    #editor:empty::before { content: attr(data-placeholder); color: var(--soft); }
+    #editor p, #editor div { margin: 0 0 0.8em; }
+    #editor p:last-child, #editor div:last-child { margin-bottom: 0; }
+    #editor ul, #editor ol { margin: 0 0 0.8em; padding-left: 1.4em; }
+    #editor a { color: inherit; text-decoration: underline; }
+
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 14px 0; }
+    label.check { display: flex; align-items: center; gap: 10px; font-size: 15px; padding: 6px 0; }
+    label.check input { width: 22px; height: 22px; margin: 0; accent-color: var(--ink); }
+    .count { font-size: 13px; color: var(--soft); }
+    .count.over { color: var(--bad); }
+
+    .publish {
+      width: 100%; height: 52px; border: 0; border-radius: 10px;
+      background: var(--ink); color: var(--paper); font-weight: 600; font-size: 16px; letter-spacing: 0.02em;
+    }
+    .publish:disabled { opacity: 0.4; cursor: default; }
+
+    .status { font-size: 14px; margin: 14px 0; min-height: 1.5em; color: var(--soft); }
+    .status.ok { color: var(--ok); }
+    .status.bad { color: var(--bad); }
+    .status a { color: inherit; }
+
+    .settings {
+      border: 1px solid var(--rule); border-radius: 10px; padding: 14px; margin: 8px 0 16px; background: var(--field);
+    }
+    .settings[hidden] { display: none; }
+    .settings h2 { font: 600 14px/1.4 var(--mono); margin: 0 0 8px; }
+    .settings p { font-size: 13px; color: var(--soft); margin: 0 0 12px; }
+    .settings p a { color: inherit; }
+    .settings label { display: block; font-size: 13px; margin: 12px 0 4px; }
+    .settings input[type=text], .settings input[type=password] {
+      width: 100%; height: 44px; padding: 0 10px; font: 16px var(--mono); color: var(--ink);
+      background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;
+    }
+    .settings .actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+    .settings .actions button {
+      height: 42px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper);
+    }
+    .settings .actions .primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1><span>#</span> New note</h1>
+    <button class="icon-btn" id="settings-toggle" type="button">Settings</button>
+  </header>
+
+  <section class="settings" id="settings" hidden>
+    <h2>Connect to GitHub</h2>
+    <p>Notes are saved straight into the blog's repository. Paste a
+      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">fine-grained token</a>
+      that can only reach <b>thoughtwax.github.io</b>, with <b>Contents: Read and write</b>.
+      It stays on this device and is only ever sent to GitHub.</p>
+    <label for="token">Token</label>
+    <input type="password" id="token" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">
+    <label for="repo">Repository</label>
+    <input type="text" id="repo" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <label for="branch">Branch</label>
+    <input type="text" id="branch" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <div class="actions">
+      <button type="button" class="primary" id="save-settings">Save</button>
+      <button type="button" id="forget-token">Forget token</button>
+    </div>
+    <div class="status" id="settings-status"></div>
+  </section>
+
+  <div class="toolbar" role="toolbar" aria-label="Formatting">
+    <button type="button" class="b" data-cmd="bold" aria-label="Bold" aria-pressed="false">B</button>
+    <button type="button" class="i" data-cmd="italic" aria-label="Italic" aria-pressed="false">I</button>
+    <button type="button" data-cmd="link" aria-label="Link">Link</button>
+    <button type="button" data-cmd="insertUnorderedList" aria-label="Bulleted list" aria-pressed="false">• List</button>
+  </div>
+
+  <div id="editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Note text"
+       data-placeholder="What's on your mind?" autocapitalize="sentences"></div>
+
+  <div class="row">
+    <label class="check"><input type="checkbox" id="crosspost"> Cross-post to X</label>
+    <span class="count" id="count" hidden></span>
+  </div>
+
+  <button class="publish" id="publish" type="button" disabled>Publish</button>
+  <div class="status" id="status" aria-live="polite"></div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var $ = function (id) { return document.getElementById(id); };
+  var editor = $('editor');
+  var publishBtn = $('publish');
+  var statusEl = $('status');
+  var crosspost = $('crosspost');
+  var countEl = $('count');
+
+  // ---- storage (wrapped: private mode can throw) -------------------------
+  var store = {
+    get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : v; } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
+    del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
+  };
+  var K = { token: 'tw.token', repo: 'tw.repo', branch: 'tw.branch', draft: 'tw.draft' };
+  var DEFAULT_REPO = 'thoughtwax/thoughtwax.github.io';
+  var DEFAULT_BRANCH = 'master';
+  var SITE = 'https://thoughtwax.com';
+
+  function cfg() {
+    return {
+      token: store.get(K.token, ''),
+      repo: store.get(K.repo, DEFAULT_REPO) || DEFAULT_REPO,
+      branch: store.get(K.branch, DEFAULT_BRANCH) || DEFAULT_BRANCH
+    };
+  }
+
+  // ---- editor ------------------------------------------------------------
+  try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) {}
+
+  editor.innerHTML = store.get(K.draft, '');
+
+  function isEmpty() { return editor.textContent.replace(/\s+/g, '') === ''; }
+
+  function onChange() {
+    if (isEmpty() && editor.innerHTML !== '') {
+      // keep :empty placeholder working once everything is deleted
+      if (!editor.querySelector('li, img')) editor.innerHTML = '';
+    }
+    store.set(K.draft, editor.innerHTML);
+    publishBtn.disabled = isEmpty();
+    updateCount();
+    updateToolbarState();
+  }
+  editor.addEventListener('input', onChange);
+
+  // Paste as plain text so formatting from other apps never sneaks in.
+  editor.addEventListener('paste', function (e) {
+    var text = (e.clipboardData || window.clipboardData).getData('text/plain');
+    if (text == null) return;
+    e.preventDefault();
+    document.execCommand('insertText', false, text);
+  });
+
+  var savedRange = null;
+  function saveSelection() {
+    var sel = window.getSelection();
+    if (sel.rangeCount && editor.contains(sel.anchorNode)) savedRange = sel.getRangeAt(0).cloneRange();
+  }
+  function restoreSelection() {
+    if (!savedRange) return;
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(savedRange);
+  }
+  document.addEventListener('selectionchange', function () {
+    saveSelection();
+    updateToolbarState();
+  });
+
+  function updateToolbarState() {
+    ['bold', 'italic', 'insertUnorderedList'].forEach(function (cmd) {
+      var btn = document.querySelector('[data-cmd="' + cmd + '"]');
+      var on = false;
+      try { on = document.queryCommandState(cmd); } catch (e) {}
+      btn.setAttribute('aria-pressed', on && editor.contains(document.activeElement) ? 'true' : 'false');
+    });
+  }
+
+  document.querySelectorAll('.toolbar button').forEach(function (btn) {
+    // Keep the editor's focus and selection when a button is tapped.
+    btn.addEventListener('pointerdown', function (e) { e.preventDefault(); });
+    btn.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    btn.addEventListener('click', function () {
+      var cmd = btn.getAttribute('data-cmd');
+      editor.focus();
+      restoreSelection();
+      if (cmd === 'link') return makeLink();
+      document.execCommand(cmd, false, null);
+      onChange();
+    });
+  });
+
+  function makeLink() {
+    var sel = window.getSelection();
+    var anchor = sel.anchorNode && (sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement);
+    var existing = anchor && anchor.closest ? anchor.closest('#editor a') : null;
+    var range = savedRange;
+    var url = window.prompt('Link to', existing ? existing.getAttribute('href') : 'https://');
+    editor.focus();
+    if (range) { sel.removeAllRanges(); sel.addRange(range); }
+    if (url === null) return;
+    url = url.trim();
+    if (url === '' || url === 'https://') {
+      if (existing) { selectNode(existing); document.execCommand('unlink'); }
+      return onChange();
+    }
+    if (!/^[a-z][a-z0-9+.-]*:/i.test(url) && !/^\//.test(url)) url = 'https://' + url;
+    if (existing) {
+      existing.setAttribute('href', url);
+    } else if (sel.isCollapsed) {
+      document.execCommand('insertHTML', false, '<a href="' + escapeAttr(url) + '">' + escapeHtml(url) + '</a>&nbsp;');
+    } else {
+      document.execCommand('createLink', false, url);
+    }
+    onChange();
+  }
+  function selectNode(n) {
+    var r = document.createRange(); r.selectNodeContents(n);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function escapeHtml(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+  function escapeAttr(s) { return escapeHtml(s).replace(/"/g, '&quot;'); }
+
+  // ---- HTML -> Markdown ----------------------------------------------------
+  // Handles exactly what the toolbar can make: paragraphs, line breaks,
+  // bold, italic, links and bulleted/numbered lists.
+  function escapeMd(text) {
+    return text.replace(/ /g, ' ').replace(/([\\`*_\[\]<])/g, '\\$1');
+  }
+  function inline(node) {
+    var out = '';
+    node.childNodes.forEach(function (c) {
+      if (c.nodeType === 3) { out += escapeMd(c.nodeValue); return; }
+      if (c.nodeType !== 1) return;
+      var tag = c.tagName.toLowerCase();
+      var inner = inline(c);
+      if (tag === 'br') { out += '  \n'; return; }
+      if (!inner.trim()) { out += inner; return; }
+      // keep whitespace outside the markers, or Markdown won't recognise them
+      var m = inner.match(/^(\s*)([\s\S]*?)(\s*)$/);
+      var wrap = function (a, b) { return m[1] + a + m[2] + b + m[3]; };
+      var w = (c.style && c.style.fontWeight) || '';
+      if (tag === 'b' || tag === 'strong' || w === 'bold' || parseInt(w, 10) >= 600) out += wrap('**', '**');
+      else if (tag === 'i' || tag === 'em' || (c.style && c.style.fontStyle === 'italic')) out += wrap('*', '*');
+      else if (tag === 'a' && c.getAttribute('href')) out += wrap('[', '](' + c.getAttribute('href').replace(/[()\s]/g, function (ch) { return '%' + ch.charCodeAt(0).toString(16).toUpperCase().padStart(2, '0'); }) + ')');
+      else out += inner;
+    });
+    return out;
+  }
+  function blockStart(text) {
+    // a paragraph that happens to start like Markdown syntax stays plain text
+    return text.replace(/^(\s*)([#>+\-=])/, '$1\\$2').replace(/^(\s*\d+)\./, '$1\\.');
+  }
+  function toMarkdown(root) {
+    var blocks = [];
+    var loose = document.createElement('p');
+    function flushLoose() {
+      var t = inline(loose).replace(/^\s+|\s+$/g, '');
+      if (t) blocks.push(blockStart(t));
+      loose = document.createElement('p');
+    }
+    var BLOCK = /^(p|div|blockquote|h\d|ul|ol)$/;
+    function walk(container) {
+      container.childNodes.forEach(function (c) {
+        var tag = c.nodeType === 1 ? c.tagName.toLowerCase() : '';
+        if (tag === 'ul' || tag === 'ol') {
+          flushLoose();
+          var items = [];
+          c.querySelectorAll(':scope > li').forEach(function (li, i) {
+            var t = inline(li).replace(/^\s+|\s+$/g, '').replace(/ {2}\n/g, ' ');
+            if (t) items.push((tag === 'ol' ? (i + 1) + '. ' : '- ') + t);
+          });
+          if (items.length) blocks.push(items.join('\n'));
+        } else if (BLOCK.test(tag)) {
+          flushLoose();
+          var nested = Array.prototype.some.call(c.children, function (k) { return BLOCK.test(k.tagName.toLowerCase()); });
+          if (nested) { walk(c); flushLoose(); return; }
+          var t = inline(c).replace(/^\s+|\s+$/g, '').replace(/ {2}\n$/, '');
+          if (t) blocks.push(blockStart(t));
+        } else {
+          loose.appendChild(c.cloneNode(true));
+        }
+      });
+    }
+    walk(root);
+    flushLoose();
+    return blocks.join('\n\n');
+  }
+
+  function plainText(md) {
+    return md
+      .replace(/\[([^\]]*)\]\(([^)]*)\)/g, function (_, t, h) { return /^https?:\/\//.test(t) ? t : t + ' ' + h; })
+      .replace(/\*\*([\s\S]*?)\*\*/g, '$1')
+      .replace(/\*([\s\S]*?)\*/g, '$1')
+      .replace(/\\(.)/g, '$1')
+      .replace(/ {2}\n/g, '\n');
+  }
+
+  // X counts every URL as 23 characters.
+  function xLength(text) {
+    return Array.from(text.replace(/https?:\/\/\S+/g, 'x'.repeat(23))).length;
+  }
+
+  function updateCount() {
+    if (!crosspost.checked) { countEl.hidden = true; return; }
+    var n = xLength(plainText(toMarkdown(editor)));
+    countEl.hidden = false;
+    countEl.textContent = n + ' / 280';
+    countEl.classList.toggle('over', n > 280);
+    countEl.title = n > 280 ? 'Too long for one post: X gets a shortened version with a link to the note.' : '';
+  }
+  crosspost.addEventListener('change', updateCount);
+
+  // ---- settings ------------------------------------------------------------
+  var settings = $('settings');
+  function openSettings(msg) {
+    var c = cfg();
+    $('token').value = c.token;
+    $('repo').value = c.repo;
+    $('branch').value = c.branch;
+    settings.hidden = false;
+    setStatus($('settings-status'), msg || '', msg ? 'bad' : '');
+  }
+  $('settings-toggle').addEventListener('click', function () {
+    if (settings.hidden) openSettings(); else settings.hidden = true;
+  });
+  $('save-settings').addEventListener('click', function () {
+    store.set(K.token, $('token').value.trim());
+    store.set(K.repo, $('repo').value.trim() || DEFAULT_REPO);
+    store.set(K.branch, $('branch').value.trim() || DEFAULT_BRANCH);
+    var s = $('settings-status');
+    setStatus(s, 'Checking…');
+    gh('GET', '/repos/' + cfg().repo).then(function (r) {
+      if (!r.permissions || !r.permissions.push) throw new Error('This token can read the repository but not write to it.');
+      setStatus(s, 'Connected. You can post.', 'ok');
+      setTimeout(function () { settings.hidden = true; }, 900);
+    }).catch(function (e) { setStatus(s, e.message, 'bad'); });
+  });
+  $('forget-token').addEventListener('click', function () {
+    store.del(K.token);
+    $('token').value = '';
+    setStatus($('settings-status'), 'Token removed from this device.', 'ok');
+  });
+
+  // ---- GitHub --------------------------------------------------------------
+  function gh(method, path, body) {
+    var c = cfg();
+    return fetch('https://api.github.com' + path, {
+      method: method,
+      headers: {
+        'Accept': 'application/vnd.github+json',
+        'Authorization': 'Bearer ' + c.token,
+        'X-GitHub-Api-Version': '2022-11-28',
+        'Content-Type': 'application/json'
+      },
+      body: body ? JSON.stringify(body) : undefined
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        if (res.ok) return data;
+        var err = new Error(
+          res.status === 401 ? 'GitHub didn\'t accept the token. Check it in Settings.' :
+          res.status === 403 ? 'The token isn\'t allowed to do that. It needs Contents: Read and write on this repository.' :
+          res.status === 404 ? 'Not found on GitHub. Check the repository name and that the token can see it.' :
+          (data.message || ('GitHub error ' + res.status)));
+        err.status = res.status;
+        throw err;
+      });
+    });
+  }
+
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function stamp(d) {
+    var off = -d.getTimezoneOffset();
+    var sign = off >= 0 ? '+' : '-';
+    off = Math.abs(off);
+    return {
+      day: d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()),
+      hm: pad(d.getHours()) + pad(d.getMinutes()),
+      sec: pad(d.getSeconds()),
+      full: d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' +
+            pad(d.getHours()) + ':' + pad(d.getMinutes()) + ':' + pad(d.getSeconds()) + ' ' +
+            sign + pad(Math.floor(off / 60)) + pad(off % 60)
+    };
+  }
+  function b64(str) {
+    var bytes = new TextEncoder().encode(str);
+    var bin = '';
+    bytes.forEach(function (b) { bin += String.fromCharCode(b); });
+    return btoa(bin);
+  }
+  function exists(path) {
+    var c = cfg();
+    return gh('GET', '/repos/' + c.repo + '/contents/' + path + '?ref=' + encodeURIComponent(c.branch))
+      .then(function () { return true; }, function (e) { if (e.status === 404) return false; throw e; });
+  }
+
+  function setStatus(el, html, kind) {
+    el.innerHTML = html;
+    el.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  publishBtn.addEventListener('click', function () {
+    if (isEmpty()) return;
+    var c = cfg();
+    if (!c.token) return openSettings('Add your GitHub token first.');
+
+    var md = toMarkdown(editor);
+    var now = new Date();
+    var t = stamp(now);
+    var front = ['---', 'layout: note', 'date: ' + t.full];
+    if (crosspost.checked) front.push('crosspost: x');
+    front.push('---', '', md, '');
+    var content = front.join('\n');
+
+    publishBtn.disabled = true;
+    setStatus(statusEl, 'Publishing…');
+
+    var slug = t.hm;
+    var path = '_posts/' + t.day + '-' + slug + '.markdown';
+    exists(path).then(function (taken) {
+      if (taken) { slug = t.hm + t.sec; path = '_posts/' + t.day + '-' + slug + '.markdown'; }
+      var firstLine = plainText(md).split('\n')[0];
+      var msg = 'Note: ' + (firstLine.length > 60 ? firstLine.slice(0, 57) + '…' : firstLine);
+      return gh('PUT', '/repos/' + c.repo + '/contents/' + path, {
+        message: msg, content: b64(content), branch: c.branch
+      });
+    }).then(function (res) {
+      // GitHub Pages builds in UTC, so the permalink's year/month come from the UTC date
+      var url = SITE + '/' + now.getUTCFullYear() + '/' + pad(now.getUTCMonth() + 1) + '/' + slug + '/';
+      var x = crosspost.checked ? ' It goes to X once the page is live.' : '';
+      setStatus(statusEl,
+        'Posted. <a href="' + url + '">Your note</a> will be live in a minute or two.' + x +
+        (res.commit && res.commit.html_url ? ' <a href="' + res.commit.html_url + '">Commit</a>' : ''), 'ok');
+      editor.innerHTML = '';
+      crosspost.checked = false;
+      store.del(K.draft);
+      onChange();
+    }).catch(function (e) {
+      setStatus(statusEl, escapeHtml(e.message) + ' Your text is still here.', 'bad');
+      publishBtn.disabled = false;
+      if (e.status === 401 || e.status === 403) openSettings(e.message);
+    });
+  });
+
+  // expose for tests
+  window.__note = { toMarkdown: function () { return toMarkdown(editor); }, plainText: plainText, xLength: xLength };
+
+  onChange();
+  if (!cfg().token) openSettings();
+})();
+</script>
+</body>
+</html>

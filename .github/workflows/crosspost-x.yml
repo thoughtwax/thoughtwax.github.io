@@ -1,0 +1,56 @@
+# Posts a note to X when it's added with `crosspost: x` in its front matter
+# (the "Cross-post to X" checkbox in /post/ adds that line).
+#
+# One-time setup, in the repository's Settings > Secrets and variables > Actions,
+# add these four secrets from your X developer app (User authentication:
+# OAuth 1.0a, Read and write; then regenerate the Access Token and Secret):
+#   X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET
+name: Cross-post notes to X
+
+on:
+  push:
+    branches: [master]
+    paths: ['_posts/**']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: crosspost-x
+  cancel-in-progress: false
+
+jobs:
+  crosspost:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find notes added in this push
+        id: added
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            echo "files=" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          files=$(git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- '_posts/*.markdown' '_posts/*.md' | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.added.outputs.files != ''
+        with:
+          node-version: 22
+
+      - name: Post to X
+        if: steps.added.outputs.files != ''
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          FILES: ${{ steps.added.outputs.files }}
+        run: node .github/scripts/crosspost-x.mjs $FILES

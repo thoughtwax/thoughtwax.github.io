@@ -92,3 +92,7 @@ p.meta + .note { margin-top: -28px; }
 
 /* Notes page */
 p.meta-intro { font: 13px/16px 'IBM Plex Mono', 'Courier New', monospace; color: #575757; opacity: 0.6; margin-bottom: 48px; }
+
+/* Notes: text lines up with post text; the # hangs out in the left margin */
+.note { padding-left: 0; }
+.note a.hash { left: auto; right: 100%; margin-right: 0.75em; font: bold 13px/19px "IBM Plex Mono", "Courier New", monospace; }

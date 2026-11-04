@@ -88,3 +88,6 @@ p.meta { font-size: 12px; line-height: 16px; margin-bottom: 88px; }
 .note { margin-bottom: 40px; }
 p.meta + .note { margin-top: -28px; }
 .note + h2 { margin-top: 80px; }
+
+/* Notes page */
+p.meta-intro { font: 13px/16px 'IBM Plex Mono', 'Courier New', monospace; color: #575757; opacity: 0.6; margin-bottom: 48px; }

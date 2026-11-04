@@ -63,12 +63,13 @@ table.books td.author { color: #575757; }
 table.books td.stars { font-size: 20px; }
 table.books td.currently { color: #575757; }
 /* Notes: short untitled posts. The # permalink hangs at the start like a bullet. */
-.note { position: relative; padding-left: 2em; margin-bottom: 40px; }
+.note { position: relative; padding-left: 2em; margin-bottom: 20px; }
+p.meta + .note { margin-top: -28px; } /* a post's 88px meta margin collapses to 60px above a note */
 .note p, .note li { color: #8f8d87; }
 .note p { margin-bottom: 0; }
 .note p + p { margin-top: 1em; }
 .note a { font-weight: normal; color: #7a7873; }
 .note a.hash { position: absolute; left: 0; top: 0; font-weight: bold; color: #930909; border-bottom: 0; }
 .note a.hash:hover { color: #0FA0CE; }
-.note + h2 { margin-top: 6em; }
+.note + h2 { margin-top: 80px; }
 #post > .note:last-child { margin-bottom: 0; }

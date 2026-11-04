@@ -83,6 +83,7 @@ p.meta + .note { margin-top: -28px; } /* a post's 88px meta margin collapses to 
 p, li { font: 18px/32px 'EB Garamond', Georgia, serif; margin-bottom: 25px; }
 pre, blockquote, dl, figure, table, ul, ol, form { margin-bottom: 25px; }
 body, .intro p, .footer p, ul.posts li, .note p, .note li { font-size: 13px; line-height: 16px; }
+.note p, .note li { line-height: 19px; }
 h2 { font-size: 50px; line-height: 36px; margin: 0 0 25.2px; }
 p.meta { font-size: 12px; line-height: 16px; margin-bottom: 88px; }
 .note { margin-bottom: 40px; }

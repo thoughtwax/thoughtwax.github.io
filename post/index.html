@@ -53,7 +53,7 @@
       padding: 14px 0 12px;
     }
     header h1 { font: 600 13px/1 var(--mono); letter-spacing: 0.2em; text-transform: uppercase; margin: 0; }
-    header h1 span { color: var(--accent); }
+    header h1 span:first-child { color: var(--accent); }
     button { font: inherit; color: inherit; cursor: pointer; }
     .icon-btn {
       background: none; border: 0; padding: 8px; margin: -8px; color: var(--soft);
@@ -118,13 +118,42 @@
       height: 42px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper);
     }
     .settings .actions .primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    .nav { display: flex; gap: 20px; }
+    .panel {
+      border: 1px solid var(--rule); border-radius: 10px; padding: 14px; margin: 8px 0 16px; background: var(--field);
+    }
+    .panel[hidden] { display: none; }
+    .panel h2 { font: 600 14px/1.4 var(--mono); margin: 0 0 8px; }
+    .note-list { list-style: none; margin: 0; padding: 0; }
+    .note-list li + li { border-top: 1px solid var(--rule); }
+    .note-list button {
+      display: block; width: 100%; text-align: left; background: none; border: 0; padding: 12px 0;
+    }
+    .note-list .when { display: block; font-size: 12px; color: var(--soft); margin-bottom: 2px; }
+    .note-list .snip { display: block; font-size: 14px; line-height: 1.45; }
+    .more {
+      width: 100%; height: 42px; margin-top: 8px; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper);
+    }
+    .more[hidden] { display: none; }
+    .editbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      font-size: 13px; color: var(--soft); padding: 4px 0;
+    }
+    .editbar[hidden] { display: none; }
+    .row[hidden] { display: none; }
+    .row[hidden] + .publish { margin-top: 16px; }
+    .editbar a { color: inherit; }
   </style>
 </head>
 <body>
 <main>
   <header>
-    <h1><span>#</span> New note</h1>
-    <button class="icon-btn" id="settings-toggle" type="button">Settings</button>
+    <h1><span>#</span> <span id="title">New note</span></h1>
+    <div class="nav">
+      <button class="icon-btn" id="notes-toggle" type="button">Edit notes</button>
+      <button class="icon-btn" id="settings-toggle" type="button">Settings</button>
+    </div>
   </header>
 
   <section class="settings" id="settings" hidden>
@@ -146,6 +175,18 @@
     <div class="status" id="settings-status"></div>
   </section>
 
+  <section class="panel" id="notes" hidden>
+    <h2>Recent notes</h2>
+    <ul class="note-list" id="note-list"></ul>
+    <button type="button" class="more" id="more" hidden>Show more</button>
+    <div class="status" id="notes-status"></div>
+  </section>
+
+  <div class="editbar" id="editbar" hidden>
+    <span id="editing-label"></span>
+    <button class="icon-btn" id="cancel-edit" type="button">Cancel</button>
+  </div>
+
   <div class="toolbar" role="toolbar" aria-label="Formatting">
     <button type="button" class="b" data-cmd="bold" aria-label="Bold" aria-pressed="false">B</button>
     <button type="button" class="i" data-cmd="italic" aria-label="Italic" aria-pressed="false">I</button>
@@ -156,7 +197,7 @@
   <div id="editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Note text"
        data-placeholder="What's on your mind?" autocapitalize="sentences"></div>
 
-  <div class="row">
+  <div class="row" id="crosspost-row">
     <label class="check"><input type="checkbox" id="crosspost"> Cross-post to X</label>
     <span class="count" id="count" hidden></span>
   </div>
@@ -198,6 +239,7 @@
   // ---- editor ------------------------------------------------------------
   try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) {}
 
+  var editing = null; // the note being edited: { path, sha, front, body, url }
   editor.innerHTML = store.get(K.draft, '');
 
   function isEmpty() { return editor.textContent.replace(/\s+/g, '') === ''; }
@@ -207,7 +249,7 @@
       // keep :empty placeholder working once everything is deleted
       if (!editor.querySelector('li, img')) editor.innerHTML = '';
     }
-    store.set(K.draft, editor.innerHTML);
+    if (!editing) store.set(K.draft, editor.innerHTML);
     publishBtn.disabled = isEmpty();
     updateCount();
     updateToolbarState();
@@ -393,6 +435,7 @@
     setStatus($('settings-status'), msg || '', msg ? 'bad' : '');
   }
   $('settings-toggle').addEventListener('click', function () {
+    $('notes').hidden = true;
     if (settings.hidden) openSettings(); else settings.hidden = true;
   });
   $('save-settings').addEventListener('click', function () {
@@ -476,6 +519,7 @@
     if (!c.token) return openSettings('Add your GitHub token first.');
 
     var md = toMarkdown(editor);
+    if (editing) return saveEdit(md);
     var now = new Date();
     var t = stamp(now);
     var front = ['---', 'layout: note', 'date: ' + t.full];
@@ -513,8 +557,200 @@
     });
   });
 
+  // ---- editing earlier notes ---------------------------------------------
+  var NOTE_FILE = /^(\d{4})-(\d{2})-(\d{2})-(\d{4}(?:\d{2})?)\.(markdown|md)$/;
+  var PAGE = 10;
+  var allNotes = null;   // [{ name, path }] newest first
+  var shown = 0;
+  var cache = {};        // path -> { path, sha, front, body, date }
+
+  function fromB64(str) {
+    var bin = atob(str.replace(/\s/g, ''));
+    var bytes = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new TextDecoder().decode(bytes);
+  }
+  function splitFront(text) {
+    var m = text.match(/^(---\r?\n[\s\S]*?\r?\n---)\r?\n?([\s\S]*)$/);
+    if (!m) return null;
+    var date = (m[1].match(/^date:\s*(.+)$/m) || [])[1];
+    return { front: m[1], body: m[2].replace(/^\s+|\s+$/g, ''), isNote: /^layout:\s*["']?note["']?\s*$/m.test(m[1]), date: date };
+  }
+  function parseDate(str) {
+    if (!str) return null;
+    var d = new Date(str.trim().replace(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}(?::\d{2})?) ?([+-]\d{2})(\d{2})$/, '$1T$2$3:$4'));
+    return isNaN(d) ? null : d;
+  }
+  // Same rule as Jekyll here: /:year/:month/:title/, year and month from the date in UTC
+  function noteUrl(name, date) {
+    var m = name.match(NOTE_FILE);
+    var y = m[1], mo = m[2];
+    if (date) { y = String(date.getUTCFullYear()); mo = pad(date.getUTCMonth() + 1); }
+    return SITE + '/' + y + '/' + mo + '/' + m[4] + '/';
+  }
+  function whenLabel(name, date) {
+    if (!date) { var m = name.match(NOTE_FILE); date = new Date(+m[1], +m[2] - 1, +m[3], +m[4].slice(0, 2), +m[4].slice(2, 4)); }
+    return date.toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) + ', ' +
+           date.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function loadNote(entry) {
+    if (cache[entry.path]) return Promise.resolve(cache[entry.path]);
+    var c = cfg();
+    return gh('GET', '/repos/' + c.repo + '/contents/' + entry.path + '?ref=' + encodeURIComponent(c.branch)).then(function (f) {
+      var parts = splitFront(fromB64(f.content || ''));
+      if (!parts || !parts.isNote) return null;
+      var date = parseDate(parts.date);
+      return (cache[entry.path] = {
+        name: entry.name, path: entry.path, sha: f.sha, front: parts.front, body: parts.body,
+        label: whenLabel(entry.name, date), url: noteUrl(entry.name, date)
+      });
+    });
+  }
+
+  function showMore() {
+    var list = $('note-list');
+    var batch = allNotes.slice(shown, shown + PAGE);
+    shown += batch.length;
+    $('more').hidden = true;
+    setStatus($('notes-status'), 'Loading…');
+    return Promise.all(batch.map(loadNote)).then(function (notes) {
+      notes.forEach(function (n) {
+        if (!n) return;
+        var li = document.createElement('li');
+        var b = document.createElement('button');
+        b.type = 'button';
+        var when = document.createElement('span'); when.className = 'when'; when.textContent = n.label;
+        var snip = document.createElement('span'); snip.className = 'snip';
+        var t = plainText(n.body).replace(/\s+/g, ' ');
+        snip.textContent = t.length > 140 ? t.slice(0, 137) + '…' : t;
+        b.appendChild(when); b.appendChild(snip);
+        b.addEventListener('click', function () { startEdit(n); });
+        li.appendChild(b);
+        list.appendChild(li);
+      });
+      setStatus($('notes-status'), list.children.length ? '' : 'No notes yet.');
+      $('more').hidden = shown >= allNotes.length;
+    }).catch(function (e) {
+      shown -= batch.length;
+      $('more').hidden = false;
+      setStatus($('notes-status'), escapeHtml(e.message), 'bad');
+    });
+  }
+
+  function openNotes() {
+    if (!cfg().token) return openSettings('Add your GitHub token first.');
+    settings.hidden = true;
+    $('notes').hidden = false;
+    $('note-list').innerHTML = '';
+    shown = 0;
+    setStatus($('notes-status'), 'Loading…');
+    var c = cfg();
+    gh('GET', '/repos/' + c.repo + '/contents/_posts?ref=' + encodeURIComponent(c.branch)).then(function (files) {
+      allNotes = files
+        .filter(function (f) { return f.type === 'file' && NOTE_FILE.test(f.name); })
+        .sort(function (a, b) { return a.name < b.name ? 1 : -1; })
+        .map(function (f) { return { name: f.name, path: f.path }; });
+      return showMore();
+    }).catch(function (e) {
+      setStatus($('notes-status'), escapeHtml(e.message), 'bad');
+      if (e.status === 401 || e.status === 403) openSettings(e.message);
+    });
+  }
+  $('notes-toggle').addEventListener('click', function () {
+    if ($('notes').hidden) openNotes(); else $('notes').hidden = true;
+  });
+  $('more').addEventListener('click', showMore);
+
+  function setMode(note) {
+    editing = note;
+    $('title').textContent = note ? 'Edit note' : 'New note';
+    $('editbar').hidden = !note;
+    $('crosspost-row').hidden = !!note;
+    publishBtn.textContent = note ? 'Save changes' : 'Publish';
+    if (note) $('editing-label').innerHTML = 'Editing <a href="' + escapeAttr(note.url) + '">' + escapeHtml(note.label) + '</a>';
+  }
+  function startEdit(note) {
+    $('notes').hidden = true;
+    setMode(note);
+    editor.innerHTML = markdownToHtml(note.body);
+    setStatus(statusEl, '');
+    onChange();
+    window.scrollTo(0, 0);
+  }
+  function stopEdit() {
+    setMode(null);
+    editor.innerHTML = store.get(K.draft, '');
+    onChange();
+  }
+  $('cancel-edit').addEventListener('click', function () { stopEdit(); setStatus(statusEl, ''); });
+
+  function saveEdit(md) {
+    var c = cfg();
+    var note = editing;
+    publishBtn.disabled = true;
+    setStatus(statusEl, 'Saving…');
+    var firstLine = plainText(md).split('\n')[0];
+    gh('PUT', '/repos/' + c.repo + '/contents/' + note.path, {
+      message: 'Edit note: ' + (firstLine.length > 55 ? firstLine.slice(0, 52) + '…' : firstLine),
+      content: b64(note.front + '\n\n' + md + '\n'),
+      sha: note.sha,
+      branch: c.branch
+    }).then(function (res) {
+      note.sha = res.content && res.content.sha;
+      note.body = md;
+      stopEdit();
+      setStatus(statusEl, 'Saved. <a href="' + escapeAttr(note.url) + '">The note</a> updates in a minute or two.', 'ok');
+    }).catch(function (e) {
+      var msg = e.status === 409 ? 'This note changed somewhere else since you opened it. Cancel and open it again.' : e.message;
+      setStatus(statusEl, escapeHtml(msg) + ' Your text is still here.', 'bad');
+      publishBtn.disabled = false;
+      if (e.status === 401 || e.status === 403) openSettings(e.message);
+    });
+  }
+
+  // ---- Markdown -> HTML (for loading a note into the editor) ---------------
+  // The reverse of toMarkdown: paragraphs, line breaks, bold, italic, links, lists.
+  function mdInline(text) {
+    var held = [];
+    var s = text.replace(/\\([\\`*_{}\[\]()<>#+\-.!=|~])/g, function (_, ch) { held.push(ch); return '\u0000' + (held.length - 1) + '\u0001'; });
+    s = escapeHtml(s);
+    s = s.replace(/\[([^\]]*)\]\(([^)\s]+)\)/g, function (_, t, href) {
+      var real = href.replace(/\u0000(\d+)\u0001/g, function (_, i) { return held[i]; });
+      return '<a href="' + escapeAttr(real.replace(/&amp;/g, '&')) + '">' + t + '</a>';
+    });
+    s = s.replace(/&lt;(https?:\/\/[^\s&]+)&gt;/g, '<a href="$1">$1</a>');
+    s = s.replace(/\*\*([^*]+?)\*\*|__([^_]+?)__/g, function (_, a, b) { return '<b>' + (a || b) + '</b>'; });
+    s = s.replace(/\*([^*]+?)\*|(^|[^\w])_([^_]+?)_(?!\w)/g, function (_, a, pre, b) { return a != null ? '<i>' + a + '</i>' : pre + '<i>' + b + '</i>'; });
+    return s.replace(/\u0000(\d+)\u0001/g, function (_, i) { return escapeHtml(held[i]); });
+  }
+  function markdownToHtml(md) {
+    var blocks = md.replace(/\r\n?/g, '\n').replace(/^\s+|\s+$/g, '').split(/\n\s*\n/);
+    return blocks.map(function (block) {
+      var lines = block.split('\n');
+      var ul = lines.every(function (l) { return /^\s*[-*+]\s+/.test(l); });
+      var ol = lines.every(function (l) { return /^\s*\d+\.\s+/.test(l); });
+      if (ul || ol) {
+        var tag = ul ? 'ul' : 'ol';
+        return '<' + tag + '>' + lines.map(function (l) {
+          return '<li>' + mdInline(l.replace(/^\s*([-*+]|\d+\.)\s+/, '')) + '</li>';
+        }).join('') + '</' + tag + '>';
+      }
+      var html = '';
+      lines.forEach(function (l, i) {
+        var br = / {2,}$/.test(l) || /\\$/.test(l);
+        html += mdInline(l.replace(/ {2,}$/, '').replace(/\\$/, ''));
+        if (i < lines.length - 1) html += br ? '<br>' : ' ';
+      });
+      return '<p>' + html + '</p>';
+    }).join('');
+  }
+
   // expose for tests
-  window.__note = { toMarkdown: function () { return toMarkdown(editor); }, plainText: plainText, xLength: xLength };
+  window.__note = {
+    toMarkdown: function () { return toMarkdown(editor); }, plainText: plainText, xLength: xLength,
+    roundTrip: function (md) { var d = document.createElement('div'); d.innerHTML = markdownToHtml(md); return toMarkdown(d); }
+  };
 
   onChange();
   if (!cfg().token) openSettings();

@@ -1,4 +1,5 @@
-body { font: 13px/20px 'JetBrains Mono', 'Inconsolata', 'Courier New', monospace; margin: 0; background-color: #f7f6f2; }
+/* Type: Bebas Neue for post titles, EB Garamond for writing, IBM Plex Mono for everything around it */
+body { font: 13px/20px 'IBM Plex Mono', 'Courier New', monospace; margin: 0; background-color: #f7f6f2; }
 
 .container {margin: 8em auto 2em; max-width: 640px;}
 .intro { opacity: 0.6; }
@@ -14,13 +15,17 @@ body { font: 13px/20px 'JetBrains Mono', 'Inconsolata', 'Courier New', monospace
 }
 */
 
-h1 { font: 13px/20px 'JetBrains Mono', 'Inconsolata', 'Courier New', monospace; margin: 0; letter-spacing: 0.2em; text-transform: uppercase; }
-h2 { font: italic 30px 'Inter', serif; color: #333; letter-spacing: 0.01em; margin: 0 0 1em 0; line-height: 1.25em; font-weight: 600; }
+h1 { font: 13px/20px 'IBM Plex Mono', 'Courier New', monospace; margin: 0; letter-spacing: 0.2em; text-transform: uppercase; }
+h2 { font: 400 42px/1.05 'Bebas Neue', 'Arial Narrow', sans-serif; color: #333; letter-spacing: 0.01em; margin: 0 0 0.6em 0; }
 h1 a { text-decoration: none; border: none; }
-h2 a, h2 a { color: #333; text-decoration: none; border-bottom: 0; font-weight: 600; }
+h2 a { color: #333; text-decoration: none; border-bottom: 1px solid transparent; font-weight: 400; }
+h2 a:hover { color: #333; border-bottom-color: currentColor; }
 
-p { font: 13px/20px 'JetBrains Mono', 'Inconsolata', 'Courier New', monospace; color: #575757; }
+p, li { font: 20px/1.55 'EB Garamond', Georgia, serif; color: #333; }
+@media (max-width: 550px) { p, li { font-size: 18px; } }
+.intro p, .footer p, p.meta, ul.posts li { font: 13px/20px 'IBM Plex Mono', 'Courier New', monospace; color: #575757; }
 a { font-weight: bold; color: #575757; text-decoration: none; border-bottom: 1px solid #ccc; }
+p a, li a { font-weight: inherit; color: inherit; }
 a:hover { color: #0FA0CE; border-color: #0FA0CE; }
 
 p.meta { margin-bottom: 8em; font-size: 11px; }

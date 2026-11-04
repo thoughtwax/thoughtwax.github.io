@@ -3,7 +3,8 @@
 <head>
 
   <meta charset="utf-8">
-  <title>{{ page.title }} {% if page.layout == "post" %}
+  {% if page.layout == "note" %}{% capture note_title %}{{ page.content | strip_html | truncatewords: 8 }}{% endcapture %}{% endif %}
+  <title>{% if page.layout == "note" %}{{ note_title | strip }} — thoughtwax{% else %}{{ page.title }}{% endif %} {% if page.layout == "post" %}
             — thoughtwax
           {% endif %}</title>
   <meta name="description" content="A blog by Emmet Connolly, digital product designer">
@@ -11,7 +12,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:title" content="{% if page.layout == "note" %}{{ note_title | strip }}{% else %}{{ page.title | default: site.title }}{% endif %}">
   <meta property="og:description" content="{{ page.summary | default: page.content | strip_html | truncatewords: 30 }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="http://thoughtwax.com{{ page.url }}">

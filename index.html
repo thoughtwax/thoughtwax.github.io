@@ -7,6 +7,16 @@ title: thoughtwax - a blog by Emmet Connolly
 <div id="post">
 
   {% for post in site.posts offset: 0 limit: 6 %}
+    {% if post.layout == "note" %}
+    <div class="note h-entry">
+      <a class="hash u-url" href="{{ post.url }}" aria-label="Permalink to this note">#</a>
+      <div class="e-content">
+        {{ post.content }}
+      </div>
+    </div>
+    {% continue %}
+    {% endif %}
+
     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
 
     {{ post.content }}

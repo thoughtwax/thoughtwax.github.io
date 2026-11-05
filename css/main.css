@@ -74,19 +74,19 @@ p.meta + .note { margin-top: -28px; } /* a post's 88px meta margin collapses to 
 .note p { margin-bottom: 0; }
 .note p + p { margin-top: 1em; }
 .note a { font-weight: bold; color: #7a7873; }
-.note a.hash { position: absolute; right: 100%; top: 0; padding-right: 16px; font-weight: bold; color: #930909; border-bottom: 0; }
+.note a.hash { position: absolute; right: 100%; top: 2px; padding-right: 16px; font-weight: bold; color: #930909; border-bottom: 0; }
 .note a.hash:hover { color: #0FA0CE; }
 
 /* Posts: a star permalink hangs in the same margin column, beside the title */
 h2 { position: relative; }
-h2 a.star { position: absolute; right: 100%; top: 0; padding-right: 16px; font: 400 28px/36px 'IBM Plex Mono', 'Courier New', monospace; color: #930909; border-bottom: 0; }
+h2 a.star { position: absolute; right: 100%; margin-right: -0.1em; /* cancels the star's side bearing so its ink lines up with the # */ top: -6px; padding-right: 16px; font: 400 28px/36px 'IBM Plex Mono', 'Courier New', monospace; color: #930909; border-bottom: 0; }
 h2 a.star:hover { color: #0FA0CE; border-bottom: 0; }
 /* Phones: the left margin is twice the right one, to make room for the hanging glyphs.
    Both glyphs share the same right edge, so the wider star reaches further left than the #. */
 @media (max-width: 549px) {
   .container { width: 100%; padding: 0 24px 0 48px; }
   .note a.hash, h2 a.star { padding-right: 14px; }
-  h2 a.star { font-size: 22px; }
+  h2 a.star { font-size: 22px; top: -5px; }
 }
 .note + h2 { margin-top: 80px; }
 #post > .note:last-child { margin-bottom: 0; }

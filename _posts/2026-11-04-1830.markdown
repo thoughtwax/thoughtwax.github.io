@@ -3,4 +3,4 @@ layout: note
 date: 2026-11-04 18:30:27 +0000
 ---
 
-[The beleaguered Galway ring road project](https://progressireland.substack.com/p/galway-should-get-its-ring-road), which will run relatively close to my house, should finally start construction next year. It got approved for outlasting the objectors rather than the strength of any particular vision, but there's still time to add one! I can see this becoming a test case for whether Ireland can build things.
+[The beleaguered Galway ring road project](https://progressireland.substack.com/p/galway-should-get-its-ring-road) (which will run \<1km from my house) should finally start construction next year. It got approved by outlasting objectors rather than on the strength of a particular vision, but there's still time to add one! You can imagine this project becoming a test case for whether Ireland can build things.

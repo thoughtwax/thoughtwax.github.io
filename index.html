@@ -17,7 +17,7 @@ title: thoughtwax - a blog by Emmet Connolly
     {% continue %}
     {% endif %}
 
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <h2><a class="star u-url" href="{{ post.url }}" aria-label="Permalink to this post">&#9733;</a><a href="{{ post.url }}">{{ post.title }}</a></h2>
 
     {{ post.content }}
 

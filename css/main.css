@@ -81,11 +81,11 @@ p.meta + .note { margin-top: -28px; } /* a post's 88px meta margin collapses to 
 h2 { position: relative; }
 h2 a.star { position: absolute; right: 100%; top: 0; padding-right: 16px; font: 400 28px/36px 'IBM Plex Mono', 'Courier New', monospace; color: #930909; border-bottom: 0; }
 h2 a.star:hover { color: #0FA0CE; border-bottom: 0; }
-/* Phones: Skeleton's gutter is too tight for the hanging glyphs, so widen it and pull the glyphs in a little.
+/* Phones: the left margin is twice the right one, to make room for the hanging glyphs.
    Both glyphs share the same right edge, so the wider star reaches further left than the #. */
 @media (max-width: 549px) {
-  .container { width: 100%; padding: 0 40px; }
-  .note a.hash, h2 a.star { padding-right: 10px; }
+  .container { width: 100%; padding: 0 24px 0 48px; }
+  .note a.hash, h2 a.star { padding-right: 14px; }
   h2 a.star { font-size: 22px; }
 }
 .note + h2 { margin-top: 80px; }

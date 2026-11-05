@@ -73,16 +73,21 @@ p.meta + .note { margin-top: -28px; } /* a post's 88px meta margin collapses to 
 .note p, .note li { font: 13px/20px 'IBM Plex Mono', 'JetBrains Mono', 'Courier New', monospace; color: #8f8d87; } /* stays mono even when post text goes serif */
 .note p { margin-bottom: 0; }
 .note p + p { margin-top: 1em; }
-.note a { font-weight: normal; color: #7a7873; }
-.note a.hash { position: absolute; right: 100%; top: 0; padding-right: 8px; font-weight: bold; color: #930909; border-bottom: 0; }
+.note a { font-weight: bold; color: #7a7873; }
+.note a.hash { position: absolute; right: 100%; top: 0; padding-right: 16px; font-weight: bold; color: #930909; border-bottom: 0; }
 .note a.hash:hover { color: #0FA0CE; }
 
 /* Posts: a star permalink hangs in the same margin column, beside the title */
 h2 { position: relative; }
-h2 a.star { position: absolute; right: 100%; top: 4px; padding-right: 8px; font: 400 16px/1 'IBM Plex Mono', 'Courier New', monospace; color: #930909; border-bottom: 0; }
+h2 a.star { position: absolute; right: 100%; top: 0; padding-right: 16px; font: 400 28px/36px 'IBM Plex Mono', 'Courier New', monospace; color: #930909; border-bottom: 0; }
 h2 a.star:hover { color: #0FA0CE; border-bottom: 0; }
-/* Narrow phones: Skeleton's 20px gutter is too tight for the hanging glyphs, so widen it a little */
-@media (max-width: 399px) { .container { padding: 0 28px; } }
+/* Phones: Skeleton's gutter is too tight for the hanging glyphs, so widen it and pull the glyphs in a little.
+   Both glyphs share the same right edge, so the wider star reaches further left than the #. */
+@media (max-width: 549px) {
+  .container { width: 100%; padding: 0 40px; }
+  .note a.hash, h2 a.star { padding-right: 10px; }
+  h2 a.star { font-size: 22px; }
+}
 .note + h2 { margin-top: 80px; }
 #post > .note:last-child { margin-bottom: 0; }
 

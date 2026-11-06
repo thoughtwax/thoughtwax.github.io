@@ -1,7 +1,9 @@
-// Cross-posts newly added notes to X.
+// Federates newly added notes and posts to X (@thoughtwax_bot).
 //
 // Usage: node crosspost-x.mjs <file> [<file> ...]
-// Only files with `layout: note` and `crosspost: x` in their front matter are posted.
+// Notes (`layout: note`) go out as their text; posts go out as "Title <link>".
+// Skipped: `published: false`, `crosspost: no` in front matter, and anything
+// dated more than MAX_AGE_DAYS ago (so backfilled or imported posts stay quiet).
 // Needs X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET in the environment.
 // Set DRY_RUN=1 to print what would be posted without calling X.
 
@@ -12,6 +14,7 @@ import { createHmac, randomBytes } from 'node:crypto';
 const SITE = 'https://thoughtwax.com';
 const LIMIT = 280;
 const URL_LEN = 23; // X counts every link as 23 characters
+const MAX_AGE_DAYS = 3;
 
 export function parseNote(source) {
   const m = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -24,8 +27,27 @@ export function parseNote(source) {
   return { front, body: m[2].trim() };
 }
 
-export function wantsX(front) {
-  return front.layout === 'note' && /(^|[\s,\[])x([\s,\]]|$)/i.test(front.crosspost || '');
+export function kindOf(front) {
+  if (/^(false|no)$/i.test(front.published || '')) return null;
+  if (/^(no|none|false|off)$/i.test(front.crosspost || '')) return null;
+  if (front.layout === 'note') return 'note';
+  if (front.title) return 'post';
+  return null;
+}
+
+// Date from front matter if present, otherwise from the filename.
+export function postDate(file, front) {
+  if (front.date) {
+    const d = new Date(front.date.replace(/^(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2}(?::\d{2})?) ?([+-]\d{2})(\d{2})$/, '$1T$2$3:$4'));
+    if (!isNaN(d)) return d;
+  }
+  const fm = basename(file).match(/^(\d{4}-\d{2}-\d{2})-/);
+  return fm ? new Date(fm[1] + 'T12:00:00Z') : null;
+}
+
+export function isRecent(file, front, now = Date.now()) {
+  const d = postDate(file, front);
+  return !!d && now - d.getTime() <= MAX_AGE_DAYS * 86_400_000;
 }
 
 // Jekyll permalink is /:year/:month/:title/, with the date taken from front
@@ -70,6 +92,14 @@ export function composePost(text, url) {
   }
   if (!cut.trim()) cut = [...text].slice(0, room).join(''); // one enormous word
   return `${cut.trimEnd()}… ${url}`;
+}
+
+// A full post goes out as its title and a link.
+export function composeLink(title, url) {
+  const room = LIMIT - URL_LEN - 1;
+  let t = title.trim();
+  if ([...t].length > room) t = [...t].slice(0, room - 1).join('').trimEnd() + '…';
+  return `${t} ${url}`;
 }
 
 // ---- OAuth 1.0a (user context) -------------------------------------------
@@ -126,20 +156,24 @@ async function main(files) {
     accessToken: process.env.X_ACCESS_TOKEN,
     accessSecret: process.env.X_ACCESS_TOKEN_SECRET,
   };
-  const notes = [];
+  const items = [];
   for (const file of files) {
-    const note = parseNote(readFileSync(file, 'utf8'));
-    if (note && wantsX(note.front)) notes.push({ file, ...note });
+    const entry = parseNote(readFileSync(file, 'utf8'));
+    const kind = entry && kindOf(entry.front);
+    if (!kind) { console.log(`Skipping ${file} (draft, opted out, or not a note/post).`); continue; }
+    if (!isRecent(file, entry.front)) { console.log(`Skipping ${file} (dated more than ${MAX_AGE_DAYS} days ago).`); continue; }
+    items.push({ file, kind, ...entry });
   }
-  if (!notes.length) { console.log('No notes marked for X.'); return; }
+  if (!items.length) { console.log('Nothing new to post to X.'); return; }
   if (!dryRun && Object.values(creds).some((v) => !v)) {
-    throw new Error('A note asked to cross-post to X, but the X_* repository secrets are not set. See .github/workflows/crosspost-x.yml.');
+    console.log('X_* repository secrets are not set yet, so nothing was posted. See .github/workflows/crosspost-x.yml.');
+    return;
   }
 
   let failed = false;
-  for (const { file, front, body } of notes) {
+  for (const { file, kind, front, body } of items) {
     const url = permalink(file, front);
-    const text = composePost(toPlainText(body), url);
+    const text = kind === 'note' ? composePost(toPlainText(body), url) : composeLink(toPlainText(front.title), url);
     console.log(`\n${file}\n${url}\n---\n${text}\n---`);
     if (dryRun) continue;
     try {

@@ -198,7 +198,7 @@
        data-placeholder="What's on your mind?" autocapitalize="sentences"></div>
 
   <div class="row" id="crosspost-row">
-    <label class="check"><input type="checkbox" id="crosspost"> Cross-post to X</label>
+    <label class="check"><input type="checkbox" id="crosspost" checked> Post to X</label>
     <span class="count" id="count" hidden></span>
   </div>
 
@@ -523,7 +523,7 @@
     var now = new Date();
     var t = stamp(now);
     var front = ['---', 'layout: note', 'date: ' + t.full];
-    if (crosspost.checked) front.push('crosspost: x');
+    if (!crosspost.checked) front.push('crosspost: no');
     front.push('---', '', md, '');
     var content = front.join('\n');
 
@@ -547,7 +547,7 @@
         'Posted. <a href="' + url + '">Your note</a> will be live in a minute or two.' + x +
         (res.commit && res.commit.html_url ? ' <a href="' + res.commit.html_url + '">Commit</a>' : ''), 'ok');
       editor.innerHTML = '';
-      crosspost.checked = false;
+      crosspost.checked = true;
       store.del(K.draft);
       onChange();
     }).catch(function (e) {

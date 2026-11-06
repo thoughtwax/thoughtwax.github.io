@@ -3,4 +3,6 @@ layout: note
 date: 2026-11-04 18:29:00 +0000
 ---
 
-Going to test out short form notes like this... tweets, basically. While X has been great for following AI progress, I just don't enjoy it as a place to post, and would prefer to build a history here. And, thank Claude, there's zero excuse not to just type into your own text box any more. But also cross-posting to @thoughtwax_bot if you want to follow there
+Going to try posting short notes like this... tweets, basically.  
+  
+While Twitter/X has been great for following AI progress I just don't enjoy it as a place to post, and it's easy to run your own text box now. [RSS feed](https://thoughtwax.com/notes/feed.xml), and cross-posted to [@thoughtwax\_bot](https://x.com/thoughtwax_bot) too.

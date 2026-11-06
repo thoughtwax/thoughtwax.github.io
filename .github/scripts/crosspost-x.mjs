@@ -152,6 +152,14 @@ async function postToX(text, creds, replyTo) {
   return data.data;
 }
 
+async function deleteFromX(id, creds) {
+  const endpoint = `https://api.x.com/2/tweets/${id}`;
+  const res = await fetch(endpoint, { method: 'DELETE', headers: { Authorization: oauthHeader('DELETE', endpoint, creds) } });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`X said ${res.status} deleting ${id}: ${JSON.stringify(data)}`);
+  console.log(`Deleted from X: ${id}`);
+}
+
 // Full note in one post; if X won't take a long post, as a thread.
 async function postNote(text, creds) {
   try {
@@ -178,14 +186,17 @@ async function main(files) {
     const entry = parseNote(readFileSync(file, 'utf8'));
     const kind = entry && kindOf(entry.front);
     if (!kind) { console.log(`Skipping ${file} (draft, opted out, or not a note/post).`); continue; }
-    if (!isRecent(file, entry.front)) { console.log(`Skipping ${file} (dated more than ${MAX_AGE_DAYS} days ago).`); continue; }
+    if (!process.env.FORCE && !isRecent(file, entry.front)) { console.log(`Skipping ${file} (dated more than ${MAX_AGE_DAYS} days ago).`); continue; }
     items.push({ file, kind, ...entry });
   }
-  if (!items.length) { console.log('Nothing new to post to X.'); return; }
   if (!dryRun && Object.values(creds).some((v) => !v)) {
     console.log('X_* repository secrets are not set yet, so nothing was posted. See .github/workflows/crosspost-x.yml.');
     return;
   }
+  for (const id of (process.env.DELETE_IDS || '').split(/[\s,]+/).filter(Boolean)) {
+    if (dryRun) console.log(`Would delete ${id}`); else await deleteFromX(id, creds);
+  }
+  if (!items.length) { console.log('Nothing new to post to X.'); return; }
 
   let failed = false;
   for (const { file, kind, front, body } of items) {

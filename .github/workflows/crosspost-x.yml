@@ -15,6 +15,16 @@ on:
   push:
     branches: [master]
     paths: ['_posts/**']
+  # Manual run (Actions tab > Run workflow): repost given files, optionally
+  # deleting earlier X posts first. Skips the age check.
+  workflow_dispatch:
+    inputs:
+      files:
+        description: 'Post files to (re)post, space separated, e.g. _posts/2026-11-04-1829.markdown'
+        required: false
+      delete_ids:
+        description: 'X post ids to delete first, space separated'
+        required: false
 
 permissions:
   contents: read
@@ -37,7 +47,11 @@ jobs:
         env:
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.sha }}
+          MANUAL_FILES: ${{ inputs.files }}
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "files=$MANUAL_FILES" >> "$GITHUB_OUTPUT"; exit 0
+          fi
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
             echo "files=" >> "$GITHUB_OUTPUT"; exit 0
           fi
@@ -45,16 +59,18 @@ jobs:
           echo "files=$files" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-node@v4
-        if: steps.added.outputs.files != ''
+        if: steps.added.outputs.files != '' || inputs.delete_ids != ''
         with:
           node-version: 22
 
       - name: Post to X
-        if: steps.added.outputs.files != ''
+        if: steps.added.outputs.files != '' || inputs.delete_ids != ''
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           FILES: ${{ steps.added.outputs.files }}
+          DELETE_IDS: ${{ inputs.delete_ids }}
+          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: node .github/scripts/crosspost-x.mjs $FILES

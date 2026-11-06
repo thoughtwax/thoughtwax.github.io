@@ -99,6 +99,7 @@ body, .intro p, .footer p, ul.posts li, .note p, .note li { font-size: 13px; lin
 h2 { font-size: 50px; line-height: 36px; margin: 0 0 25.2px; }
 p.meta { font-size: 12px; line-height: 16px; margin-bottom: 88px; }
 .note { margin-bottom: 40px; }
+p.note-date { margin-top: 24px; } /* standalone note page: date sits below the note like a post's does */
 p.meta + .note { margin-top: -28px; }
 .note + h2 { margin-top: 80px; }
 

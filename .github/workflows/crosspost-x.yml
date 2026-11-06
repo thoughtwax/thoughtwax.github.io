@@ -1,11 +1,14 @@
-# Posts a note to X when it's added with `crosspost: x` in its front matter
-# (the "Cross-post to X" checkbox in /post/ adds that line).
+# Federates every newly added note and post to X as @thoughtwax_bot.
+# Notes go out as their text, posts as "Title <link>". Only files added in a
+# push are considered, so edits and old posts are never reposted. To keep one
+# off X, add `crosspost: no` to its front matter (or untick "Post to X" in /post/).
 #
 # One-time setup, in the repository's Settings > Secrets and variables > Actions,
-# add these four secrets from your X developer app (User authentication:
-# OAuth 1.0a, Read and write; then regenerate the Access Token and Secret):
+# add these four secrets from the bot account's X developer app (User
+# authentication: OAuth 1.0a, Read and write; then regenerate the Access Token
+# and Secret). Until they exist the workflow logs what it would post and stops.
 #   X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET
-name: Cross-post notes to X
+name: Federate notes and posts to X
 
 on:
   push:
@@ -28,7 +31,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find notes added in this push
+      - name: Find notes and posts added in this push
         id: added
         env:
           BEFORE: ${{ github.event.before }}

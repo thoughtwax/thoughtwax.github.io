@@ -9,7 +9,7 @@
 // Needs X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET in the environment.
 // Set DRY_RUN=1 to print what would be posted without calling X.
 
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { basename } from 'node:path';
 import { createHmac, randomBytes } from 'node:crypto';
 
@@ -17,6 +17,10 @@ const SITE = 'https://thoughtwax.com';
 const LIMIT = 280;
 const URL_LEN = 23; // X counts every link as 23 characters
 const MAX_AGE_DAYS = 3;
+// Which X posts belong to which file, so an edited note can replace its old posts.
+const MAP_FILE = '.github/x-posts.json';
+const loadMap = () => (existsSync(MAP_FILE) ? JSON.parse(readFileSync(MAP_FILE, 'utf8')) : {});
+const saveMap = (map) => writeFileSync(MAP_FILE, JSON.stringify(map, null, 2) + '\n');
 
 export function parseNote(source) {
   const m = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
@@ -185,13 +189,20 @@ async function main(files) {
     accessToken: process.env.X_ACCESS_TOKEN,
     accessSecret: process.env.X_ACCESS_TOKEN_SECRET,
   };
+  // UPDATE_FILES: edited notes (or a manual run). Their old X posts are
+  // deleted and they're posted again, whatever their date.
+  const updates = new Set((process.env.UPDATE_FILES || '').split(/\s+/).filter(Boolean));
+  const map = loadMap();
   const items = [];
-  for (const file of files) {
+  for (const file of [...new Set([...files, ...updates])]) {
+    if (!existsSync(file)) { console.log(`Skipping ${file} (no longer exists).`); continue; }
     const entry = parseNote(readFileSync(file, 'utf8'));
     const kind = entry && kindOf(entry.front);
     if (!kind) { console.log(`Skipping ${file} (draft, opted out, or not a note/post).`); continue; }
-    if (!process.env.FORCE && !isRecent(file, entry.front)) { console.log(`Skipping ${file} (dated more than ${MAX_AGE_DAYS} days ago).`); continue; }
-    items.push({ file, kind, ...entry });
+    const update = updates.has(file);
+    if (!update && !process.env.FORCE && !isRecent(file, entry.front)) { console.log(`Skipping ${file} (dated more than ${MAX_AGE_DAYS} days ago).`); continue; }
+    if (!update && map[file]?.length) { console.log(`Skipping ${file} (already on X).`); continue; }
+    items.push({ file, kind, update, ...entry });
   }
   if (!dryRun && Object.values(creds).some((v) => !v)) {
     console.log('X_* repository secrets are not set yet, so nothing was posted. See .github/workflows/crosspost-x.yml.');
@@ -203,15 +214,22 @@ async function main(files) {
   if (!items.length) { console.log('Nothing new to post to X.'); return; }
 
   let failed = false;
-  for (const { file, kind, front, body } of items) {
+  for (const { file, kind, update, front, body } of items) {
     const url = permalink(file, front);
     const text = kind === 'note' ? toPlainText(body) : composeLink(toPlainText(front.title), url);
     console.log(`\n${file}\n${url}\n---\n${text}\n---`);
     if (dryRun) { if (kind === 'note' && xLength(text) > LIMIT) console.log(`(as a thread if needed: ${splitThread(text).length} posts)`); continue; }
     try {
+      if (update) {
+        for (const id of map[file] || []) {
+          try { await deleteFromX(id, creds); } catch (e) { console.warn(e.message); }
+        }
+        delete map[file]; saveMap(map);
+      }
       if (!(await waitUntilLive(url))) console.warn(`Not live yet at ${url}; posting anyway.`);
       const tweets = kind === 'note' ? await postNote(text, creds) : [await postToX(text, creds)];
       for (const t of tweets) console.log(`Posted to X: https://x.com/i/status/${t.id}`);
+      map[file] = tweets.map((t) => t.id); saveMap(map);
     } catch (e) {
       failed = true;
       console.error(`Could not post ${file}: ${e.message}`);

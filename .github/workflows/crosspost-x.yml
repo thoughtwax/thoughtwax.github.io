@@ -1,8 +1,12 @@
 # Federates every newly added note and post to X as @thoughtwax_bot.
 # Notes go out as their full text (a thread if X refuses a long post),
-# posts as "Title <link>". Only files added in a
-# push are considered, so edits and old posts are never reposted. To keep one
-# off X, add `crosspost: no` to its front matter (or untick "Post to X" in /post/).
+# posts as "Title <link>". To keep one off X, add `crosspost: no` to its
+# front matter (or untick "Post to X" in /post/).
+#
+# Edits: a commit whose message contains "[x]" (what "Update on X" in /post/
+# adds) deletes the edited note's old X posts and posts it again. Other edits
+# leave X alone. Which X posts belong to which file is kept in
+# .github/x-posts.json, which this workflow commits back.
 #
 # One-time setup, in the repository's Settings > Secrets and variables > Actions,
 # add these four secrets from the bot account's X developer app (User
@@ -15,19 +19,19 @@ on:
   push:
     branches: [master]
     paths: ['_posts/**']
-  # Manual run (Actions tab > Run workflow): repost given files, optionally
-  # deleting earlier X posts first. Skips the age check.
+  # Manual run (Actions tab > Run workflow): repost the given files, replacing
+  # their earlier X posts. Extra X post ids to delete can be given too.
   workflow_dispatch:
     inputs:
       files:
         description: 'Post files to (re)post, space separated, e.g. _posts/2026-11-04-1829.markdown'
         required: false
       delete_ids:
-        description: 'X post ids to delete first, space separated'
+        description: 'Extra X post ids to delete, space separated'
         required: false
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: crosspost-x
@@ -42,7 +46,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find notes and posts added in this push
+      - name: Find notes and posts to send
         id: added
         env:
           BEFORE: ${{ github.event.before }}
@@ -50,27 +54,44 @@ jobs:
           MANUAL_FILES: ${{ inputs.files }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "files=$MANUAL_FILES" >> "$GITHUB_OUTPUT"; exit 0
+            echo "files=" >> "$GITHUB_OUTPUT"
+            echo "updates=$MANUAL_FILES" >> "$GITHUB_OUTPUT"; exit 0
           fi
           if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
-            echo "files=" >> "$GITHUB_OUTPUT"; exit 0
+            echo "files=" >> "$GITHUB_OUTPUT"; echo "updates=" >> "$GITHUB_OUTPUT"; exit 0
           fi
           files=$(git diff --name-only --diff-filter=A "$BEFORE" "$AFTER" -- '_posts/*.markdown' '_posts/*.md' | tr '\n' ' ')
+          updates=""
+          for c in $(git log --format=%H --fixed-strings --grep='[x]' "$BEFORE..$AFTER"); do
+            updates="$updates $(git diff-tree --no-commit-id --name-only -r --diff-filter=M "$c" -- '_posts/*.markdown' '_posts/*.md' | tr '\n' ' ')"
+          done
           echo "files=$files" >> "$GITHUB_OUTPUT"
+          echo "updates=$(echo $updates | tr ' ' '\n' | sort -u | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
 
       - uses: actions/setup-node@v4
-        if: steps.added.outputs.files != '' || inputs.delete_ids != ''
+        if: steps.added.outputs.files != '' || steps.added.outputs.updates != '' || inputs.delete_ids != ''
         with:
           node-version: 22
 
       - name: Post to X
-        if: steps.added.outputs.files != '' || inputs.delete_ids != ''
+        if: steps.added.outputs.files != '' || steps.added.outputs.updates != '' || inputs.delete_ids != ''
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_SECRET: ${{ secrets.X_API_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           FILES: ${{ steps.added.outputs.files }}
+          UPDATE_FILES: ${{ steps.added.outputs.updates }}
           DELETE_IDS: ${{ inputs.delete_ids }}
-          FORCE: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: node .github/scripts/crosspost-x.mjs $FILES
+
+      - name: Save which X posts belong to which note
+        if: always() && (steps.added.outputs.files != '' || steps.added.outputs.updates != '')
+        run: |
+          git diff --quiet -- .github/x-posts.json && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898333+github-actions[bot]@users.noreply.github.com'
+          git add .github/x-posts.json
+          git commit -m 'Record X post ids'
+          for i in 1 2 3; do git pull --rebase -q origin master && git push -q origin HEAD:master && exit 0; sleep 5; done
+          exit 1

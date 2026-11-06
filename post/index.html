@@ -198,7 +198,7 @@
        data-placeholder="What's on your mind?" autocapitalize="sentences"></div>
 
   <div class="row" id="crosspost-row">
-    <label class="check"><input type="checkbox" id="crosspost" checked> Post to X</label>
+    <label class="check"><input type="checkbox" id="crosspost" checked> <span id="crosspost-label">Post to X</span></label>
     <span class="count" id="count" hidden></span>
   </div>
 
@@ -666,7 +666,10 @@
     editing = note;
     $('title').textContent = note ? 'Edit note' : 'New note';
     $('editbar').hidden = !note;
-    $('crosspost-row').hidden = !!note;
+    // Editing: "Update on X" replaces the note's X posts with the new text.
+    $('crosspost-label').textContent = note ? 'Update on X' : 'Post to X';
+    crosspost.checked = true;
+    updateCount();
     publishBtn.textContent = note ? 'Save changes' : 'Publish';
     if (note) $('editing-label').innerHTML = 'Editing <a href="' + escapeAttr(note.url) + '">' + escapeHtml(note.label) + '</a>';
   }
@@ -691,8 +694,9 @@
     publishBtn.disabled = true;
     setStatus(statusEl, 'Saving…');
     var firstLine = plainText(md).split('\n')[0];
+    var toX = crosspost.checked;
     gh('PUT', '/repos/' + c.repo + '/contents/' + note.path, {
-      message: 'Edit note: ' + (firstLine.length > 55 ? firstLine.slice(0, 52) + '…' : firstLine),
+      message: 'Edit note: ' + (firstLine.length > 55 ? firstLine.slice(0, 52) + '…' : firstLine) + (toX ? ' [x]' : ''),
       content: b64(note.front + '\n\n' + md + '\n'),
       sha: note.sha,
       branch: c.branch
@@ -700,7 +704,8 @@
       note.sha = res.content && res.content.sha;
       note.body = md;
       stopEdit();
-      setStatus(statusEl, 'Saved. <a href="' + escapeAttr(note.url) + '">The note</a> updates in a minute or two.', 'ok');
+      setStatus(statusEl, 'Saved. <a href="' + escapeAttr(note.url) + '">The note</a> updates in a minute or two.' +
+        (toX ? ' X gets the new version once it\'s live.' : ''), 'ok');
     }).catch(function (e) {
       var msg = e.status === 409 ? 'This note changed somewhere else since you opened it. Cancel and open it again.' : e.message;
       setStatus(statusEl, escapeHtml(msg) + ' Your text is still here.', 'bad');

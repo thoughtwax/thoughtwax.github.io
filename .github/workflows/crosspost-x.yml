@@ -1,5 +1,6 @@
 # Federates every newly added note and post to X as @thoughtwax_bot.
-# Notes go out as their text, posts as "Title <link>". Only files added in a
+# Notes go out as their full text (a thread if X refuses a long post),
+# posts as "Title <link>". Only files added in a
 # push are considered, so edits and old posts are never reposted. To keep one
 # off X, add `crosspost: no` to its front matter (or untick "Post to X" in /post/).
 #

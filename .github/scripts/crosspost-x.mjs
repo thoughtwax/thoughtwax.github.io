@@ -1,7 +1,9 @@
 // Federates newly added notes and posts to X (@thoughtwax_bot).
 //
 // Usage: node crosspost-x.mjs <file> [<file> ...]
-// Notes (`layout: note`) go out as their text; posts go out as "Title <link>".
+// Notes (`layout: note`) go out as their full text, with no link back. X
+// accepts long posts from Premium accounts; if it refuses, the note goes out
+// as a thread of 280-character posts instead. Posts go out as "Title <link>".
 // Skipped: `published: false`, `crosspost: no` in front matter, and anything
 // dated more than MAX_AGE_DAYS ago (so backfilled or imported posts stay quiet).
 // Needs X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET in the environment.
@@ -81,17 +83,17 @@ export function xLength(text) {
   return [...text.replace(/https?:\/\/\S+/g, 'x'.repeat(URL_LEN))].length;
 }
 
-// The whole note if it fits; otherwise a shortened version ending with a link back.
-export function composePost(text, url) {
-  if (xLength(text) <= LIMIT) return text;
-  const room = LIMIT - URL_LEN - 2; // "…" + space
-  let cut = '';
+// Splits text into posts of at most 280 characters, breaking between words.
+export function splitThread(text) {
+  const parts = [];
+  let cur = '';
   for (const word of text.split(/(\s+)/)) {
-    if (xLength(cut + word) > room) break;
-    cut += word;
+    if (cur && xLength(cur + word) > LIMIT) { parts.push(cur.trim()); cur = word.trimStart(); }
+    else cur += word;
+    while (xLength(cur) > LIMIT) { const c = [...cur]; parts.push(c.slice(0, LIMIT).join('')); cur = c.slice(LIMIT).join(''); }
   }
-  if (!cut.trim()) cut = [...text].slice(0, room).join(''); // one enormous word
-  return `${cut.trimEnd()}… ${url}`;
+  if (cur.trim()) parts.push(cur.trim());
+  return parts;
 }
 
 // A full post goes out as its title and a link.
@@ -136,16 +138,31 @@ async function waitUntilLive(url, minutes = 10) {
   return false;
 }
 
-async function postToX(text, creds) {
+async function postToX(text, creds, replyTo) {
   const endpoint = 'https://api.x.com/2/tweets';
+  const body = { text };
+  if (replyTo) body.reply = { in_reply_to_tweet_id: replyTo };
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { Authorization: oauthHeader('POST', endpoint, creds), 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify(body),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok) throw new Error(`X said ${res.status}: ${JSON.stringify(data)}`);
+  if (!res.ok) { const e = new Error(`X said ${res.status}: ${JSON.stringify(data)}`); e.status = res.status; throw e; }
   return data.data;
+}
+
+// Full note in one post; if X won't take a long post, as a thread.
+async function postNote(text, creds) {
+  try {
+    return [await postToX(text, creds)];
+  } catch (e) {
+    if (xLength(text) <= LIMIT || ![400, 403].includes(e.status)) throw e;
+    console.log(`X refused the long post (${e.message}); posting it as a thread.`);
+  }
+  const tweets = [];
+  for (const part of splitThread(text)) tweets.push(await postToX(part, creds, tweets.at(-1)?.id));
+  return tweets;
 }
 
 async function main(files) {
@@ -173,13 +190,13 @@ async function main(files) {
   let failed = false;
   for (const { file, kind, front, body } of items) {
     const url = permalink(file, front);
-    const text = kind === 'note' ? composePost(toPlainText(body), url) : composeLink(toPlainText(front.title), url);
+    const text = kind === 'note' ? toPlainText(body) : composeLink(toPlainText(front.title), url);
     console.log(`\n${file}\n${url}\n---\n${text}\n---`);
-    if (dryRun) continue;
+    if (dryRun) { if (kind === 'note' && xLength(text) > LIMIT) console.log(`(as a thread if needed: ${splitThread(text).length} posts)`); continue; }
     try {
-      if (!(await waitUntilLive(url))) console.warn(`Note isn't live yet at ${url}; posting anyway.`);
-      const tweet = await postToX(text, creds);
-      console.log(`Posted to X: https://x.com/i/status/${tweet.id}`);
+      if (!(await waitUntilLive(url))) console.warn(`Not live yet at ${url}; posting anyway.`);
+      const tweets = kind === 'note' ? await postNote(text, creds) : [await postToX(text, creds)];
+      for (const t of tweets) console.log(`Posted to X: https://x.com/i/status/${t.id}`);
     } catch (e) {
       failed = true;
       console.error(`Could not post ${file}: ${e.message}`);

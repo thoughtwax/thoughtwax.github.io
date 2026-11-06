@@ -83,17 +83,21 @@ export function xLength(text) {
   return [...text.replace(/https?:\/\/\S+/g, 'x'.repeat(URL_LEN))].length;
 }
 
-// Splits text into posts of at most 280 characters, breaking between words.
+// Splits text into a numbered thread, breaking between words. Every part
+// but the last ends "… 1/3"; the last ends "3/3". Each stays within 280.
 export function splitThread(text) {
+  const RESERVE = 9; // "… 99/99"
+  const max = LIMIT - RESERVE;
   const parts = [];
   let cur = '';
   for (const word of text.split(/(\s+)/)) {
-    if (cur && xLength(cur + word) > LIMIT) { parts.push(cur.trim()); cur = word.trimStart(); }
+    if (cur && xLength(cur + word) > max) { parts.push(cur.trim()); cur = word.trimStart(); }
     else cur += word;
-    while (xLength(cur) > LIMIT) { const c = [...cur]; parts.push(c.slice(0, LIMIT).join('')); cur = c.slice(LIMIT).join(''); }
+    while (xLength(cur) > max) { const c = [...cur]; parts.push(c.slice(0, max).join('')); cur = c.slice(max).join(''); }
   }
   if (cur.trim()) parts.push(cur.trim());
-  return parts;
+  const n = parts.length;
+  return parts.map((p, i) => (i < n - 1 ? `${p}… ${i + 1}/${n}` : `${p} ${n}/${n}`));
 }
 
 // A full post goes out as its title and a link.

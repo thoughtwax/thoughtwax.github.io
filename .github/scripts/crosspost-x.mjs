@@ -8,6 +8,8 @@
 // dated more than MAX_AGE_DAYS ago (so backfilled or imported posts stay quiet).
 // Needs X_API_KEY, X_API_SECRET, X_ACCESS_TOKEN, X_ACCESS_TOKEN_SECRET in the environment.
 // Set DRY_RUN=1 to print what would be posted without calling X.
+// A note's photos (`images:` in front matter) are uploaded and attached to its
+// first post, up to X's limit of four.
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { basename } from 'node:path';
@@ -30,8 +32,29 @@ export function parseNote(source) {
     const kv = line.match(/^([A-Za-z_][\w-]*):\s*(.*)$/);
     if (kv) front[kv[1]] = kv[2].replace(/^["']|["']$/g, '').trim();
   }
-  return { front, body: m[2].trim() };
+  return { front, body: m[2].trim(), images: parseImages(m[1]) };
 }
+
+// The `images:` list in a note's front matter: [{ src, alt }]
+export function parseImages(yaml) {
+  const out = [];
+  let inList = false;
+  for (const line of yaml.split(/\r?\n/)) {
+    if (/^images:\s*$/.test(line)) { inList = true; continue; }
+    if (!inList) continue;
+    if (/^\S/.test(line)) break;
+    const item = line.match(/^\s+-\s+(?:src:\s*)?(.+)$/);
+    if (item) { out.push({ src: unquote(item[1]) }); continue; }
+    const kv = line.match(/^\s+(\w+):\s*(.*)$/);
+    if (kv && out.length) out.at(-1)[kv[1]] = unquote(kv[2]);
+  }
+  return out.filter((i) => i.src);
+}
+const unquote = (v) => {
+  v = v.trim();
+  if (/^".*"$/.test(v)) { try { return JSON.parse(v); } catch {} }
+  return v.replace(/^["']|["']$/g, '');
+};
 
 export function kindOf(front) {
   if (/^(false|no)$/i.test(front.published || '')) return null;
@@ -146,10 +169,46 @@ async function waitUntilLive(url, minutes = 10) {
   return false;
 }
 
-async function postToX(text, creds, replyTo) {
+// Uploads one photo (a repo path like /uploads/… or a URL) and returns its media id.
+async function uploadMedia(img, creds) {
+  let bytes, type = 'image/jpeg';
+  if (/^https?:\/\//.test(img.src)) {
+    const res = await fetch(img.src);
+    if (!res.ok) throw new Error(`Could not fetch ${img.src}: ${res.status}`);
+    bytes = Buffer.from(await res.arrayBuffer());
+    type = res.headers.get('content-type') || type;
+  } else {
+    bytes = readFileSync('.' + (img.src.startsWith('/') ? '' : '/') + img.src);
+    if (/\.png$/i.test(img.src)) type = 'image/png';
+    else if (/\.gif$/i.test(img.src)) type = 'image/gif';
+    else if (/\.webp$/i.test(img.src)) type = 'image/webp';
+  }
+  const endpoint = 'https://api.x.com/2/media/upload';
+  const form = new FormData();
+  form.append('media', new Blob([bytes], { type }), basename(img.src));
+  form.append('media_category', 'tweet_image');
+  const res = await fetch(endpoint, { method: 'POST', headers: { Authorization: oauthHeader('POST', endpoint, creds) }, body: form });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(`X said ${res.status} uploading ${img.src}: ${JSON.stringify(data)}`);
+  const id = data.data?.id || data.media_id_string;
+  if (img.alt) {
+    const meta = 'https://api.x.com/2/media/metadata';
+    const r = await fetch(meta, {
+      method: 'POST',
+      headers: { Authorization: oauthHeader('POST', meta, creds), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, metadata: { alt_text: { text: img.alt.slice(0, 1000) } } }),
+    });
+    if (!r.ok) console.warn(`Alt text for ${img.src} not set: ${r.status}`);
+  }
+  console.log(`Uploaded ${img.src} to X as media ${id}`);
+  return id;
+}
+
+async function postToX(text, creds, replyTo, mediaIds) {
   const endpoint = 'https://api.x.com/2/tweets';
-  const body = { text };
+  const body = text ? { text } : {};
   if (replyTo) body.reply = { in_reply_to_tweet_id: replyTo };
+  if (mediaIds?.length) body.media = { media_ids: mediaIds };
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { Authorization: oauthHeader('POST', endpoint, creds), 'Content-Type': 'application/json' },
@@ -169,15 +228,15 @@ async function deleteFromX(id, creds) {
 }
 
 // Full note in one post; if X won't take a long post, as a thread.
-async function postNote(text, creds) {
+async function postNote(text, creds, mediaIds) {
   try {
-    return [await postToX(text, creds)];
+    return [await postToX(text, creds, null, mediaIds)];
   } catch (e) {
     if (xLength(text) <= LIMIT || ![400, 403].includes(e.status)) throw e;
     console.log(`X refused the long post (${e.message}); posting it as a thread.`);
   }
   const tweets = [];
-  for (const part of splitThread(text)) tweets.push(await postToX(part, creds, tweets.at(-1)?.id));
+  for (const part of splitThread(text)) tweets.push(await postToX(part, creds, tweets.at(-1)?.id, tweets.length ? null : mediaIds));
   return tweets;
 }
 
@@ -214,10 +273,12 @@ async function main(files) {
   if (!items.length) { console.log('Nothing new to post to X.'); return; }
 
   let failed = false;
-  for (const { file, kind, update, front, body } of items) {
+  for (const { file, kind, update, front, body, images } of items) {
     const url = permalink(file, front);
     const text = kind === 'note' ? toPlainText(body) : composeLink(toPlainText(front.title), url);
+    const photos = kind === 'note' ? images.slice(0, 4) : [];
     console.log(`\n${file}\n${url}\n---\n${text}\n---`);
+    if (photos.length) console.log(`with ${photos.length} photo(s): ${photos.map((i) => i.src).join(' ')}`);
     if (dryRun) { if (kind === 'note' && xLength(text) > LIMIT) console.log(`(as a thread if needed: ${splitThread(text).length} posts)`); continue; }
     try {
       if (update) {
@@ -227,7 +288,9 @@ async function main(files) {
         delete map[file]; saveMap(map);
       }
       if (!(await waitUntilLive(url))) console.warn(`Not live yet at ${url}; posting anyway.`);
-      const tweets = kind === 'note' ? await postNote(text, creds) : [await postToX(text, creds)];
+      const mediaIds = [];
+      for (const img of photos) mediaIds.push(await uploadMedia(img, creds));
+      const tweets = kind === 'note' ? await postNote(text, creds, mediaIds) : [await postToX(text, creds)];
       for (const t of tweets) console.log(`Posted to X: https://x.com/i/status/${t.id}`);
       map[file] = tweets.map((t) => t.id); saveMap(map);
     } catch (e) {

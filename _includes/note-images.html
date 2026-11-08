@@ -1,0 +1,27 @@
+{%- comment -%}
+  Images on a note, from its front matter:
+    images:
+      - src: /uploads/notes/2026/2026-11-08-2230-1.jpg
+        thumb: /uploads/notes/2026/2026-11-08-2230-1-thumb.jpg   (optional square crop)
+        width: 2048
+        height: 1536
+        alt: What's in the picture
+  One image: shown whole, at the column's width, like images in posts.
+  Several: a strip of large square thumbnails. Each is a plain link to the full
+  JPEG; js/lightbox.js turns those links into an animated lightbox.
+{%- endcomment -%}
+{%- assign imgs = include.images -%}
+{%- if imgs and imgs.size > 0 -%}
+{%- if imgs.size == 1 -%}
+{%- assign img = imgs[0] -%}
+<figure class="note-image">
+  <img class="u-photo" src="{{ img.src }}" alt="{{ img.alt | escape }}"{% if img.width %} width="{{ img.width }}" height="{{ img.height }}"{% endif %} loading="lazy" decoding="async">
+</figure>
+{%- else -%}
+<ul class="note-strip" data-count="{{ imgs.size }}" data-lightbox>
+  {%- for img in imgs %}
+  <li><a class="u-photo" href="{{ img.src }}"{% if img.width %} data-width="{{ img.width }}" data-height="{{ img.height }}"{% endif %}><img src="{{ img.thumb | default: img.src }}" alt="{{ img.alt | escape }}" loading="lazy" decoding="async"></a></li>
+  {%- endfor %}
+</ul>
+{%- endif -%}
+{%- endif -%}

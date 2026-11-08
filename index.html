@@ -12,6 +12,7 @@ title: thoughtwax - a blog by Emmet Connolly
       <a class="hash u-url" href="{{ post.url }}" aria-label="Permalink to this note">#</a>
       <div class="e-content">
         {{ post.content }}
+        {% include note-images.html images=post.images %}
       </div>
     </div>
     {% continue %}

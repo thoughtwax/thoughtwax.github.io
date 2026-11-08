@@ -144,6 +144,23 @@
     .row[hidden] { display: none; }
     .row[hidden] + .publish { margin-top: 16px; }
     .editbar a { color: inherit; }
+
+    .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
+    .photos:empty { display: none; }
+    .photos li { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: var(--rule); }
+    .photos img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .photos li.busy img { opacity: .4; }
+    .photos button {
+      position: absolute; border: 0; background: rgba(0,0,0,.55); color: #fff; font-size: 12px; line-height: 1;
+      height: 26px; border-radius: 13px; padding: 0 9px;
+    }
+    .photos .remove { top: 5px; right: 5px; width: 26px; padding: 0; font-size: 16px; }
+    .photos .alt { left: 5px; bottom: 5px; }
+    .photos .alt.set { background: rgba(0,0,0,.8); }
+    .toolbar label.add { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 40px; padding: 0 10px;
+      background: var(--field); border: 1px solid var(--rule); border-radius: 8px; font-size: 15px; cursor: pointer; margin-left: auto; }
+    .toolbar label.add[hidden] { display: none; }
+    .toolbar label.add input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
   </style>
 </head>
 <body>
@@ -192,10 +209,12 @@
     <button type="button" class="i" data-cmd="italic" aria-label="Italic" aria-pressed="false">I</button>
     <button type="button" data-cmd="link" aria-label="Link">Link</button>
     <button type="button" data-cmd="insertUnorderedList" aria-label="Bulleted list" aria-pressed="false">• List</button>
+    <label class="add" id="add-photos">+ Photo<input type="file" id="photo-input" accept="image/*" multiple></label>
   </div>
 
   <div id="editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Note text"
        data-placeholder="What's on your mind?" autocapitalize="sentences"></div>
+  <ul class="photos" id="photos" aria-label="Photos"></ul>
 
   <div class="row" id="crosspost-row">
     <label class="check"><input type="checkbox" id="crosspost" checked> <span id="crosspost-label">Post to X</span></label>
@@ -243,6 +262,9 @@
   editor.innerHTML = store.get(K.draft, '');
 
   function isEmpty() { return editor.textContent.replace(/\s+/g, '') === ''; }
+  // A note can be just photos, with no text.
+  function hasPhotos() { return photos.length > 0 || !!(editing && /^images:/m.test(editing.front)); }
+  function canPublish() { return (!isEmpty() || hasPhotos()) && !photos.some(function (p) { return !p.full; }); }
 
   function onChange() {
     if (isEmpty() && editor.innerHTML !== '') {
@@ -250,7 +272,7 @@
       if (!editor.querySelector('li, img')) editor.innerHTML = '';
     }
     if (!editing) store.set(K.draft, editor.innerHTML);
-    publishBtn.disabled = isEmpty();
+    publishBtn.disabled = !canPublish();
     updateCount();
     updateToolbarState();
   }
@@ -514,7 +536,7 @@
   }
 
   publishBtn.addEventListener('click', function () {
-    if (isEmpty()) return;
+    if (!canPublish()) return;
     var c = cfg();
     if (!c.token) return openSettings('Add your GitHub token first.');
 
@@ -522,10 +544,7 @@
     if (editing) return saveEdit(md);
     var now = new Date();
     var t = stamp(now);
-    var front = ['---', 'layout: note', 'date: ' + t.full];
-    if (!crosspost.checked) front.push('crosspost: no');
-    front.push('---', '', md, '');
-    var content = front.join('\n');
+    var shots = photos.slice();
 
     publishBtn.disabled = true;
     setStatus(statusEl, 'Publishing…');
@@ -534,11 +553,31 @@
     var path = '_posts/' + t.day + '-' + slug + '.markdown';
     exists(path).then(function (taken) {
       if (taken) { slug = t.hm + t.sec; path = '_posts/' + t.day + '-' + slug + '.markdown'; }
-      var firstLine = plainText(md).split('\n')[0];
+      var front = ['---', 'layout: note', 'date: ' + t.full];
+      if (!crosspost.checked) front.push('crosspost: no');
+      var files = [];
+      if (shots.length) {
+        front.push('images:');
+        shots.forEach(function (p, i) {
+          var base = 'uploads/notes/' + t.day.slice(0, 4) + '/' + t.day + '-' + slug + '-' + (i + 1);
+          files.push({ path: base + '.jpg', blob: p.full }, { path: base + '-thumb.jpg', blob: p.thumb });
+          front.push('  - src: /' + base + '.jpg', '    thumb: /' + base + '-thumb.jpg',
+            '    width: ' + p.width, '    height: ' + p.height);
+          if (p.alt) front.push('    alt: ' + JSON.stringify(p.alt));
+        });
+      }
+      front.push('---', '', md, '');
+      var content = front.join('\n');
+      var firstLine = plainText(md).split('\n')[0] ||
+        (shots.length === 1 ? 'a photo' : shots.length + ' photos');
       var msg = 'Note: ' + (firstLine.length > 60 ? firstLine.slice(0, 57) + '…' : firstLine);
-      return gh('PUT', '/repos/' + c.repo + '/contents/' + path, {
-        message: msg, content: b64(content), branch: c.branch
-      });
+      if (!files.length) {
+        return gh('PUT', '/repos/' + c.repo + '/contents/' + path, {
+          message: msg, content: b64(content), branch: c.branch
+        });
+      }
+      files.push({ path: path, text: content });
+      return commitFiles(files, msg);
     }).then(function (res) {
       // GitHub Pages builds in UTC, so the permalink's year/month come from the UTC date
       var url = SITE + '/' + now.getUTCFullYear() + '/' + pad(now.getUTCMonth() + 1) + '/' + slug + '/';
@@ -549,12 +588,153 @@
       editor.innerHTML = '';
       crosspost.checked = true;
       store.del(K.draft);
+      clearPhotos();
       onChange();
     }).catch(function (e) {
       setStatus(statusEl, escapeHtml(e.message) + ' Your text is still here.', 'bad');
       publishBtn.disabled = false;
       if (e.status === 401 || e.status === 403) openSettings(e.message);
     });
+  });
+
+  // ---- one commit with several files (photos + the note) -------------------
+  // The contents API can only write one file per commit, and the X workflow
+  // should see the note and its photos land together, so this goes through the
+  // Git data API: blobs, a tree, a commit, then move the branch to it.
+  function blobB64(blob) {
+    return new Promise(function (res, rej) {
+      var r = new FileReader();
+      r.onload = function () { res(String(r.result).split(',')[1]); };
+      r.onerror = function () { rej(new Error('Could not read a photo.')); };
+      r.readAsDataURL(blob);
+    });
+  }
+  function commitFiles(files, message) {
+    var c = cfg();
+    var R = '/repos/' + c.repo + '/git/';
+    var head;
+    return gh('GET', R + 'ref/heads/' + encodeURIComponent(c.branch)).then(function (ref) {
+      head = ref.object.sha;
+      return gh('GET', R + 'commits/' + head);
+    }).then(function (commit) {
+      var done = 0;
+      return Promise.all(files.map(function (f) {
+        var data = f.blob ? blobB64(f.blob) : Promise.resolve(b64(f.text));
+        return data.then(function (content) {
+          return gh('POST', R + 'blobs', { content: content, encoding: 'base64' });
+        }).then(function (b) {
+          done++;
+          setStatus(statusEl, 'Uploading… ' + done + ' of ' + files.length);
+          return { path: f.path, mode: '100644', type: 'blob', sha: b.sha };
+        });
+      })).then(function (tree) {
+        return gh('POST', R + 'trees', { base_tree: commit.tree.sha, tree: tree });
+      });
+    }).then(function (tree) {
+      return gh('POST', R + 'commits', { message: message, tree: tree.sha, parents: [head] });
+    }).then(function (commit) {
+      return gh('PATCH', R + 'refs/heads/' + encodeURIComponent(c.branch), { sha: commit.sha }).then(function () {
+        return { commit: { html_url: 'https://github.com/' + c.repo + '/commit/' + commit.sha } };
+      });
+    });
+  }
+
+  // ---- photos ------------------------------------------------------------------
+  // Each photo is resized on the phone to a JPEG at most 2048px on its long
+  // side, plus an 800px square thumbnail cut from its centre for the strip.
+  var MAX_SIDE = 2048, THUMB = 800;
+  var photos = []; // { full: Blob, thumb: Blob, width, height, alt, url }
+  var photoList = $('photos');
+
+  function decode(file) {
+    if (window.createImageBitmap) {
+      return createImageBitmap(file, { imageOrientation: 'from-image' }).catch(function () { return decodeImg(file); });
+    }
+    return decodeImg(file);
+  }
+  function decodeImg(file) {
+    return new Promise(function (res, rej) {
+      var img = new Image();
+      var u = URL.createObjectURL(file);
+      img.onload = function () { res(img); };
+      img.onerror = function () { URL.revokeObjectURL(u); rej(new Error('That file doesn\'t look like a photo this browser can open.')); };
+      img.src = u;
+    });
+  }
+  function toJpeg(src, sx, sy, sw, sh, w, h, q) {
+    var cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    var g = cv.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); // transparent PNGs get a white ground
+    g.imageSmoothingQuality = 'high';
+    g.drawImage(src, sx, sy, sw, sh, 0, 0, w, h);
+    return new Promise(function (res, rej) {
+      cv.toBlob(function (b) { b ? res(b) : rej(new Error('Could not make a JPEG from that photo.')); }, 'image/jpeg', q);
+    });
+  }
+  function addPhoto(file) {
+    var p = { alt: '', url: URL.createObjectURL(file) };
+    photos.push(p);
+    renderPhotos();
+    onChange();
+    return decode(file).then(function (src) {
+      var W = src.width || src.naturalWidth, H = src.height || src.naturalHeight;
+      var k = Math.min(1, MAX_SIDE / Math.max(W, H));
+      p.width = Math.round(W * k); p.height = Math.round(H * k);
+      var side = Math.min(W, H), t = Math.min(THUMB, side);
+      return Promise.all([
+        toJpeg(src, 0, 0, W, H, p.width, p.height, 0.86),
+        toJpeg(src, (W - side) / 2, (H - side) / 2, side, side, t, t, 0.82)
+      ]);
+    }).then(function (b) {
+      p.full = b[0]; p.thumb = b[1];
+      URL.revokeObjectURL(p.url);
+      p.url = URL.createObjectURL(p.thumb);
+      renderPhotos();
+      onChange();
+    }).catch(function (e) {
+      photos.splice(photos.indexOf(p), 1);
+      renderPhotos();
+      onChange();
+      setStatus(statusEl, escapeHtml(e.message), 'bad');
+    });
+  }
+  function renderPhotos() {
+    photoList.innerHTML = '';
+    photos.forEach(function (p, i) {
+      var li = document.createElement('li');
+      if (!p.full) li.className = 'busy';
+      var img = document.createElement('img');
+      img.src = p.url; img.alt = p.alt;
+      var rm = document.createElement('button');
+      rm.type = 'button'; rm.className = 'remove'; rm.textContent = '\u00d7';
+      rm.setAttribute('aria-label', 'Remove photo ' + (i + 1));
+      rm.addEventListener('click', function () {
+        photos.splice(photos.indexOf(p), 1);
+        URL.revokeObjectURL(p.url);
+        renderPhotos(); onChange();
+      });
+      var alt = document.createElement('button');
+      alt.type = 'button'; alt.className = 'alt' + (p.alt ? ' set' : ''); alt.textContent = p.alt ? 'ALT \u2713' : 'ALT';
+      alt.setAttribute('aria-label', 'Describe photo ' + (i + 1));
+      alt.addEventListener('click', function () {
+        var v = window.prompt('Describe this photo (alt text)', p.alt);
+        if (v === null) return;
+        p.alt = v.trim();
+        renderPhotos();
+      });
+      li.appendChild(img); li.appendChild(rm); li.appendChild(alt);
+      photoList.appendChild(li);
+    });
+  }
+  function clearPhotos() {
+    photos.forEach(function (p) { URL.revokeObjectURL(p.url); });
+    photos = [];
+    renderPhotos();
+  }
+  $('photo-input').addEventListener('change', function (e) {
+    Array.prototype.forEach.call(e.target.files, addPhoto);
+    e.target.value = '';
   });
 
   // ---- editing earlier notes ---------------------------------------------
@@ -623,6 +803,8 @@
         var when = document.createElement('span'); when.className = 'when'; when.textContent = n.label;
         var snip = document.createElement('span'); snip.className = 'snip';
         var t = plainText(n.body).replace(/\s+/g, ' ');
+        var pics = (n.front.match(/^\s+- src:/gm) || []).length;
+        if (pics) t = (pics === 1 ? '[photo] ' : '[' + pics + ' photos] ') + t;
         snip.textContent = t.length > 140 ? t.slice(0, 137) + '…' : t;
         b.appendChild(when); b.appendChild(snip);
         b.addEventListener('click', function () { startEdit(n); });
@@ -671,6 +853,9 @@
     crosspost.checked = true;
     updateCount();
     publishBtn.textContent = note ? 'Save changes' : 'Publish';
+    // Editing keeps a note's photos as they are; adding or removing them is for new notes.
+    $('add-photos').hidden = !!note;
+    photoList.hidden = !!note;
     if (note) $('editing-label').innerHTML = 'Editing <a href="' + escapeAttr(note.url) + '">' + escapeHtml(note.label) + '</a>';
   }
   function startEdit(note) {

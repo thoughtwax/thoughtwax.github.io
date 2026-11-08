@@ -3,7 +3,7 @@
 <head>
 
   <meta charset="utf-8">
-  {% if page.layout == "note" %}{% capture note_title %}{{ page.content | strip_html | truncatewords: 8 }}{% endcapture %}{% endif %}
+  {% if page.layout == "note" %}{% capture note_title %}{{ page.content | strip_html | truncatewords: 8 }}{% endcapture %}{% assign note_title = note_title | strip %}{% if note_title == "" %}{% if page.images[0].alt and page.images[0].alt != "" %}{% assign note_title = page.images[0].alt | truncatewords: 8 %}{% elsif page.images.size > 1 %}{% assign note_title = "Photos" %}{% else %}{% assign note_title = "Photo" %}{% endif %}{% endif %}{% endif %}
   <title>{% if page.layout == "note" %}{{ note_title | strip }} — thoughtwax{% else %}{{ page.title }}{% endif %} {% if page.layout == "post" %}
             — thoughtwax
           {% endif %}</title>
@@ -17,7 +17,8 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="http://thoughtwax.com{{ page.url }}">
   <meta property="og:site_name" content="Thoughtwax">
-  <meta name="twitter:card" content="summary">
+  {% if page.images and page.images.size > 0 %}{% assign og_img = page.images[0].src %}{% unless og_img contains "://" %}{% assign og_img = "https://thoughtwax.com" | append: og_img %}{% endunless %}<meta property="og:image" content="{{ og_img }}">
+  <meta name="twitter:card" content="summary_large_image">{% else %}<meta name="twitter:card" content="summary">{% endif %}
   <meta name="twitter:site" content="@thoughtwax">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +32,7 @@
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/skeleton.css">
   <link rel="stylesheet" href="/css/main.css">
+  <script src="/js/lightbox.js" defer></script>
 
 </head>
 <body>

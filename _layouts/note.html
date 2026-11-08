@@ -6,6 +6,7 @@ layout: default
     <a class="hash u-url" href="{{ page.url }}" aria-label="Permalink to this note">#</a>
     <div class="e-content">
       {{ content }}
+      {% include note-images.html images=page.images %}
     </div>
   </div>
 </div>

@@ -113,8 +113,8 @@ p.meta-intro { font: 13px/16px 'IBM Plex Mono', 'Courier New', monospace; color:
 .note-strip { list-style: none; display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .note-strip::-webkit-scrollbar { display: none; }
 .note-strip li { flex: 0 0 calc((100% - 8px) / 2); margin: 0; padding: 0; text-indent: 0; scroll-snap-align: start; }
-.note-strip[data-count="3"] li { flex-basis: calc((100% - 16px) / 3); }
-.note-strip:has(li:nth-child(4)) li { flex-basis: calc((100% - 16px) / 2.5); }
+/* Three or more: smaller squares (half the size of a pair) in a row that scrolls sideways when it runs out of room */
+.note-strip li:nth-child(3), .note-strip:has(li:nth-child(3)) li { flex-basis: 128px; }
 .note-strip a { display: block; aspect-ratio: 1; overflow: hidden; border: 0; background: #ebe8e1; cursor: zoom-in; }
 .note-strip img { display: block; width: 100%; height: 100%; object-fit: cover; transition: opacity .2s; }
 .note-strip a:hover img { opacity: .9; }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MMX — thoughtwax</title>
+  <meta name="description" content="MMX: Emmet Connolly's commonplace book. Things saved, sorted by tag.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f6f2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/mmx/mmx.css">
+</head>
+<body>
+  <header class="mmx-head">
+    <a class="mmx-home" href="/">Thoughtwax</a>
+    <h1><a href="#/">MMX</a></h1>
+    <p class="mmx-intro">A commonplace book. Things I've saved, sorted by what they're about. <span id="mmx-count"></span></p>
+    <nav class="mmx-nav">
+      <a href="#/" data-view="tags">Tags</a>
+      <a href="#/timeline" data-view="timeline">Timeline</a>
+    </nav>
+  </header>
+
+  <main id="mmx" aria-live="polite"></main>
+
+  <div id="lb" class="lb" hidden role="dialog" aria-modal="true" aria-label="Item detail">
+    <div class="lb-bg"></div>
+    <div class="lb-stage"></div>
+    <div class="lb-cap"></div>
+    <button class="lb-btn lb-close" aria-label="Close">×</button>
+    <button class="lb-btn lb-prev" aria-label="Previous">←</button>
+    <button class="lb-btn lb-next" aria-label="Next">→</button>
+  </div>
+
+  <script src="/mmx/mmx.js" defer></script>
+</body>
+</html>
